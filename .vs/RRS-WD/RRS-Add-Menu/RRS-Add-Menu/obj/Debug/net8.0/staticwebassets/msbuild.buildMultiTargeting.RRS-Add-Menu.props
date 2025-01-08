@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\RRS-Add-Menu.props" />
+</Project>
