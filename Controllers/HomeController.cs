@@ -15,7 +15,14 @@ namespace RRS.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var reservations = new List<Reservation>
+    {
+        new Reservation { Time = "7:00 PM", Name = "Miyuki Mharie Parocha", Guests = 3, Table = 32, Status = "Upcoming" },
+        new Reservation { Time = "8:00 PM", Name = "Shanella Cagulang", Guests = 6, Table = 7, Status = "Upcoming" },
+        new Reservation { Time = "5:30 PM", Name = "Darben Lamonte", Guests = 7, Table = 19, Status = "Seated" },
+    };
+
+            return View(reservations);
         }
 
         public IActionResult Privacy()

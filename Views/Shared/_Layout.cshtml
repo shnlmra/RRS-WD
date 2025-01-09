@@ -3,47 +3,99 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RRS</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] Golden Palate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RRS.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RRS</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--Parent container sidebar-->
+        <h1>GOLDEN PLATE</h1>
+        <ul>
+            <li class="nav-item profile">
+                <div class="profile-desc">
+                    <div class="profile-pic">
+                        <img src="path_to_image.jpg" alt="Profile Picture" class="profile-image">
+                    </div>
+                    <div class="profile-name text-center d-flex flex-column align-items-center">
+                        <h5 class="mb-0 font-weight-normal text-white">Shanella Cagulang</h5>
+                        <span class="text-white">Admin</span>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            </li>
+
+
+
+            <li>
+                <a href="/Dashboard" class="active">
+                    <i class="fa-solid fa-chart-pie"></i> Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/Reservations class="">
+                    <i class="fa-solid fa-calendar-check"></i>  Reservations
+                </a>
+            </li>
+
+            <li>
+                <a href="/Audit Logs" class="">
+                    <i class="fa-solid fa-clipboard"></i> Audit Logs
+                </a>
+            </li>
+
+            <li>
+                <a href="/Menu" class="">
+                    <i class="fa-solid fa-bars"></i> Menu
+                </a>
+            </li>
+        </ul>
+
+        <ul class="bottom-sidebar">
+            <li>
+                <a href="/Settings">
+                    <i class="fa-solid fa-gear"></i> Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="/Logout">
+                    <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                </a>
+            </li>
+        </ul>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - RRS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- Header -->
+    <div class="header">
+        <div class="date-time">
+            <ul>
+                <li> <span>@DateTime.Now.ToString("hh:mm:ss tt")</span></li>
+                <li> <span>@DateTime.Now.ToString("MMMM dd, yyyy")</span> </li>
+            </ul>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <div class="notification-wrapper">
+            <button class="notification-icon" onclick="showNotifications()">
+                <i class="fa-solid fa-bell"></i>
+            </button>
+        </div>
+
+        <div class="user-wrapper">
+            <button class="user-icon" onclick="showUser()">
+                <i class="fa-solid fa-user-gear"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        @RenderBody() <!-- Child views will be injected here -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
