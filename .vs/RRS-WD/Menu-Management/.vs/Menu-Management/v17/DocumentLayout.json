@@ -7,24 +7,32 @@
       "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\views\\menu-management\\mainpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\models\\add-menu-modal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\models\\add-menu-modal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\controllers\\mainweb-controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\controllers\\mainweb-controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\migrations\\20250109025014_add-final-migration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\migrations\\20250109025014_add-final-migration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\controllers\\modal-controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\controllers\\modal-controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\controllers\\mainpage-controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\controllers\\mainpage-controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\views\\menu-management\\delete-menu-modal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\views\\menu-management\\delete-menu-modal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|c:\\users\\shanella cagulang\\source\\repos\\rrs-wd\\.vs\\rrs-wd\\menu-management\\menu-management\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE54CB16-EB25-483D-92DD-4EDC7E07CFB7}|Menu-Management\\Menu-Management.csproj|solutionrelative:menu-management\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,15 +50,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Delete-Menu-Modal.cshtml",
-              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Views\\Menu-Management\\Delete-Menu-Modal.cshtml",
-              "RelativeDocumentMoniker": "Menu-Management\\Views\\Menu-Management\\Delete-Menu-Modal.cshtml",
-              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Views\\Menu-Management\\Delete-Menu-Modal.cshtml",
-              "RelativeToolTip": "Menu-Management\\Views\\Menu-Management\\Delete-Menu-Modal.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-03T09:32:38.037Z"
+              "DocumentIndex": 2,
+              "Title": "MainWeb-Controller.cs",
+              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Controllers\\MainWeb-Controller.cs",
+              "RelativeDocumentMoniker": "Menu-Management\\Controllers\\MainWeb-Controller.cs",
+              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Controllers\\MainWeb-Controller.cs",
+              "RelativeToolTip": "Menu-Management\\Controllers\\MainWeb-Controller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T04:56:14.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Menu-Management\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Menu-Management\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T04:25:32.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20250109025014_Add-Final-Migration.cs",
+              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Migrations\\20250109025014_Add-Final-Migration.cs",
+              "RelativeDocumentMoniker": "Menu-Management\\Migrations\\20250109025014_Add-Final-Migration.cs",
+              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Migrations\\20250109025014_Add-Final-Migration.cs",
+              "RelativeToolTip": "Menu-Management\\Migrations\\20250109025014_Add-Final-Migration.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T04:24:45.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Menu-Management\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Menu-Management\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T04:23:12.924Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -60,60 +108,48 @@
               "RelativeDocumentMoniker": "Menu-Management\\Views\\Menu-Management\\MainPage.cshtml",
               "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Views\\Menu-Management\\MainPage.cshtml",
               "RelativeToolTip": "Menu-Management\\Views\\Menu-Management\\MainPage.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-03T04:08:07.612Z",
+              "WhenOpened": "2025-01-09T04:19:48.577Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "Menu-Management\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "Menu-Management\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHwAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-03T03:58:56.21Z",
+              "DocumentIndex": 4,
+              "Title": "Modal-Controller.cs",
+              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Controllers\\Modal-Controller.cs",
+              "RelativeDocumentMoniker": "Menu-Management\\Controllers\\Modal-Controller.cs",
+              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Controllers\\Modal-Controller.cs",
+              "RelativeToolTip": "Menu-Management\\Controllers\\Modal-Controller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T04:19:09.566Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "MainPage-Controller.cs",
               "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Controllers\\MainPage-Controller.cs",
               "RelativeDocumentMoniker": "Menu-Management\\Controllers\\MainPage-Controller.cs",
               "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Controllers\\MainPage-Controller.cs",
               "RelativeToolTip": "Menu-Management\\Controllers\\MainPage-Controller.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAkwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T04:05:57.769Z",
+              "WhenOpened": "2025-01-09T04:19:06.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Program.cs",
-              "RelativeDocumentMoniker": "Menu-Management\\Program.cs",
-              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Program.cs",
-              "RelativeToolTip": "Menu-Management\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T04:05:00.469Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Menu-Management\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Menu-Management\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFMAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-03T03:56:47.868Z",
+              "Title": "Add-Menu-Modal.cs",
+              "DocumentMoniker": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Models\\Add-Menu-Modal.cs",
+              "RelativeDocumentMoniker": "Menu-Management\\Models\\Add-Menu-Modal.cs",
+              "ToolTip": "C:\\Users\\Shanella Cagulang\\source\\repos\\RRS-WD\\.vs\\RRS-WD\\Menu-Management\\Menu-Management\\Models\\Add-Menu-Modal.cs",
+              "RelativeToolTip": "Menu-Management\\Models\\Add-Menu-Modal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T04:13:42.366Z",
               "EditorCaption": ""
             }
           ]
