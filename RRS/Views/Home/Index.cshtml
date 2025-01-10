@@ -1,8 +1,144 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Newtonsoft.Json
+
+@{
+    ViewData["Title"] = "Dashboard";
+
+    // Serialize data using JsonConvert for chart rendering
+    var reservationsByDayJson = JsonConvert.SerializeObject(ViewBag.ReservationsByDay ?? new Dictionary<string, int>());
+    var reservationStatusJson = JsonConvert.SerializeObject(ViewBag.ReservationStatus ?? new Dictionary<string, int>());
+    var totalSalesJson = JsonConvert.SerializeObject(ViewBag.TotalSales ?? new List<int>());
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid mt-4">
+    <!-- Top Stats Row -->
+    <div class="dashboard-row">
+        <div class="dashboard-col">
+            <div class="dashboard-card">
+                <div class="icon-circle">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h5>New Reservations</h5>
+                <p class="display-number">@ViewBag.NewReservations</p>
+            </div>
+        </div>
+        <div class="dashboard-col">
+            <div class="dashboard-card">
+                <div class="icon-circle">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h5>Available Slots</h5>
+                <p class="display-number">@ViewBag.AvailableSlots</p>
+            </div>
+        </div>
+        <div class="dashboard-col">
+            <div class="dashboard-card">
+                <div class="icon-circle">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h5>Total Visitors</h5>
+                <p class="display-number">@ViewBag.TotalVisitors</p>
+            </div>
+        </div>
+        <div class="dashboard-col">
+            <div class="dashboard-card">
+                <div class="icon-circle">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <h5>Total Transactions</h5>
+                <p class="display-number">@ViewBag.TotalTransactions</p>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+    <!-- Reservation Calendar and Number of Reservations -->
+    <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow-sm border">
+                <div class="card-body">
+                    <h5>Reservation Calendar</h5>
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow-sm border">
+                <div class="card-body">
+                    <h5>Number of Reservations</h5>
+                    <canvas id="reservationsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservation Status Overview and Total Sales -->
+    <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow-sm border">
+                <div class="card-body">
+                    <h5>Reservation Status Overview</h5>
+                    <canvas id="statusChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow-sm border">
+                <div class="card-body">
+                    <h5>Total Sales</h5>
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Reservations by Day Chart
+        const reservationsData = JSON.parse('@reservationsByDayJson');
+        const reservationsChart = new Chart(document.getElementById('reservationsChart'), {
+            type: 'bar',
+            data: {
+                labels: Object.keys(reservationsData),
+                datasets: [{
+                    label: 'Reservations',
+                    data: Object.values(reservationsData),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Reservation Status Chart
+        const statusData = JSON.parse('@reservationStatusJson');
+        const statusChart = new Chart(document.getElementById('statusChart'), {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(statusData),
+                datasets: [{
+                    data: Object.values(statusData),
+                    backgroundColor: ['#28a745', '#ffc107', '#dc3545']
+                }]
+            }
+        });
+
+        // Total Sales Chart
+        const totalSalesData = JSON.parse('@totalSalesJson');
+        const salesChart = new Chart(document.getElementById('salesChart'), {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [{
+                    label: 'Total Sales',
+                    data: totalSalesData,
+                    borderColor: '#007bff',
+                    fill: false
+                }]
+            }
+        });
+
+    </script>
+}

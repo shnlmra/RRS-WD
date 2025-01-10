@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "t3Ie0IJD+Go=",
+  "dgSpecHash": "hhONZsn608M=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Darben\\source\\repos\\RRS-WD\\RRS\\RRS.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\RRS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MaChew\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
