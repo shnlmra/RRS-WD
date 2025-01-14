@@ -1,0 +1,215 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\controllers\\mainpage-controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:controllers\\mainpage-controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Migrations\\20250109124429_FirstMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250109124429_FirstMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\models\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:models\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\models\\add-menu-modal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:models\\add-menu-modal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|d:\\academics\\web development\\rrs-wd\\data\\seed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:data\\seed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainPage-Controller.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Controllers\\MainPage-Controller.cs",
+              "RelativeDocumentMoniker": "Controllers\\MainPage-Controller.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Controllers\\MainPage-Controller.cs",
+              "RelativeToolTip": "Controllers\\MainPage-Controller.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T09:27:43.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "20250109124429_FirstMigration.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Migrations\\20250109124429_FirstMigration.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250109124429_FirstMigration.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Migrations\\20250109124429_FirstMigration.cs",
+              "RelativeToolTip": "Migrations\\20250109124429_FirstMigration.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwBkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:44:30.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-09T09:13:48.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T09:11:22.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-09T15:01:15.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Add-Menu-Modal.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Models\\Add-Menu-Modal.cs",
+              "RelativeDocumentMoniker": "Models\\Add-Menu-Modal.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Models\\Add-Menu-Modal.cs",
+              "RelativeToolTip": "Models\\Add-Menu-Modal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T08:58:23.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Models\\Category.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Models\\Category.cs",
+              "RelativeToolTip": "Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T10:29:18.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Models\\Menu.cs",
+              "RelativeDocumentMoniker": "Models\\Menu.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Models\\Menu.cs",
+              "RelativeToolTip": "Models\\Menu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T10:28:08.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T09:04:23.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T08:58:30.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Seed.cs",
+              "DocumentMoniker": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Data\\Seed.cs",
+              "RelativeDocumentMoniker": "Data\\Seed.cs",
+              "ToolTip": "D:\\Academics\\WEB DEVELOPMENT\\RRS-WD\\Data\\Seed.cs",
+              "RelativeToolTip": "Data\\Seed.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T09:05:26.919Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
