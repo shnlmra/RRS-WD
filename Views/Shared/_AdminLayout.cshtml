@@ -1,0 +1,120 @@
+﻿﻿﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Golden Palate</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RRS.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--Parent container sidebar-->
+        <h1>GOLDEN PALATE</h1>
+        <ul>
+            <li class="nav-item profile">
+                <div class="profile-desc">
+                    <div class="profile-pic">
+                        <img src="path_to_image.jpg" alt="Profile Picture" class="profile-image">
+                    </div>
+                    <div class="profile-name text-center d-flex flex-column align-items-center">
+                        <h5 class="mb-0 font-weight-normal text-white">Henry Klein</h5>
+                        <span class="text-white">Super Admin</span>
+                    </div>
+                </div>
+            </li>
+
+
+
+            <li>
+                <a href="/Dashboard" class="active">
+                    <i class="fa-solid fa-chart-pie"></i> Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/Reservations" class="">
+                    <i class="fa-solid fa-calendar-check"></i>  Reservations
+                </a>
+            </li>
+
+            <li>
+                <a href="/Audit Logs" class="">
+                    <i class="fa-solid fa-clipboard"></i> Audit Logs
+                </a>
+            </li>
+
+            <li>
+                <a href="/Menu" class="">
+                    <i class="fa-solid fa-bars"></i> Menu
+                </a>
+            </li>
+        </ul>
+
+        <ul class="bottom-sidebar">
+            <li>
+                <a href="/Settings">
+                    <i class="fa-solid fa-gear"></i> Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="/Logout">
+                    <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="date-time">
+            <ul>
+                <li> <span>@DateTime.Now.ToString("hh:mm:ss tt")</span></li>
+                <li> <span>@DateTime.Now.ToString("MMMM dd, yyyy")</span> </li>
+            </ul>
+        </div>
+        <div class="notification-wrapper">
+            <button class="notification-icon" onclick="showNotifications()">
+                <i class="fa-solid fa-bell"></i>
+            </button>
+        </div>
+
+        <div class="user-wrapper">
+            <button class="user-icon" onclick="showUser()">
+                <i class="fa-solid fa-user-gear"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        @RenderBody() <!-- Child views will be injected here -->
+    </div>
+
+
+
+</body>
+</html>
