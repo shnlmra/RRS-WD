@@ -1,6 +1,6 @@
-<style >
+<style>
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
     margin: 0;
     display: flex;
     background-color: #f8f9fa;
@@ -112,10 +112,6 @@ body {
         text-align: start
     }
 
-
-
-
-
 /* Header Styling */
 .header {
     margin-left: 280px;
@@ -178,7 +174,7 @@ body {
 .content {
     margin-left: 260px;
     margin-top: 0px;
-    padding-left: 20px;
+    padding-left: 30px;
     padding-right: 20px;
     padding-bottom: 20px;
 }
@@ -264,6 +260,18 @@ h5 {
             font-size: 1rem;
         }
 
+.btn-primary {
+    background-color: goldenrod;
+    border-color: gold;
+    color: white;
+
+}
+
+.btn-primary:hover {
+    background-color: darkgoldenrod;
+    border-color: gold;
+}
+
 /* Button positioning */
 .reservation-item button {
     position: absolute; /* Position the button inside the container */
@@ -309,7 +317,14 @@ h5 {
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
+
+    .table-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
 .table-number {
     background: black;
@@ -324,6 +339,66 @@ h5 {
     font-weight: bold;
     position: absolute;
 }
+
+.table-box {
+    width: 120px;
+    height: 120px;
+    height: 120px;
+    position: relative;
+}
+
+.table-number {
+    top: -10px;
+    left: -10px;
+    font-size: 20px;
+}
+
+.table-info {
+    font-size: 12px;
+}
+
+.available {
+    background-color: lime;
+}
+
+.reserved {
+    background-color: orangered;
+}
+
+.seated {
+    background-color: gainsboro;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert i {
+    margin-right: 10px;
+}
+
+
 
 /* Ensure the body and html fit the viewport */
 html, body {
@@ -341,4 +416,69 @@ html, body {
     overflow: hidden; /* Prevent scrolling */
 }
 
-</style >
+body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, table {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+    font-family: 'Poppins';
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    color: #333;
+    margin-bottom: 0;
+}
+
+    .table th {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #555;
+    }
+
+    .table td {
+        font-size: 14px;
+    }
+
+.badge {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.btn {
+    font-size: 12px;
+    text-transform: capitalize;
+    padding-top: 5px;
+}
+
+.manageTblBtn {
+    font-size: 14px;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-color: gold;
+    text-align: center;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.table-info {
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+</style>

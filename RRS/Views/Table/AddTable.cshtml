@@ -1,0 +1,102 @@
+﻿@model RRS.Models.Table
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h3 class="mb-4 text-center">Add New Table</h3>
+            <form asp-action="AddTable" method="post">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label for="TableNumber" class="form-label fw-bold">Table Number</label>
+                        <input asp-for="TableNumber" class="form-control rounded-3" placeholder="Enter table number" required />
+                        <span asp-validation-for="TableNumber" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label for="SeatingCapacity" class="form-label fw-bold">Seating Capacity</label>
+                        <input asp-for="SeatingCapacity" class="form-control rounded-3" type="number" min="1" max="20" placeholder="Enter seating capacity" required />
+                        <span asp-validation-for="SeatingCapacity" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label for="Location" class="form-label fw-bold">Location</label>
+                        <select asp-for="Location" class="form-select rounded-3" required>
+                            <option value="">Select Location</option>
+                            <option>Indoor</option>
+                            <option>Outdoor</option>
+                            <option>Window</option>
+                        </select>
+                        <span asp-validation-for="Location" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label for="Status" class="form-label fw-bold">Status</label>
+                        <select asp-for="Status" class="form-select rounded-3" required>
+                            <option value="">Select Status</option>
+                            <option>Available</option>
+                            <option>Reserved</option>
+                            <option>Seated</option>
+                        </select>
+                        <span asp-validation-for="Status" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label for="AdditionalNotes" class="form-label fw-bold">Additional Notes</label>
+                        <textarea asp-for="AdditionalNotes" class="form-control rounded-3" rows="3" placeholder="Enter additional notes"></textarea>
+                        <span asp-validation-for="AdditionalNotes" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success px-4 rounded-pill">Add Table</button>
+                    <a class="btn btn-secondary px-4 rounded-pill" href="@Url.Action("Index", "Table")">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .form-label {
+        color: #333;
+        font-size: 14px;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+    }
+</style>

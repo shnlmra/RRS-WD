@@ -3,24 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\views\\table\\addtable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:views\\table\\addtable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\views\\table\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:views\\table\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\controllers\\tablecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:controllers\\tablecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\views\\table\\edittable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:views\\table\\edittable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\views\\reservation\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:views\\reservation\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\models\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:models\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|c:\\users\\machew\\documents\\yuki\\rrs\\rrs\\rrs-wd\\rrs\\views\\reservation\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9054A6A-1DDB-4B89-8B3D-A15532324E27}|RRS.csproj|solutionrelative:views\\reservation\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,20 +78,111 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Table\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Table\\Index.cshtml",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Table\\Index.cshtml",
+              "RelativeToolTip": "Views\\Table\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-15T08:58:31.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T06:49:49.745Z",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAA4AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T06:48:37.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddTable.cshtml",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Table\\AddTable.cshtml",
+              "RelativeDocumentMoniker": "Views\\Table\\AddTable.cshtml",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Table\\AddTable.cshtml",
+              "RelativeToolTip": "Views\\Table\\AddTable.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-15T08:59:05.047Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAMUBAAAAAAAAAAAAANwBAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-01-09T06:48:54.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TableController.cs",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Controllers\\TableController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TableController.cs",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Controllers\\TableController.cs",
+              "RelativeToolTip": "Controllers\\TableController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAA0wFoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T08:55:16.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EditTable.cshtml",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Table\\EditTable.cshtml",
+              "RelativeDocumentMoniker": "Views\\Table\\EditTable.cshtml",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Table\\EditTable.cshtml",
+              "RelativeToolTip": "Views\\Table\\EditTable.cshtml",
+              "ViewState": "AgIAACIAAAAAAAAAAAAqwCMAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-15T10:34:08.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Reservation\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Reservation\\Index.cshtml",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Reservation\\Index.cshtml",
+              "RelativeToolTip": "Views\\Reservation\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T06:48:19.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Table.cs",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Models\\Table.cs",
+              "RelativeDocumentMoniker": "Models\\Table.cs",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Models\\Table.cs",
+              "RelativeToolTip": "Models\\Table.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T08:53:22.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Reservation.cs",
               "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Models\\Reservation.cs",
               "RelativeDocumentMoniker": "Models\\Reservation.cs",
@@ -68,41 +195,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAACsBAAAAAAAAAAAIwFgBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-09T06:48:54.572Z",
+              "DocumentIndex": 9,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T02:09:47.917Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAADkAAAAAAAAAAAAkwGUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-09T06:48:37.354Z",
+              "DocumentIndex": 10,
+              "Title": "ReservationController.cs",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Controllers\\ReservationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReservationController.cs",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Controllers\\ReservationController.cs",
+              "RelativeToolTip": "Controllers\\ReservationController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwBcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T06:49:49.745Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwB0AAAAfAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-16T01:55:07.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T08:31:38.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Reservation\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Views\\Reservation\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\MaChew\\Documents\\YUKI\\RRS\\RRS\\RRS-WD\\RRS\\Views\\Reservation\\Privacy.cshtml",
+              "RelativeToolTip": "Views\\Reservation\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-09T06:48:19.629Z",
+              "WhenOpened": "2025-01-16T02:31:33.688Z",
               "EditorCaption": ""
             }
           ]

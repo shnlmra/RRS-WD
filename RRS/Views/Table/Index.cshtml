@@ -1,0 +1,120 @@
+﻿@model List<RRS.Models.Table>
+
+<!-- Back Button -->
+<a class="btn btn-secondary rounded-pill px-4" href="@Url.Action("Index", "Reservation")" style="margin-top: 20px; margin-left: 20px">
+    Back to Reservations
+</a>
+<div class="container mt-3">
+    <h2 class="mb-4 text-center">Table Management</h2>
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+            <table class="table table-borderless align-middle">
+                <thead class="border-bottom">
+                    <tr>
+                        <th>Table Number</th>
+                        <th>Seating Capacity</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Additional Notes</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var table in Model)
+                    {
+                        <tr>
+                            <td>@table.TableNumber</td>
+                            <td>@table.SeatingCapacity</td>
+                            <td>@table.Location</td>
+                            <td>
+                                @if (table.Status == "Available")
+                                {
+                                    <span class="badge bg-success">Available</span>
+                                }
+                                else if (table.Status == "Reserved")
+                                {
+                                    <span class="badge bg-danger">Reserved</span>
+                                }
+                                else if (table.Status == "Seated")
+                                {
+                                    <span class="badge bg-warning text-dark">Seated</span>
+                                }
+                            </td>
+                            <td>@table.AdditionalNotes</td>
+                            <td class="text-center">
+                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="@Url.Action("EditTable", "Table", new { id = table.Id })">
+                                    Edit
+                                </a>
+                                <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-3 deleteTableButton" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" data-table-id="@table.Id" data-table-number="@table.TableNumber">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="text-center">
+                <a class="btn btn-success rounded-pill px-4" href="@Url.Action("AddTable")" style="margin-top: 30px">Add New Table</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="successNotification" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; bottom: 20px; right: 20px;">
+        <div class="d-flex">
+            <div class="toast-body">
+                @TempData["SuccessMessage"]
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+}
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete table <span id="tableNumberToDelete" class="fw-bold"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a id="confirmDeleteButton" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toast = new bootstrap.Toast(document.getElementById("successNotification"));
+            toast.show();
+            const deleteButtons = document.querySelectorAll(".deleteTableButton");
+            const tableNumberToDelete = document.getElementById("tableNumberToDelete");
+            const confirmDeleteButton = document.getElementById("confirmDeleteButton");
+
+            // Attach click event to delete buttons
+            deleteButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const tableId = this.getAttribute("data-table-id");
+                    const tableNumber = this.getAttribute("data-table-number");
+
+                    // Update modal text
+                    tableNumberToDelete.textContent = tableNumber;
+
+                    // Update confirmation link
+                    confirmDeleteButton.href = `/Table/DeleteTable/${tableId}`;
+                });
+            });
+        });
+    </script>
+}
