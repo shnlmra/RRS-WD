@@ -97,6 +97,7 @@
     <button style="position: absolute; bottom: 15%; left: 82%; transform: translateX(-50%); padding: 10px 20px; background-color: transparent; color: black; border: none; font-family: 'Poppins', sans-serif; font-size: 16px; cursor: pointer; border-radius: 5px;">
         Choose Seats from below
     </button>
+    
 </div>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
@@ -106,9 +107,15 @@
         <p style="text-align: justify; word-wrap: break-word; font-family:'Poppins', sans-serif; margin-right:20px;margin-left:20px;">
             Perfect for a romantic evening, a special celebration, or a quiet moment together. Our cozy, candle-lit ambiance sets the stage for a memorable meal, where you can enjoy expertly crafted dishes and fine wines in each other's company. Secure your reservation today and make your next occasion unforgettable.
         </p>
-        <button class="btn-custom" style="border:none; width:580px; height:41px; background-color: #3CC142; color:white; border-radius:16px; font-family:'Poppins',sans serif;">
-            Reserve Table
-        </button>
+
+        <div class="r-button btn-custom" style="border:none; width:580px; height:41px; background-color: #3CC142; color:white; border-radius:16px; font-family:'Poppins', sans-serif; padding-top:10px;">
+            <a class="nav-link" asp-area="" asp-controller="Form" asp-action="Form">
+                <i class=""></i> Reserve Table
+            </a>
+        </div>
+
+
+
 
     </div>
     <!-- Add other grid items here if needed -->

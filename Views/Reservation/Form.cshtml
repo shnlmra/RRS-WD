@@ -1,5 +1,86 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
+    ViewData["Title"] = "Form";
+
 }
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dancing+Script:wght@400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playwrite+TZ+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<div style="font-family:'Poppins', sans-serif; width: 1056px; height: 680px; padding: 20px; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid #ccc; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); margin-top: 3%; display: flex; justify-content: space-between;">
+    <!-- Left Side -->
+    <div style="width: 48%;">
+        <p style="margin-top: 2%; font-size: 20px;">Reservation <span style="color: red;">*</span></p>
+        <input type="text" placeholder="Enter your name" style="width: 95%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 10px;">
+
+        <p style="margin-top: 15%; font-size: 20px;">Seats<span style="color: red;">*</span></p>
+        <select style="width: 95%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 10px;">
+            <option value="" disabled selected>Select a seat</option>
+            <option value="seat1">Seat 1</option>
+            <option value="seat2">Seat 2</option>
+            <option value="seat3">Seat 3</option>
+            <option value="seat4">Seat 4</option>
+        </select>
+
+        <p style="margin-top: 10%; font-size: 20px;">Buffet Time<span style="color: red;">*</span></p>
+        <select style="width: 95%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 10px;">
+            <option value="" disabled selected>Buffet</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+        </select>
+
+        <p style="margin-top: 10%; font-size: 20px;">Special Request<span style="color: red;">*</span></p>
+        <input type="text" placeholder="Special Request" style="width: 95%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 10px;">
+    </div>
+
+    <!-- Right Side (Duplicate) -->
+    <div style="width: 48%;">
+        <p style="margin-top: 2%; font-size: 20px;">Full Name <span style="color: red;">*</span></p>
+        <input type="text" placeholder="Enter your name" style="width: 95%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 10px;">
+
+        <p style="margin-top: 15%; font-size: 20px;">Phone No.<span style="color: red;">*</span></p>
+        <input type="text" placeholder="Enter your number" style="width: 95%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 10px;">
+
+
+        <p style="margin-top: 15%; font-size: 20px;">Email Address<span style="color: red;">*</span></p>
+        <input type="text" placeholder="Email address" style="width: 95%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 10px;">
+
+        <button onclick="openModal()" style="margin-left:65%; margin-top: 95px; width: 30%; padding: 10px; font-size: 16px; border: none; background-color: #3CC142; color: white; border-radius: 10px; cursor: pointer;">Proceed</button>
+        <div id="termsModal" style="padding:30px; display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center; border-radius: 26px;">
+            <div style="background: black; width: 700px; height:600px; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);">
+                <h2 style="color:white">Terms and Conditions</h2>
+                <p style="margin: 20px 0; font-size: 16px; line-height: 1.5; color:white">
+                    Reservation Fee:
+                    A non-refundable reservation fee of 30% of the total estimated bill is required to secure your reservation.
+                    This fee can be paid online through our website.
+                <p style="margin: 20px 0; font-size: 16px; line-height: 1.5; color:white" >Cancellation Policy:</pstyle>
+                    Cancellations made more than 48 hours in advance: The full reservation fee will be refunded.
+                    Cancellations made within 48 hours of the reservation time: The reservation fee will be forfeited.
+                    No-shows: The reservation fee will be forfeited.
+                <p style="margin: 20px 0; font-size: 16px; line-height: 1.5; color:white">Modifications:</p>
+                <p style="margin: 20px 0; font-size: 16px; line-height: 1.5; color:white"> To modify your reservation, please contact us at least 24 hours in advance. We will do our best to accommodate your request, but please note that modifications may not always be possible.</p>
+                </p>
+                <button onclick="closeModal()" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; border: none; background-color: #007BFF; color: white; border-radius: 5px; cursor: pointer;">I understand</button>
+            </div>
+        </div>
+
+        <script>
+            // Open the modal
+            function openModal() {
+                document.getElementById('termsModal').style.display = 'flex';
+            }
+
+            // Close the modal
+            function closeModal() {
+                document.getElementById('termsModal').style.display = 'none';
+            }
+        </script>
+    </div>
+</div>
+
+
+
+
+
