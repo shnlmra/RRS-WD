@@ -11,5 +11,20 @@ namespace RRS.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Menu> Menus { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Category>()
+                   .Property(c => c.IsDeleted)
+                   .HasDefaultValue(false);
+
+            modelBuilder.Entity<Menu>()
+                .Property(m => m.IsDeleted)
+                .HasDefaultValue(false);
+
+        }
     }
 }
