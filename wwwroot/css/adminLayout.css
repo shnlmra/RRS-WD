@@ -1,10 +1,11 @@
 ﻿
 :root {
-    --header-height: 3rem;
+    --header-height: 45px;
     --nav-width: 68px;
-    --first-color: #4723D9;
+    --first-color: #01051a;
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB;
+    --icon-color: #4723D9;
     --body-font: 'Poppins', sans-serif;
     --normal-font-size: 14px;
     --z-fixed: 100
@@ -16,7 +17,6 @@
 
 body {
     position: relative;
-    margin: 4rem 0 0 0;
     padding: 0 1rem;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
@@ -43,14 +43,14 @@ a {
 }
 
 .header_toggle {
-    color: var(--first-color);
+    color: var(--icon-color);
     font-size: 1.5rem;
     cursor: pointer
 }
 
 .header_img {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     border-radius: 50%;
@@ -126,17 +126,25 @@ a {
     padding-left: calc(var(--nav-width) + 1rem)
 }
 
-.active {
-    color: var(--white-color)
+.nav_link.active {
+    color: var(--white-color); /* Ensures the text becomes white */
 }
 
-    .active::before {
+    .nav_link.active .nav_icon {
+        color: var(--white-color); /* Ensures the icon becomes white */
+    }
+
+    .nav_link.active .nav_name {
+        color: var(--white-color); /* Ensures the nav name text becomes white */
+    }
+
+    .nav_link.active::before {
         content: '';
         position: absolute;
         left: 0;
         width: 2px;
         height: 32px;
-        background-color: var(--white-color)
+        background-color: var(--white-color);
     }
 
 .height-100 {

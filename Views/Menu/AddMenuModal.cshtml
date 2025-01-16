@@ -1,0 +1,45 @@
+﻿@using RRS.Models.Entities
+@model RRS.Models.DataTransferObject.MenuDto
+
+<!-- Modal -->
+<div class="modal fade w-100" id="addMenuModal" tabindex="-1" data-bs-backdrop="false" aria-labelledby="addMenuModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addMenuModalLabel">Add Menu Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AddMenuItem" asp-controller="MainPage" method="post">
+                    <div class="mb-3">
+                        <label for="menuName" class="form-label">Menu Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="menuName" name="MenuName" required>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="Description" required></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="price" name="Price" required>
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
+                        <select class="form-select" id="category" name="Category" required>
+                            <option value="" selected>Select Category</option>
+                            
+                             
+                        </select>
+                    </div>
+                    <div class="modal-footer>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Menu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

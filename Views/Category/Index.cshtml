@@ -1,0 +1,64 @@
+﻿@using RRS.Models
+@model IEnumerable<CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Categories";
+    Layout = "~/Views/Shared/_MenuLayout.cshtml";
+}
+
+<div class="d-flex align-items-center justify-content-between mb-2">
+    <p class="text-secondary ms-2 mt-2">List of categories.</p>
+    <!-- Add Button positioned at the top-right -->
+    <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#addMenuModal">
+        + Add Category
+    </button>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table text-center" cellspacing="0" id="menuTable" width="100%">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Description</th>
+                <th>Total Items</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.CategoryName</td>
+                    <td>@category.Description</td>
+                    <td>@category.ItemsCount</td>
+                    <td class="d-flex gap-2 justify-content-center">
+                        <a href="#" class="text-info" data-bs-toggle="modal" data-bs-target="#editMenuModal" style="text-decoration: none;">
+                            <i class='bx bx-edit nav_icon' style="margin-right: 8px;"></i>
+                        </a>
+                        <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#deleteMenuModal" style="text-decoration: none;">
+                            <i class='bx bx-trash nav_icon' style="margin-right: 8px;"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+            @* Handle case where there are no categories *@
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="4">No categories found.</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Category Name</th>
+                <th>Description</th>
+                <th>Total Items</th>
+                <th>Actions</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<!--MODALS-->
+

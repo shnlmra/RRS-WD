@@ -1,103 +1,62 @@
-﻿@using RRS.Models.Entities
-@model List<Menu>
+﻿@model RRS.Models.MenuViewModel
 @{
     ViewData["Title"] = "Menu Management";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_MenuLayout.cshtml";
 }
 
-<h1 class="ms-lg-5">Menu Management</h1>
-<p style="margin-left: 80px;">Menu Management for easy organization and customization of food offerings for buffet events</p>
 
-<!-- Add Button positioned at the top-right -->
-<button type="button" class="btn btn-primary border-1 btn-dark" data-bs-toggle="modal" data-bs-target="#addMenuModal" style="position: absolute; top: 170px; right: 250px; border-radius: 26px; width: auto;">
-    Add Menu
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="addMenuModal" tabindex="-1" aria-labelledby="addMenuModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addMenuModalLabel">Add Menu Item</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form asp-action="AddMenuItem" asp-controller="MainPage" method="post">
-                    <div class="mb-3">
-                        <label for="menuName" class="form-label">Menu Name</label>
-                        <input type="text" class="form-control" id="menuName" name="MenuName" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="Description" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="price" name="Price" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="category" class="form-label">Category</label>
-                        <select class="form-select" id="category" name="Category" required>
-                            <option value="Appetizer">Appetizer</option>
-                            <option value="Main Course">Main Course</option>
-                            <option value="Dessert">Dessert</option>
-                            <option value="Beverages">Beverages</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+<div class="d-flex align-items-center justify-content-between mb-2">
+    <p class="text-secondary ms-2 mt-2">List of available menu items.</p>
+    <!-- Add Button positioned at the top-right -->
+    <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#addMenuModal">
+        + Add Menu
+    </button>
 </div>
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4 ms-lg-3">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Menu Items</h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Category</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var menu in Model)
-                    {
-                        <tr>
-                            <td>@menu.Name</td>
-                            <td>@menu.Description</td>
-                            <td>@menu.Price</td>
-                            <td>@menu.Category</td>
-                            <td>
-                                <button type="button" class="btn btn-primary border-1 btn-dark" data-bs-toggle="modal" data-bs-target="#editMenuModal" style="border-radius: 26px; width: auto;">
-                                    Edit
-                                </button>
-                                <button type="button" class="btn btn-danger border-1 btn-dark" data-bs-toggle="modal" data-bs-target="#deleteMenuModal" style="border-radius: 26px; width: auto;">
-                                    Delete
-                                </button>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="table-responsive">
+    <table class="table table-striped table text-center" cellspacing="0" id="menuTable" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var menu in Model.Menus)
+            {
+                <tr>
+                    <td>@menu.Name</td>
+                    <td>@menu.Description</td>
+                    <td>@menu.Price</td>
+                    <td>@menu.Category.CategoryName</td>
+                    <td class=" d-flex gap-2">
+                        <a href="#" class="text-info" data-bs-toggle="modal" data-bs-target="#editMenuModal" style="display: flex; align-items: center; text-decoration: none;">
+                            <i class='bx bx-edit nav_icon' style="margin-right: 8px;"></i>
+                        </a>
+                        <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#deleteMenuModal" style="display: flex; align-items: center; text-decoration: none;">
+                            <i class='bx bx-trash nav_icon' style="margin-right: 8px;"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
 </div>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!--MODALS-->
+@await Html.PartialAsync("AddMenuModal")
+@await Html.PartialAsync("EditMenuModal")
+@await Html.PartialAsync("DeleteMenuModal")

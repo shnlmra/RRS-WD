@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RRS.Data;
+using RRS.Models;
 
 namespace RRS.Controllers
 {
@@ -15,8 +16,16 @@ namespace RRS.Controllers
 
         public IActionResult Index()
         {
+            var categories = context.Categories.ToList();
             var menu = context.Menus.ToList();
-            return View(menu);
+
+            var viewModel = new MenuViewModel
+            {
+                Categories = categories,
+                Menus = menu
+            };
+
+            return View(viewModel);
         }
     }
 }
