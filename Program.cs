@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using RRS.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,15 +21,21 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
 
+//app.MapControllerRoute(
+   // name: "Home",
+    //pattern: "{controller=Home}/{action=Header}/{id?}");
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=CReservation}/{action=CReservation}/{id?}");
+
+
+
 
 app.Run();
