@@ -1,0 +1,152 @@
+﻿@model RRS.Models.Table
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <!-- Heading with Undo Changes -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0">Edit Table Details</h3>
+                <button type="button" id="undoChangesButton" class="btn btn-warning btn-sm rounded-pill px-3">Undo Changes</button>
+            </div>
+
+            <form id="editTableForm" asp-action="EditTable" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <table class="table table-borderless align-middle">
+                    <tbody>
+                        <tr>
+                            <td for="TableNumber" data-bs-toggle="tooltip" title="Unique identifier for the table." class="fw-bold">Table Number</td>
+                            <td>
+                                <input asp-for="TableNumber" class="form-control" required />
+                                <span asp-validation-for="TableNumber" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td for="SeatingCapacity" data-bs-toggle="tooltip" title="The number of people the table can accommodate." class="fw-bold">Seating Capacity</td>
+                            <td>
+                                <input asp-for="SeatingCapacity" class="form-control" type="number" min="1" max="20" required />
+                                <span asp-validation-for="SeatingCapacity" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Location</td>
+                            <td>
+                                <select asp-for="Location" class="form-select rounded-3" required>
+                                    <option value="">Select Location</option>
+                                    <option>Indoor</option>
+                                    <option>Outdoor</option>
+                                    <option>Window</option>
+                                </select>
+                                <span asp-validation-for="Location" class="text-danger small"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Status</td>
+                            <td>
+                                <select asp-for="Status" class="form-select rounded-3" required>
+                                    <option value="">Select Status</option>
+                                    <option>Available</option>
+                                    <option>Reserved</option>
+                                    <option>Seated</option>
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger small"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Additional Notes</td>
+                            <td>
+                                <textarea asp-for="AdditionalNotes" class="form-control rounded-3" rows="3" placeholder="Enter additional notes"></textarea>
+                                <span asp-validation-for="AdditionalNotes" class="text-danger small"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="text-end">
+                    <!-- Trigger Confirmation Modal -->
+                    <button type="button" class="btn btn-success rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#confirmSaveModal" style="margin-top: 30px">
+                        Save Changes
+                    </button>
+                    <a class="btn btn-secondary rounded-pill px-4" href="@Url.Action("Index", "Table")" style="margin-top: 30px">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmSaveModal" tabindex="-1" aria-labelledby="confirmSaveModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmSaveModalLabel">Confirm Changes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save these changes?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmSaveButton" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Notification -->
+<div id="successNotification" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; bottom: 20px; right: 20px; display: none;">
+    <div class="d-flex">
+        <div class="toast-body">
+            Changes saved successfully!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("editTableForm");
+            const undoButton = document.getElementById("undoChangesButton");
+            const saveButton = document.getElementById("confirmSaveButton");
+            const successNotification = document.getElementById("successNotification");
+
+            // Save the initial form state
+            const initialFormData = new FormData(form);
+
+            // Function to reset form fields to their initial state
+            const resetForm = () => {
+                for (let [key, value] of initialFormData.entries()) {
+                    const input = form.elements[key];
+                    if (input) {
+                        input.value = value;
+                    }
+                }
+            };
+
+            // Attach click event to the Undo Changes button
+            undoButton.addEventListener("click", function () {
+                if (confirm("Are you sure you want to undo all changes?")) {
+                    resetForm();
+                }
+            });
+
+            // Attach click event to the Save Changes button in the modal
+            saveButton.addEventListener("click", function () {
+                form.submit();
+
+                // Show success notification
+                const toast = new bootstrap.Toast(successNotification);
+                toast.show();
+            });
+
+            // Enable Bootstrap tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+}
