@@ -6,6 +6,10 @@ namespace RRS.Models.DataTransferObject
 {
     public class MenuDto
     {
+        public List<Menu>? Menus { get; set; }
+        public List<Category>? Categories { get; set; }
+
+
         [Required, StringLength(100)]
         public string Name { get; set; }
         [StringLength(255)]

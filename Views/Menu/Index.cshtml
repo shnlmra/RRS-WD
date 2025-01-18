@@ -1,7 +1,18 @@
-﻿@model RRS.Models.MenuViewModel
+﻿@using RRS.Models.DataTransferObject
+@model RRS.Models.DataTransferObject.MenuDto
 @{
     ViewData["Title"] = "Menu Management";
     Layout = "~/Views/Shared/_MenuLayout.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
 }
 
 
@@ -46,7 +57,7 @@
         <tfoot>
             <tr>
                 <th>Name</th>
-                <th>Description</th>
+                <th>Description</th> 
                 <th>Price</th>
                 <th>Category</th>
                 <th>Actions</th>
@@ -54,9 +65,6 @@
         </tfoot>
     </table>
 </div>
-</div>
 
-<!--MODALS-->
+<!-- Modals -->
 @await Html.PartialAsync("AddMenuModal")
-@await Html.PartialAsync("EditMenuModal")
-@await Html.PartialAsync("DeleteMenuModal")

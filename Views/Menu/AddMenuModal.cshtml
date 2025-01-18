@@ -10,31 +10,34 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form asp-action="AddMenuItem" asp-controller="MainPage" method="post">
+                <form asp-action="Add" asp-controller="Menu" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="menuName" class="form-label">Menu Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="menuName" name="MenuName" required>
+                        <input type="text" asp-for="Name" class="form-control" id="menuName" name="MenuName" required>
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="Description" required></textarea>
+                        <textarea class="form-control" asp-for="Description" id="description" name="Description" required></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="price" name="Price" required>
+                        <input type="number" asp-for="Price" class="form-control" id="price" name="Price" required>
                         <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
-                        <select class="form-select" id="category" name="Category" required>
+                        <select class="form-select" asp-for="CategoryId" id="category" name="Category" required>
                             <option value="" selected>Select Category</option>
                             
-                             
+                             @foreach (var category in Model.Categories)
+                             {
+                                 <option value="@category.Id">@category.CategoryName</option>
+                             }
                         </select>
                     </div>
-                    <div class="modal-footer>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Add Menu</button>
                     </div>
