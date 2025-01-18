@@ -1,18 +1,18 @@
-﻿@model RRS.Models.Menu
+﻿@model Table
 
 <!-- Modal for Deleting Menu -->
-<div class="modal fade" id="deleteMenu-@Model.Id" tabindex="-1" aria-labelledby="deleteMenuLabel" aria-hidden="true">
+<div class="modal fade" id="deleteTable-@Model.Id" tabindex="-1" aria-labelledby="deleteTableLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header" id="modalHeader">
-                <h5 class="modal-title" id="deleteMenuLabel">Confirm Deletion</h5>
+                <h5 class="modal-title" id="deleteTableLabel">Confirm Deletion</h5>
                 <button type="button" id="deleteCloseButton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
                 <i class="fas fa-exclamation-triangle warning-icon"></i>
-                <p class="mb-0">Are you sure you want to delete <span class="fw-bold">@Model.Name</span>?<br>This action cannot be undone.</p>
+                <p class="mb-0">Are you sure you want to delete <span class="fw-bold">Table @Model.TableNumber</span>?<br>This action cannot be undone.</p>
 
-                <form asp-action="Delete" asp-controller="Menu" id="deleteMenuForm" method="post" enctype="multipart/form-data">
+                <form asp-action="Delete" asp-controller="Table" id="deleteTableForm" method="post" enctype="multipart/form-data">
                     <input type="hidden" asp-for="Id" />
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -43,7 +43,7 @@
         color: white;
     }
 
-    #deleteMenuLabel {
+    #deleteTableLabel {
         font-weight: 600;
         font-size: 1.25rem;
     }

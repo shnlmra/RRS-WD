@@ -7,7 +7,7 @@ namespace RRS.Controllers
     public class ReservationController : Controller
     {
         private readonly ILogger<ReservationController> _logger;
-        private static List<Table> _tables = TableController.GetTables(); // Get the latest table list
+
 
         public ReservationController(ILogger<ReservationController> logger)
         {
@@ -24,7 +24,6 @@ namespace RRS.Controllers
             };
 
             // Pass the table list to the view
-            ViewBag.Tables = _tables;
 
             return View(reservations);
         }

@@ -7,74 +7,43 @@
     ViewData["Title"] = "Audit Logs";
 }
 
-<div class="audit-logs-container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1 class="audit-logs-title mb-0">Audit Logs</h1>
-            <p class="text-muted mb-0">Records of activities within the system</p>
-        </div>
-        <div class="d-flex" style="width: 45%;">
-            <input type="text" class="form-control me-2" placeholder="Search logs..." aria-label="Search logs">
-            <button class="btn btn-outline-secondary me-2">
-                <i class="bi bi-search"></i>
-            </button>
-            <button class="btn btn-outline-secondary">
-                <i class="bi bi-funnel"></i> Filter
-            </button>
-        </div>
-    </div>
+<div class="text-left mb-2">
+    <h1 class="fs-4">Audit Logs</h1>
+    <p class="text-secondary">Records of activities within the system</p>
+</div>
 
-    <div class="table-responsive card p-3 shadow-sm">
-        <table class="table table-borderless text-center align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th>Log ID</th>
-                    <th>Timestamp</th>
-                    <th>User ID</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Action</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>4</td>
-                    <td>2025-01-10 15:30:45</td>
-                    <td>00001</td>
-                    <td>Miyuki Mharie Parocha</td>
-                    <td>Admin</td>
-                    <td>Cancel Reservation</td>
-                    <td><span class="badge bg-success rounded-pill px-3 py-2">Succeeded</span></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>2025-01-10 16:00:00</td>
-                    <td>00002</td>
-                    <td>Shanella Cayulang</td>
-                    <td>Staff</td>
-                    <td>Check-in Guest</td>
-                    <td><span class="badge bg-danger rounded-pill px-3 py-2">Failed</span></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>2025-01-10 16:30:15</td>
-                    <td>00003</td>
-                    <td>Erice Marial</td>
-                    <td>Customer</td>
-                    <td>View Reservation Details</td>
-                    <td><span class="badge bg-success rounded-pill px-3 py-2">Succeeded</span></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>2025-01-10 17:00:00</td>
-                    <td>00004</td>
-                    <td>Darben Lamonte</td>
-                    <td>Staff</td>
-                    <td>Check-in Guest</td>
-                    <td><span class="badge bg-success rounded-pill px-3 py-2">Succeeded</span></td>
-                </tr>
-            </tbody>
-        </table>
+
+<!-- DataTales Example -->
+<div class="card border-0 shadow-sm mb-5">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover text-center" id="auditLogsTable">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Activity</th>
+                        <th>Role</th>
+                        <th>Timestamp</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>User</td>
+                            <td>Activity</td>
+                            <td>Role</td>
+                            <td>Timestamp</td>
+                            <td>Status</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        new DataTable('#auditLogsTable');
+    });
+</script>

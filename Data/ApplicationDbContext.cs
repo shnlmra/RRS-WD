@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RRS.Models.Entities;
+using RRS.Models;
 
 namespace RRS.Data
 {
@@ -9,22 +9,25 @@ namespace RRS.Data
         {
         }
 
-        public DbSet<Category> Categories { get; set; }
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<Table> Tables { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Category>()
-                   .Property(c => c.IsDeleted)
-                   .HasDefaultValue(false);
-
             modelBuilder.Entity<Menu>()
                 .Property(m => m.IsDeleted)
                 .HasDefaultValue(false);
 
+            modelBuilder.Entity<Table>()
+                .Property(m => m.IsDeleted)
+                .HasDefaultValue(false);
+
+            modelBuilder.Entity<Table>()
+                .Property(m => m.Status)
+                .HasDefaultValue("available");
         }
     }
 }

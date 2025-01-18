@@ -31,13 +31,13 @@
                         <tr>
                             <td class="fw-bold">Location</td>
                             <td>
-                                <select asp-for="Location" class="form-select rounded-3" required>
+                                <select asp-for="TableLocation" class="form-select rounded-3" required>
                                     <option value="">Select Location</option>
                                     <option>Indoor</option>
                                     <option>Outdoor</option>
                                     <option>Window</option>
                                 </select>
-                                <span asp-validation-for="Location" class="text-danger small"></span>
+                                <span asp-validation-for="TableLocation" class="text-danger small"></span>
                             </td>
                         </tr>
                         <tr>
@@ -55,8 +55,8 @@
                         <tr>
                             <td class="fw-bold">Additional Notes</td>
                             <td>
-                                <textarea asp-for="AdditionalNotes" class="form-control rounded-3" rows="3" placeholder="Enter additional notes"></textarea>
-                                <span asp-validation-for="AdditionalNotes" class="text-danger small"></span>
+                                <textarea asp-for="Description" class="form-control rounded-3" rows="3" placeholder="Enter additional notes"></textarea>
+                                <span asp-validation-for="Description" class="text-danger small"></span>
                             </td>
                         </tr>
                     </tbody>

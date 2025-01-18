@@ -15,14 +15,8 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
 
-body {
-  margin-bottom: 60px;
-}
+
 /* Reservation item layout */
 .reservation-item {
     position: relative; /* Allows positioning the button inside the container */
@@ -221,10 +215,11 @@ body {
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Disable scrolling */
+    /*overflow: hidden;*/ /* Disable scrolling */
     height: 100%; /* Force full height */
     width: 100%; /* Ensure full width */
     box-sizing: border-box; /* Standardize box model */
+    font-family = 'Poppins';
 }
 
 /* Ensure the container occupies full height */
@@ -233,14 +228,6 @@ html, body {
     overflow: hidden; /* Prevent scrolling */
 }
 
-body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, table {
-    font-family: 'Poppins', sans-serif !important;
-}
-
-body {
-    font-family: 'Poppins';
-    background-color: #f8f9fa;
-}
 
 .card {
     border-radius: 10px;
