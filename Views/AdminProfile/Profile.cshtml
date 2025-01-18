@@ -1,0 +1,200 @@
+﻿@model RRS.Models.AdminProfile
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Poppins';
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    .settings-container {
+        display: flex;
+        max-width: 1200px;
+        margin: 2rem auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar {
+        width: 300px;
+        background-color: #fff;
+        border-right: 1px solid #ddd;
+        padding: 2rem;
+    }
+
+        .sidebar h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .sidebar p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+        .menu-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .menu-item img {
+            margin-right: 10px;
+        }
+
+        .menu-item.active {
+            background-color: #fff5dc;
+            border-left: 5px solid #ffc107;
+        }
+
+    .content {
+        flex-grow: 1;
+        padding: 2rem;
+    }
+
+    .profile-picture-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #f0f0f0;
+        background-image: url('@Model.ProfilePicturePath');
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 1rem;
+        border: 2px solid #ddd;
+    }
+
+    .upload-btn {
+        display: inline-block;
+        background-color: goldenrod;
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .upload-btn:hover {
+            background-color: darkgoldenrod;
+        }
+
+    h2 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    form label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    form input {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .btn-save {
+        display: inline-block;
+        width: 150px;
+        background-color: goldenrod;
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.75rem;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-save:hover {
+            background-color: darkgoldenrod;
+        }
+
+    .change-password {
+        color: #000;
+        font-size: 14px;
+        text-decoration: none;
+        margin-top: 1rem;
+        display: inline-block;
+    }
+</style>
+
+<div class="settings-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3>Settings</h3>
+        <p>Manage your settings</p>
+        <div class="menu-item" id="menu-notifications">
+            <img src="/assets/bell.png" alt="Notifications Icon" width="20">
+            <a href="/AdminProfile/Notifications" style="text-decoration: none; color: inherit;">Notifications</a>
+        </div>
+        <div class="menu-item active" id="menu-profile">
+            <img src="/assets/user.png" alt="Profile Icon" width="20">
+            <a href="/AdminProfile/Profile" style="text-decoration: none; color: inherit;">Personal Profile Settings</a>
+        </div>
+        <div class="menu-item" id="menu-restaurant">
+            <img src="/assets/restaurant.png" alt="Restaurant Icon" width="20">
+            <a href="/AdminProfile/RestaurantSettings" style="text-decoration: none; color: inherit;">Restaurant Settings</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h2>My Profile</h2>
+
+        <!-- Profile Picture Section -->
+        <div class="profile-picture-section">
+            <div class="profile-picture"></div>
+            <label for="profilePictureUpload" class="upload-btn">Upload Picture</label>
+            <input type="file" id="profilePictureUpload" style="display: none;">
+        </div>
+
+        <!-- Profile Form -->
+        <form>
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" value="@Model.FirstName">
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" value="@Model.LastName">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" value="@Model.Email">
+
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" id="phoneNumber" value="@Model.PhoneNumber">
+
+            <button type="submit" class="btn-save">Save</button>
+
+            <div>
+                <a href="@Url.Action("ChangePassword", "AdminProfile")" class="change-password">Change Password</a>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,224 @@
+﻿<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Poppins';
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    .settings-container {
+        display: flex;
+        max-width: 1200px;
+        margin: 2rem auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar {
+        width: 300px;
+        background-color: #fff;
+        border-right: 1px solid #ddd;
+        padding: 2rem;
+    }
+
+        .sidebar h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .sidebar p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+        .menu-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .menu-item img {
+            margin-right: 10px;
+        }
+
+        .menu-item.active {
+            background-color: #fff5dc;
+            border-left: 5px solid #ffc107;
+        }
+
+    .content {
+        flex-grow: 1;
+        padding: 2rem;
+    }
+
+    h4 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .notification {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .notification.success {
+        background-color: #e9fce8;
+        border-left: 5px solid #27ae60;
+    }
+
+    .notification.success .icon {
+        color: #27ae60;
+    }
+
+    .notification.error {
+        background-color: #ffe3e3;
+        border-left: 5px solid #e74c3c;
+    }
+
+    .notification.error .icon {
+        color: #e74c3c;
+    }
+
+    .notification.info {
+        background-color: #e9f7fe;
+        border-left: 5px solid #3498db;
+    }
+
+    .notification.info .icon {
+        color: #3498db;
+    }
+
+    .notification.warning {
+        background-color: #fff7e6;
+        border-left: 5px solid #f39c12;
+    }
+
+    .notification.warning .icon {
+        color: #f39c12;
+    }
+
+    .notification.neutral {
+        background-color: #f2f2f2;
+        border-left: 5px solid #7f8c8d;
+    }
+
+    .notification.neutral .icon {
+        color: #7f8c8d;
+    }
+
+    .notification .icon {
+        margin-right: 10px;
+        font-size: 20px;
+    }
+
+    .notification .text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .notification .close {
+        margin-left: auto;
+        cursor: pointer;
+        color: #7f8c8d;
+    }
+</style>
+
+<div class="settings-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3>Settings</h3>
+        <p>Manage your settings</p>
+        <div class="menu-item active" id="menu-notifications">
+            <img src="/assets/bell.png" alt="Notifications Icon" width="20">
+            <a href="/AdminProfile/Notifications" style="text-decoration: none; color: inherit;">Notifications</a>
+        </div>
+        <div class="menu-item" id="menu-profile">
+            <img src="/assets/user.png" alt="Profile Icon" width="20">
+            <a href="/AdminProfile/Profile" style="text-decoration: none; color: inherit;">Personal Profile Settings</a>
+        </div>
+        <div class="menu-item" id="menu-restaurant">
+            <img src="/assets/restaurant.png" alt="Restaurant Icon" width="20">
+            <a href="/AdminProfile/RestaurantSettings" style="text-decoration: none; color: inherit;">Restaurant Settings</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h4>Notifications</h4>
+
+        <!-- Razor Syntax -->
+        @if (ViewBag.Notifications != null && ((List<(string Type, string Message)>)ViewBag.Notifications).Any())
+        {
+            <ul>
+                @foreach (var notification in (List<(string Type, string Message)>)ViewBag.Notifications)
+                {
+                    string notificationClass = notification.Type switch
+                    {
+                        "success" => "notification success",
+                        "error" => "notification error",
+                        "info" => "notification info",
+                        "warning" => "notification warning",
+                        "neutral" => "notification neutral",
+                        _ => "notification neutral"
+                    };
+
+                    <li>
+                        <div class="@notificationClass">
+                            <div class="icon">
+                                @if (notification.Type == "success")
+                                {
+                                    <span>✔</span>
+                                }
+                                else if (notification.Type == "error")
+                                {
+                                    <span>❌</span>
+                                }
+                                else if (notification.Type == "info")
+                                {
+                                    <span>ℹ</span>
+                                }
+                                else if (notification.Type == "warning")
+                                {
+                                    <span>⚠</span>
+                                }
+                                else
+                                {
+                                    <span>ⓘ</span>
+                                }
+                            </div>
+                            <div class="text">
+                                <strong>@notification.Type.ToUpper()</strong>
+                                <span>@notification.Message</span>
+                            </div>
+                            <div class="close">✖</div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No notifications available.</p>
+        }
+    </div>
+</div>
+
+

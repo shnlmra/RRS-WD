@@ -27,13 +27,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-//app.MapControllerRoute(
-   // name: "Home",
-    //pattern: "{controller=Home}/{action=Header}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=CReservation}/{action=CReservation}/{id?}");
+    pattern: "{controller=AdminProfile}/{action=Notifications}/{id?}");
 
 
 
