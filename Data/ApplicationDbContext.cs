@@ -11,5 +11,7 @@ namespace RRS.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Menu> Menus { get; set; }
+		public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<ActionLog> ActionLogs { get; set; }
     }
 }

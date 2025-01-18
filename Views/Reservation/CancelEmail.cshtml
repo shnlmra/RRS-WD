@@ -1,0 +1,39 @@
+﻿@using RRS.Models.Entities
+@model Reservation
+
+@{
+    ViewData["Title"] = "Cancel Reservation";
+}
+
+<h2>Cancel Reservation</h2>
+
+<p>Are you sure you want to cancel your reservation?</p>
+
+<table>
+    <tr>
+        <th>Date of Reservation</th>
+        <td>@Model.ReservationDate.ToString("yyyy-MM-dd")</td>
+    </tr>
+    <tr>
+        <th>Time Slot</th>
+        <td>@Model.ReservationTime.ToString("hh\\:mm")</td>
+    </tr>
+    <tr>
+        <th>Number of Guests</th>
+        <td>@Model.Seats</td>
+    </tr>
+    <tr>
+        <th>Table Number</th>
+        <td>@Model.Seats</td>
+    </tr>
+    <tr>
+        <th>Restaurant Branch</th>
+        <td>SM Fairview</td>
+    </tr>
+</table>
+
+<form method="post" action="@Url.Action("ConfirmCancel", "Reservation", new { id = Model.Id })">
+    <button type="submit">Confirm Cancellation</button>
+</form>
+
+<a href="@Url.Action("Index", "Reservation")">Back to Reservations</a>

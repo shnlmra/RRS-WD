@@ -1,0 +1,58 @@
+﻿@using RRS.Models.Entities
+@model Reservation
+
+@{
+    ViewData["Title"] = "Modify Reservation";
+}
+
+<h2>Modify Reservation</h2>
+
+<form method="post" action="@Url.Action("Modify", "Reservation", new { id = Model.Id })">
+    <div>
+        <label for="FirstName">First Name</label>
+        <input type="text" id="FirstName" name="FirstName" value="@Model.FirstName" required />
+    </div>
+    <div>
+        <label for="LastName">Last Name</label>
+        <input type="text" id="LastName" name="LastName" value="@Model.LastName" required />
+    </div>
+    <div>
+        <label for="EmailAddress">Email Address</label>
+        <input type="email" id="EmailAddress" name="EmailAddress" value="@Model.EmailAddress" required />
+    </div>
+    <div>
+        <label for="PhoneNumber">Phone Number</label>
+        <input type="text" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" />
+    </div>
+    <div>
+        <label for="ReservationDate">Reservation Date</label>
+        <input type="date" id="ReservationDate" name="ReservationDate" value="@Model.ReservationDate.ToString("yyyy-MM-dd")" required />
+    </div>
+    <div>
+        <label for="ReservationTime">Reservation Time</label>
+        <input type="time" id="ReservationTime" name="ReservationTime" value="@Model.ReservationTime.ToString("hh\\:mm")" required />
+    </div>
+    <div>
+        <label for="Seats">Seats</label>
+        <input type="number" id="Seats" name="Seats" value="@Model.Seats" required />
+    </div>
+    <div>
+        <label for="SpecialRequest">Special Request</label>
+        <textarea id="SpecialRequest" name="SpecialRequest">@Model.SpecialRequest</textarea>
+    </div>
+    <div>
+        <label for="Buffet">Buffet</label>
+        <input type="text" id="Buffet" name="Buffet" value="@Model.Buffet" required />
+    </div>
+    <div>
+        <label for="Status">Status</label>
+        <input type="text" id="Status" name="Status" value="@Model.Status" required />
+    </div>
+    <div>
+        <label for="SeatingPreference">Seating Preference</label>
+        <input type="text" id="SeatingPreference" name="SeatingPreference" value="@Model.SeatingPreference" required />
+    </div>
+    <button type="submit">Save Changes</button>
+</form>
+
+<a href="@Url.Action("Index", "Reservation")">Back to Reservations</a>
