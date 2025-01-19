@@ -16,15 +16,9 @@ namespace RRS.Controllers
 
         public IActionResult Header()
         {
-            return View();
+            return View("~/Views/Home/Header.cshtml");
         }
-
-        public IActionResult LandingPage()
-        {
-            return View();
-        }
-
-      
+ 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

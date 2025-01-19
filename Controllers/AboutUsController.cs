@@ -4,9 +4,9 @@ namespace RRS.Controllers
 {
     public class AboutUsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult AboutUs()
         {
-            return View();
+            return View("~/Views/Home/AboutUs.cshtml");
         }
     }
 }

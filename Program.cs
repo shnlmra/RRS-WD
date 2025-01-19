@@ -33,7 +33,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=CReservation}/{action=CReservation}/{id?}");
+    pattern: "{controller=AboutUs}/{action=AboutUs}/{id?}");
 
 
 

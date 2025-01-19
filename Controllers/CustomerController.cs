@@ -6,7 +6,7 @@ namespace RRS.Controllers
     {
         public IActionResult Customer()
         {
-            return View();
+            return View("~/Views/Home/Customer.cshtml");
         }
     }
 }
