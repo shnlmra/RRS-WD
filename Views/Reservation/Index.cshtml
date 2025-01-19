@@ -1,112 +1,127 @@
 ﻿@model IEnumerable<RRS.Models.Reservation>
+@{
+    ViewData["Title"] = "Reservations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<div class="container-fluid">
-    <div class="row">
-        <!-- Left Panel -->
-        <div class="col-md-4 col-12 mb-3">
-            <h3>Table Reservations</h3>
 
-            <a class="manageTblBtn btn-primary w-100 mb-3" href="@Url.Action("Index", "Table")">
-                <i class="fa-solid fa-table-list"></i> Manage Tables
-            </a>
+<div class="text-left mb-2">
+    <h1 class="fs-4">Reservations</h1>
+    <p class="text-secondary">List of all reservations.</p>
+</div>
 
-            <!-- Upcoming Reservations -->
-            <h5>Upcoming</h5>
-            @foreach (var reservation in Model.Where(r => r.Status == "Upcoming"))
-            {
-                <div class="reservation-item border p-3 mb-3">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <span class="time fw-bold">@reservation.Time</span>
-                        <div class="details ms-3">
-                            <div class="name fw-bold">@reservation.Name</div>
-                            <div>
-                                <i class="fa-solid fa-users"></i> @reservation.Guests
-                                <i class="fa-solid fa-chair ms-3"></i> @reservation.Table
-                            </div>
-                        </div>
-                        <button class="btn btn-danger ms-3">
-                            <i class="fa-solid fa-phone"></i>
-                        </button>
-                    </div>
-                </div>
-            }
-        </div>
+<script>
 
-        <!-- Right Panel -->
-        <div class="col-md-8 col-12">
-            <div class="table-layout d-flex flex-wrap justify-content-around">
-                @foreach (var table in ViewBag.Tables)
-                {
-                    <div class="table-box border rounded p-3 m-2 d-flex align-items-center justify-content-center position-relative @GetTableStatusClass(table.Status)"
-                         data-bs-toggle="modal"
-                         data-bs-target="#tableModal"
-                         data-table-id="@table.Id"
-                         data-table-number="@table.TableNumber">
-                        <span class="table-number bg-dark text-white rounded-circle p-2 position-absolute">@table.TableNumber</span>
-                        <div class="table-info text-center">
-                            <p>Seating: @table.SeatingCapacity</p>
-                            <p>@table.Location</p>
-                            <p>Status: @table.Status</p>
-                        </div>
-                    </div>
-                }
-            </div>
+    $(document).ready(function () {
+        new DataTable('#reservationTable');
+    });
 
-            <!-- Modal Template -->
-            <div class="modal fade" id="tableModal" tabindex="-1" aria-labelledby="tableModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="tableModalLabel">Table Details</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p><strong>Table Number:</strong> <span id="modalTableNumber"></span></p>
-                            <p>Would you like to view or modify the details of this table?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <a id="viewModifyButton" class="btn btn-primary" href="#">View/Modify Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <text>
+                Swal.fire({
+                    title: 'Success!',
+                    text: '@TempData["SuccessMessage"]',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                 });
+        </text>
+    }
+
+    @if (TempData["InformationMessage"] != null)
+    {
+        <text>
+                Swal.fire({
+                    title: 'Information!',
+                text: '@TempData["InformationMessage"]',
+                icon: 'info',
+                confirmButtonText: 'OK'
+                         });
+        </text>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <text>
+                Swal.fire({
+                    title: 'Error!',
+                    text: '@TempData["ErrorMessage"]',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+        </text>
+    }
+</script>
+
+<!-- DataTales Example -->
+<div class="card border-0 shadow-sm mb-5">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover text-center" id="reservationTable">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Number of Guest</th>
+                        <th>Table Number</th>
+                        <th>Menu Inclusion</th>
+                        <th>Ocassion Type</th>
+                        <th>Special Request</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var reservation in Model)
+                    {
+                        <tr>
+                            <td>@(reservation.Customer.FirstName + " " + reservation.Customer.LastName)</td>
+                            <td>@reservation.ReservationDate.ToString("MMMM dd, yyyy")</td>
+                            <td>@reservation.ReservationTime.ToString("hh:mm tt")</td>
+                            <td>@reservation.NumberOfGuest</td>
+                            <td>@reservation.Table.TableNumber</td>
+                            <td>@reservation.Menu.Name</td>
+                            <td>@reservation.OccasionType</td>
+                            <td>@reservation.SpecialRequest</td>
+                            <td>
+                                @switch (reservation.Status)
+                                {
+                                    case "Pending":
+                                        <span class="text-warning">Pending</span>
+                                        break;
+                                    case "Confirmed":
+                                        <span class="text-info">Confirmed</span>
+                                        break;
+                                    case "Cancelled":
+                                        <span class="text-danger">Cancelled</span>
+                                        break;
+                                    case "Completed":
+                                        <span class="text-success">Completed</span>
+                                        break;
+                                    default:
+                                        <span class="text-black">Unknown</span>
+                                        break;
+                                }
+                            </td>
+                            <td class="d-flex justify-content-center gap-2">
+                                <button type="button" class="btn btn-outline-info btn-sm rounded-pill px-3 py-1" data-bs-toggle="modal" data-bs-target="" data-url="@Url.Action()">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-@functions {
-    string GetTableStatusClass(string status)
-    {
-        if (string.IsNullOrEmpty(status))
-        {
-            return "available"; // Default to 'Available' if status is null or empty
-        }
 
-        return status.ToLower() switch
-        {
-            "available" => "available",
-            "reserved" => "reserved",
-            "seated" => "seated",
-            _ => "available" // Default to 'Available' for unknown statuses
-        };
-    }
-}
+<!-- Scroll to Top Button -->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const tableTiles = document.querySelectorAll(".table-box");
-        const modalTableNumber = document.getElementById("modalTableNumber");
-        const viewModifyButton = document.getElementById("viewModifyButton");
-
-        tableTiles.forEach(tile => {
-            tile.addEventListener("click", function () {
-                const tableId = this.getAttribute("data-table-id");
-                const tableNumber = this.getAttribute("data-table-number");
-
-                modalTableNumber.textContent = tableNumber;
-                viewModifyButton.href = `/Table/EditTable/${tableId}`;
-            });
-        });
-    });
-</script>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

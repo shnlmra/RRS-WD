@@ -11,6 +11,8 @@ namespace RRS.Data
 
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Table> Tables { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

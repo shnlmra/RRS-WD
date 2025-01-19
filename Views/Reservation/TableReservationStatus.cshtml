@@ -1,0 +1,112 @@
+﻿@model IEnumerable<RRS.Models.Reservation>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Panel -->
+        <div class="col-md-4 col-12 mb-3">
+            <h3>Table Reservations</h3>
+
+            <a class="manageTblBtn btn-primary w-100 mb-3" href="@Url.Action("Index", "Table")">
+                <i class="fa-solid fa-table-list"></i> Manage Tables
+            </a>
+
+            <!-- Upcoming Reservations -->
+            <h5>Upcoming</h5>
+            @foreach (var reservation in Model.Where(r => r.Status.Equals("upcoming")))
+            {
+                <div class="reservation-item border p-3 mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span class="time fw-bold">@reservation.ReservationTime</span>
+                        <div class="details ms-3">
+                            <div class="name fw-bold">@reservation.Customer.FirstName</div>
+                            <div>
+                                <i class="fa-solid fa-users"></i> @reservation.CustomerId
+                                <i class="fa-solid fa-chair ms-3"></i> @reservation.TableId
+                            </div>
+                        </div>
+                        <button class="btn btn-danger ms-3">
+                            <i class="fa-solid fa-phone"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Right Panel -->
+        <div class="col-md-8 col-12">
+            <div class="table-layout d-flex flex-wrap justify-content-around">
+                @foreach (var table in ViewBag.Tables)
+                {
+                    <div class="table-box border rounded p-3 m-2 d-flex align-items-center justify-content-center position-relative @GetTableStatusClass(table.Status)"
+                         data-bs-toggle="modal"
+                         data-bs-target="#tableModal"
+                         data-table-id="@table.Id"
+                         data-table-number="@table.TableNumber">
+                        <span class="table-number bg-dark text-white rounded-circle p-2 position-absolute">@table.TableNumber</span>
+                        <div class="table-info text-center">
+                            <p>Seating: @table.SeatingCapacity</p>
+                            <p>@table.Location</p>
+                            <p>Status: @table.Status</p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Modal Template -->
+            <div class="modal fade" id="tableModal" tabindex="-1" aria-labelledby="tableModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tableModalLabel">Table Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Table Number:</strong> <span id="modalTableNumber"></span></p>
+                            <p>Would you like to view or modify the details of this table?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a id="viewModifyButton" class="btn btn-primary" href="#">View/Modify Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetTableStatusClass(string status)
+    {
+        if (string.IsNullOrEmpty(status))
+        {
+            return "available"; // Default to 'Available' if status is null or empty
+        }
+
+        return status.ToLower() switch
+        {
+            "available" => "available",
+            "reserved" => "reserved",
+            "seated" => "seated",
+            _ => "available" // Default to 'Available' for unknown statuses
+        };
+    }
+}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tableTiles = document.querySelectorAll(".table-box");
+        const modalTableNumber = document.getElementById("modalTableNumber");
+        const viewModifyButton = document.getElementById("viewModifyButton");
+
+        tableTiles.forEach(tile => {
+            tile.addEventListener("click", function () {
+                const tableId = this.getAttribute("data-table-id");
+                const tableNumber = this.getAttribute("data-table-number");
+
+                modalTableNumber.textContent = tableNumber;
+                viewModifyButton.href = `/Table/EditTable/${tableId}`;
+            });
+        });
+    });
+</script>

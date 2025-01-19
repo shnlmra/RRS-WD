@@ -79,15 +79,15 @@
                             <td>@table.SeatingCapacity</td>
                             <td>@table.TableLocation</td>
                             <td>
-                                @if (table.Status == "available")
+                                @if (table.Status.ToLower() == "available")
                                 {
                                     <span class="badge bg-success">Available</span>
                                 }
-                                else if (table.Status == "reserved")
+                                else if (table.Status.ToLower() == "reserved")
                                 {
                                     <span class="badge bg-danger">Reserved</span>
                                 }
-                                else if (table.Status == "occupied")
+                                else if (table.Status.ToLower() == "occupied")
                                 {
                                     <span class="badge bg-warning text-dark">Occupied</span>
                                 }

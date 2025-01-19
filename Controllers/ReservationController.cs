@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RRS.Data;
 using RRS.Models;
 using System.Diagnostics;
 
@@ -7,31 +9,41 @@ namespace RRS.Controllers
     public class ReservationController : Controller
     {
         private readonly ILogger<ReservationController> _logger;
+        private readonly ApplicationDbContext context;
 
-
-        public ReservationController(ILogger<ReservationController> logger)
+        public ReservationController(ILogger<ReservationController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            this.context = context;
         }
+
 
         public IActionResult Index()
         {
-            var reservations = new List<Reservation>
-            {
-                new Reservation { Time = "7:00 PM", Name = "Miyuki Mharie Parocha", Guests = 3, Table = 32, Status = "Upcoming" },
-                new Reservation { Time = "8:00 PM", Name = "Shanella Cagulang", Guests = 6, Table = 7, Status = "Upcoming" },
-                new Reservation { Time = "5:30 PM", Name = "Darben Lamonte", Guests = 7, Table = 19, Status = "Seated" },
-            };
-
-            // Pass the table list to the view
+            List<Reservation> reservations = context.Reservations
+                .Include(r => r.Menu)
+                .Include(r => r.Table)
+                .Include(r => r.Customer)
+                .ToList();
 
             return View(reservations);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult ViewDetails(int id)
+        //{
+        //    Reservation reservation = context.Reservations.FirstOrDefault(r => r.Id == id);
+
+        //    if (reservation == null)
+        //    {
+        //        TempData["ErrorMessage"] = "Reservation not found!";
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return PartialView("ReservationDetails", reservation);
+        //}
+
+        
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
