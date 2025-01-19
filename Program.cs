@@ -6,8 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DarbenDbConnection2")));
 
 var app = builder.Build();
@@ -20,15 +19,21 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
 
+// Configure routes properly
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+
+// Uncomment this if you want a specific route for the AboutUs controller
+app.MapControllerRoute(
+    name: "aboutUs",
+    pattern: "AboutUs/{action=AboutUs}/{id?}",
+    defaults: new { controller = "AboutUs", action = "AboutUs" });
 
 app.Run();

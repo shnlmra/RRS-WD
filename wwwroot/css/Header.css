@@ -1,0 +1,142 @@
+﻿body {
+    font-family: 'Merriweather', serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: black;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+/* Responsive Navbar Height */
+@media (max-width: 100%) {
+    .navbar {
+        height: auto;
+        flex-direction: column;
+        padding: 10px 0;
+    }
+}
+
+.navbar-brand {
+    font-size: 30px;
+    color: white;
+    text-transform: uppercase;
+}
+
+    .navbar-brand:hover {
+        color: gray;
+    }
+
+.nav-item {
+    font-family: 'Merriweather', serif;
+    margin-left: 50px;
+    margin-right: 10px;
+    font-size: 20px;
+    position: sticky;
+}
+
+.navbar-nav {
+    gap: 50px; /* Adds consistent spacing between nav items */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Ensure items are inline by default */
+}
+
+.nav-link {
+    color: white !important;
+    font-size: 18px;
+    text-transform: capitalize;
+    text-decoration: none; /* Removes underline */
+    padding: 15px 15px;
+    gap: 20px;
+    letter-spacing: 2px;
+}
+
+    .nav-link:hover {
+        color: gray !important;
+    }
+
+    .nav-link:focus::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: white;
+        margin-top: 5px;
+    }
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border-color: white;
+    background: transparent;
+    padding: 5px 10px;
+    display: none; /* Hidden by default, shown on small screens */
+    cursor: pointer;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    width: 30px;
+    height: 30px;
+}
+
+/* Medium Screens Adjustments (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block; /* Show toggler on smaller screens */
+    }
+
+    .navbar-nav {
+        display: none; /* Initially hide the nav items */
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        background-color: black;
+    }
+
+        .navbar-nav.active {
+            display: flex; /* Show nav items when toggler is clicked */
+        }
+
+    .nav-item {
+        margin: 10px 0;
+    }
+
+    .nav-link {
+        font-size: 16px;
+    }
+}
+
+/* Extra Small Screen Adjustments (max-width: 576px) */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .navbar-nav {
+        padding-top: 10px;
+    }
+
+    .nav-item {
+        font-size: 14px; /* Reduce font size for nav items */
+        margin: 8px 0;
+    }
+
+    .navbar-toggler {
+        padding: 5px 8px;
+    }
+}

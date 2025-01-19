@@ -1,3 +1,4 @@
+using AspNetCoreGeneratedDocument;
 using Microsoft.AspNetCore.Mvc;
 using RRS.Models;
 using System.Diagnostics;
@@ -13,15 +14,11 @@ namespace RRS.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Header()
         {
-            return View();
+            return View("~/Views/Home/Header.cshtml");
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+ 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
