@@ -14,6 +14,27 @@ namespace RRS.Controllers
             _logger = logger;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Customers()
+        {
+            return View("~/Views/Home/Customer.cshtml");
+        }
+
+        public IActionResult AboutUs()
+        {
+            return View("~/Views/Home/AboutUs.cshtml");
+        }
+
+        public IActionResult ContactUs()
+        {
+            return View("~/Views/Home/ContactUs.cshtml");
+        }
+
+
         public IActionResult Header()
         {
             return View("~/Views/Home/Header.cshtml");
