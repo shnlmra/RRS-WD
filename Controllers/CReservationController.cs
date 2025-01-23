@@ -12,7 +12,7 @@ namespace RRS.Controllers
         
         public IActionResult Reservation()
         {
-            return View();
+            return View("~/Views/Customer/Reservation.cshtml");
         }
     }
 }
