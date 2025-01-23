@@ -6,7 +6,7 @@ namespace RRS.Controllers
     {
         public IActionResult Form()
         {
-            return View("~/Views/Reservation/Form.cshtml");
+            return View();
         }
     }
 }

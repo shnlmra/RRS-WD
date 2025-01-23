@@ -2,9 +2,9 @@
 
 namespace RRS.Controllers
 {
-    public class CustomerController : Controller
+    public class ContacUsController : Controller
     {
-        public IActionResult Customers()
+        public IActionResult ContactUs()
         {
             return View();
         }
