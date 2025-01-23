@@ -1,5 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Customers";
 }
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-y: auto;
+        background: linear-gradient(to bottom, #000000, #333333); 
+        color: white;
+    }
+
+</style>
+
+<h1 style="color:white; margin-top:7%; text-align:center; font-weight:bold;">
+    Hungry? We've got you covered!
+</h1>
+<p style="color:white; margin-top:1%; text-align:center; font-weight:bold;">
+    Find your perfect dining match and reserve your table instantly.
+</p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 20px; color: white;">
+        <div style="padding: 20px; text-align: center; border-radius: 8px;">
+        <img src="~/assets/Customer-1.png" alt="Image 1" style="width: 615px; height: 368px; border-radius: 8px; margin-bottom:20px;">
+        <p style=" text-align:justify;">Indulge your senses at Golden Palate, a charming bistro nestled in the historic district of Rodriguez. Our cozy, intimate setting is the perfect place to savor our delectable cuisine and enjoy a glass of fine wine.</p>
+        </div>
+        <div style="padding: 20px; text-align: center; border-radius: 8px;">
+        <img src="~/assets/Customer-2.png" alt="Image 2" style="width: 615px; height: 368px; border-radius: 8px; margin-bottom:20px;">
+        <p style=" text-align:justify;">Indulge your senses at Golden Palate, a charming bistro nestled in the historic district of Rodriguez. Our cozy, intimate setting is the perfect place to savor our delectable cuisine and enjoy a glass of fine wine.</p>
+    </div>
+        <div style="padding: 20px; text-align: center; border-radius: 8px;">
+        <img src="~/assets/Customer-3.png" alt="Image 3" style="width: 615px; height: 368px; border-radius: 8px; margin-bottom:20px;">
+        <p style=" text-align:justify;">Indulge your senses at Golden Palate, a charming bistro nestled in the historic district of Rodriguez. Our cozy, intimate setting is the perfect place to savor our delectable cuisine and enjoy a glass of fine wine.</p>
+    </div>
+    </div>
+
