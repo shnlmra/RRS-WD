@@ -13,7 +13,8 @@
             margin: 0;
             padding: 0;
             overflow-y: auto; /* Enable vertical scrolling */
-            background-color: black; /* Make the background black */
+            background: linear-gradient(to bottom, #000000, #333333); /* Gradient from black to a dark grey */
+            color: white;
         }
 
         /* Ensure the container for content has enough height */
@@ -62,8 +63,8 @@
             background-color: darkgoldenrod;
             color: white;
             font-family: 'Merriweather', serif;
-            margin-left:15%;
-            border-radius:30px;
+            margin-left: 15%;
+            border-radius: 30px;
         }
 
             .btn:hover {
@@ -91,7 +92,7 @@
             </p>
             <p style="font-size: 0.8rem; margin: 0; line-height: 0;">
                 start to finish—because your time is valuable, and we’re here to make things easier for you!
-            </p>            
+            </p>
         </div>
 
         <img src="~/assets/MENU.png" alt="Right Image" style="position: absolute; top: 35%; right: 5%; transform: translateY(-50%); width: 40vw; height: auto;">
@@ -100,7 +101,7 @@
 
 
 
-        <button type="button" class="btn"  onclick="window.location.href='@Url.Action("CReservation", "CReservation")'">
+        <button type="button" class="btn" onclick="window.location.href='@Url.Action("CReservation", "CReservation")'">
             BOOK NOW
         </button>
     </div>

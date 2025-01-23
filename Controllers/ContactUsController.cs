@@ -4,9 +4,9 @@ namespace RRS.Controllers
 {
     public class ContactUsController : Controller
     {
-        public IActionResult ContactUs()
+        public IActionResult ContactUs ()
         {
-            return View("~/Views/Home/ContactUs.cshtml");
+            return View("~/Views/Customer/ContactUs.cshtml");
         }
     }
 }

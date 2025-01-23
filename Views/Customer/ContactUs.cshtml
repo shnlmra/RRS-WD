@@ -1,5 +1,91 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "ContactUs";
 }
+
+<style>
+    body {
+        background: linear-gradient(to bottom, #000000, #333333); /* Gradient from black to a dark grey */
+        color: white;
+        margin:0;
+    }
+
+    .contact-title {
+        text-align: center;
+        font-size: 5rem;
+        color: white; 
+        padding: 10px; 
+        margin-bottom:0%;
+        margin-top:5%;
+    }
+
+    .footer {
+        margin-left:0;
+        text-align: center;
+        font-size: 1rem;
+        color: #ccc;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #222;
+    }
+
+    .form-item label {
+        width: 30%; /* Adjust the width of the label */
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .form-item input {
+        width: 65%; /* Adjust the width of the input */
+        padding: 8px;
+        border-radius: 8px;
+        font-size: 1rem;
+        background-color: #444; /* Background color for input */
+        border: none; /* Remove default border */
+        color: white; /* Text color */
+    }
+
+        .form-item input:focus {
+            outline: none; /* Remove default outline when focused */
+            border: 2px solid darkgoldenrod; /* Add a border color when focused */
+        }
+
+    
+</style>
+
+<div class="contact-title">
+    Contact Us
+</div>
+
+<p style="font-size:1rem; color:darkgoldenrod; margin-top:0%; line-height:2px; text-align:center;">
+    Have questions, feedback, or need assistance? We’d love to hear from you!
+</p>
+
+<div class="grid-container">
+    <!-- Left Side: Contact Form -->
+    <div class="grid-item justify-content-center align-items-center" style="width:500px; align-content:center; background-color:gray; margin-top:5%; border-radius:26px; height:300px; padding:20px; margin-left:37%;">
+        <form action="#" method="POST">
+            <div class="form-item">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-item">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-item" style="">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="form-button">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2025 Your Company Name. All Rights Reserved.</p>
+</div>
