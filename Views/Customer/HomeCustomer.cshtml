@@ -1,108 +1,35 @@
 ﻿@{
     ViewData["Title"] = "HomeCustomer";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
-<head>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dancing+Script:wght@400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-        /* Make sure html and body span the full height */
-        html, body {
-            height: 100%; /* Full height for scrolling */
-            margin: 0;
-            padding: 0;
-            overflow-y: auto; /* Enable vertical scrolling */
-            background: linear-gradient(to bottom, #000000, #333333); /* Gradient from black to a dark grey */
-            color: white;
-        }
-
-        /* Ensure the container for content has enough height */
-        .content-container {
-            min-height: 100%; /* Full height of content */
-            padding-bottom: 20px; /* Add space at the bottom to ensure scrolling */
-        }
-
-        .half-screen-image {
-            position: absolute;
-            left: 30%;
-            top: 0;
-            width: 40vw;
-            height: 40vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .text-container p {
-            padding: 10px;
-            color: white; /* Text color for visibility */
-            font-size: 7.5rem;
-            margin-left: 70px;
-            font-family: 'Merriweather', serif;
-        }
-
-        .text-container h1 {
-            padding: 10px;
-            color: white;
-            margin-top: 5%;
-            font-size: 5.5rem;
-        }
-
-        .dancing-script {
-            font-family: 'Dancing Script', cursive;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .btn {
-            border-radius: 12px;
-            margin-top: 40px;
-            width: 327px;
-            height: 69px;
-            background-color: darkgoldenrod;
-            color: white;
-            font-family: 'Merriweather', serif;
-            margin-left: 15%;
-            border-radius: 30px;
-        }
-
-            .btn:hover {
-                background-color: #555;
-                transform: scale(1.05);
-                z-index: 1;
-            }
-    </style>
-</head>
-
-<body>
-    <div class="content-container">
-        <div class="row">
-            <div class="col-12">
-                <div class="half-screen-image" style="background-image: url('@Url.Content("")');"></div>
-            </div>
-        </div>
-
-        <div class="col-12 text-container" style="text-align: left; margin-top: 3%; margin-left:8%;">
-            <img src="~/assets/RRS-Name.png" alt="Golden Palate" style="line-height: 0; width: 30vw; height: 30vh;">
-            <p style="font-size: 8rem; margin: 0; line-height: 100px; font-family: 'Corbel';">NO LINES,</p>
-            <p style="font-size: 6rem; margin: 0; line-height: 0; margin-left:2%; margin-top:2%;">NO WORRIES.</p>
-            <p style="font-size: 0.8rem; margin: 0; line-height: 0; margin-top:3%;">
-                Skip the queues, enjoy seamless service with us, and experience a hassle-free journey from
-            </p>
-            <p style="font-size: 0.8rem; margin: 0; line-height: 0;">
-                start to finish—because your time is valuable, and we’re here to make things easier for you!
-            </p>
-        </div>
-
-        <img src="~/assets/MENU.png" alt="Right Image" style="position: absolute; top: 35%; right: 5%; transform: translateY(-50%); width: 40vw; height: auto;">
-        <img src="~/assets/2-MENU.png" alt="Right Image" style="position: absolute; top: 70%; right: 5%; transform: translateY(-50%); width: 40vw; height: auto;">
 
 
-
-
-        <button type="button" class="btn" onclick="window.location.href='@Url.Action("Reservation", "CReservation")'">
-            BOOK NOW
-        </button>
+<div class="row">
+    <div class="col-12">
+        <div class="half-screen-image" style="background-image: url('@Url.Content("")');"></div>
     </div>
-</body>
+</div>
+
+<div class="col-12 text-container" style="text-align: left; margin-top: 3%; margin-left:8%;">
+    <img src="~/assets/RRS-Name.png" alt="Golden Palate" style="line-height: 0; width: 30vw; height: 30vh;">
+    <p style="font-size: 8rem; margin: 0; line-height: 100px; font-family: 'Corbel';">NO LINES,</p>
+    <p style="font-size: 6rem; margin: 0; line-height: 0; margin-left:2%; margin-top:2%;">NO WORRIES.</p>
+    <p style="font-size: 0.8rem; margin: 0; line-height: 0; margin-top:3%;">
+        Skip the queues, enjoy seamless service with us, and experience a hassle-free journey from
+    </p>
+    <p style="font-size: 0.8rem; margin: 0; line-height: 0;">
+        start to finish—because your time is valuable, and we’re here to make things easier for you!
+    </p>
+</div>
+
+<img src="~/assets/MENU.png" alt="Right Image" style="position: absolute; top: 35%; right: 5%; transform: translateY(-50%); width: 40vw; height: auto;">
+<img src="~/assets/2-MENU.png" alt="Right Image" style="position: absolute; top: 70%; right: 5%; transform: translateY(-50%); width: 40vw; height: auto;">
+
+
+
+
+<button type="button" class="btn" onclick="window.location.href='@Url.Action("Reservation", "CReservation")'">
+    BOOK NOW
+</button>
+

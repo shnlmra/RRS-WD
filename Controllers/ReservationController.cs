@@ -29,6 +29,13 @@ namespace RRS.Controllers
             return View(reservations);
         }
 
+        public IActionResult Create()
+        {
+            Reservation reservation = new Reservation();
+
+            return View();
+        }
+
         //public IActionResult ViewDetails(int id)
         //{
         //    Reservation reservation = context.Reservations.FirstOrDefault(r => r.Id == id);

@@ -6,9 +6,7 @@
 
         public DateOnly ReservationDate { get; set; }
         public TimeOnly ReservationTime { get; set; }
-        public int NumberOfGuest { get; set; }
         public string OccasionType { get; set; }  
-        public string RestaurantBranch { get; set; }
         public string? SpecialRequest { get; set; }
         public string Status { get; set; }
 

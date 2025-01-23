@@ -222,12 +222,6 @@ html, body {
     font-family = 'Poppins';
 }
 
-/* Ensure the container occupies full height */
-.container-fluid {
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Prevent scrolling */
-}
-
 
 .card {
     border-radius: 10px;
