@@ -13,27 +13,33 @@
 <form asp-action="Create" asp-controller="Reservation" method="post" enctype="multipart/form-data"> 
     <div class="form-group">
         <label for="datepicker" class="form-label">Select a date</label>
-        <input type="text" id="datepicker" class="form-control">
+        <input type="text" asp-for="ReservationDate" id="datepicker" class="form-control">
     </div>
 
     <div class="form-group">
         <label for="timepicker" class="form-label">Select Time</label>
-        <input type="text" id="timepicker" class="form-control">
+        <input type="text" asp-for="ReservationTime" id="timepicker" class="form-control">
     </div>
 
     <div class="form-group">
         <label for="firstName">First name </label>
-        <input type="text" name="firstName" id="firstName" class="form-control"/>
+        <input type="text" asp-for="Customer.FirstName" name="firstName" id="firstName" class="form-control"/>
     </div>
 
     <div class="form-group">
         <label for="lastName">Last name </label>
-        <input type="text" name="lastName" id="lastName" class="form-control" />
+        <input type="text" asp-formaction="Customer.LastName" name="lastName" id="lastName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="reservationDate">Email address</label>
+        <input type="email" asp-for="Customer.Email" class="form-control" id="reservationDate" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
     <div class="form-group">
         <label for="occasionType">Type of Occasion </label>
-        <select multiple class="form-control" id="occasionType">
+        <select asp-for="OccasionType" class="form-control" id="occasionType">
             <option selected="">Select type of occasion</option>
             <option value="birthday">Birthday</option>
             <option value="anniversary">Anniversary</option>
@@ -44,11 +50,7 @@
         </select>
     </div>
 
-    <div class="form-group">
-        <label for="reservationDate">Email address</label>
-        <input type="email" class="form-control" id="reservationDate" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
+    
     <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
@@ -60,22 +62,19 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-@section Scripts {
-    <script>
-        // Initialize flatpickr on the input field
-        flatpickr("#datepicker", {
-          dateFormat: "Y-m-d", // Customize the date format
-          enableTime: false,   // Disable time selection
-          minDate: "today",
-        });
+<script>
+    // Initialize flatpickr on the input field
+    flatpickr("#datepicker", {
+      dateFormat: "Y-m-d", // Customize the date format
+      enableTime: false,   // Disable time selection
+      minDate: "today",
+    });
 
-            // Initialize flatpickr with time picker only
-        flatpickr("#timepicker", {
-          enableTime: true,         // Enable time selection
-          noCalendar: true,         // Disable the calendar portion (just time)
-          // time_24hr: true,          Use 24-hour format
-          minuteIncrement: 1        // Minute increment (1 minute intervals)
-        });
-    </script>
-
-}
+        // Initialize flatpickr with time picker only
+    flatpickr("#timepicker", {
+        enableTime: true,
+        noCalendar: true, // Hide the calendar part
+        dateFormat: "h:i K", // Use 12-hour format with AM/PM
+        time_24hr: false, // Use 12-hour format (AM/PM)
+    });
+</script>
