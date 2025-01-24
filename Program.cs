@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAuthentication(options =>
+/*builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
@@ -20,6 +20,7 @@ builder.Services.AddAuthentication(options =>
         options.ClientSecret = builder.Configuration.GetSection("GoogleKeys:ClientID").Value;
 
     });
+*/
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
