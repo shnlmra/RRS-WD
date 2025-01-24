@@ -2,11 +2,11 @@
 
 namespace RRS.Controllers
 {
-	public class SignUpController : Controller
-	{
-		public IActionResult SignUp()
-		{
-			return View("~/Views/Account/Signup.cshtml");
-		}
-	}
+    public class SignUpController : Controller
+    {
+        public IActionResult SignUp()
+        {
+            return View("~/Views/Account/Signup.cshtml");
+        }
+    }
 }

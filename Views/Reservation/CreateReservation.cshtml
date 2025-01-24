@@ -1,4 +1,4 @@
-﻿@model Reservation
+﻿@model RRS.Models.Reservation
 
 @{
     ViewData["Title"] = "Create Reservation";
@@ -10,71 +10,148 @@
     <p class="text-secondary">Fill in the form below to create a reservation.</p>
 </div>
 
-<form asp-action="Create" asp-controller="Reservation" method="post" enctype="multipart/form-data"> 
+<form id="reservationForm" asp-action="Create" asp-controller="Reservation" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="datepicker" class="form-label">Select a date</label>
-        <input type="text" asp-for="ReservationDate" id="datepicker" class="form-control">
+        <label for="tableNumber" class="form-label">Table Number</label>
+        <!-- Display Table Number -->
+        <p>@Model.Table.TableNumber</p>
+        <!-- Hidden field to submit Table Number -->
+        <input type="hidden" asp-for="Table.TableNumber" value="@Model.Table.TableNumber" />
     </div>
 
     <div class="form-group">
-        <label for="timepicker" class="form-label">Select Time</label>
-        <input type="text" asp-for="ReservationTime" id="timepicker" class="form-control">
+        <label for="datepicker" class="form-label">Reservation Date</label>
+        <p>@Model.ReservationDate</p>
+        <input type="hidden" asp-for="ReservationDate" value="@Model.ReservationDate" />
     </div>
 
     <div class="form-group">
-        <label for="firstName">First name </label>
-        <input type="text" asp-for="Customer.FirstName" name="firstName" id="firstName" class="form-control"/>
+        <label for="timepicker" class="form-label">Reservation Time </label>
+        <p>@Model.ReservationTime</p>
+        <input type="hidden" asp-for="ReservationTime" value="@Model.ReservationTime" />
     </div>
 
     <div class="form-group">
-        <label for="lastName">Last name </label>
-        <input type="text" asp-formaction="Customer.LastName" name="lastName" id="lastName" class="form-control" />
+        <label for="firstName">First name <span class="text-danger">*</span></label>
+        <input type="text" asp-for="Customer.FirstName" id="firstName" class="form-control" />
+        <span asp-asp-validation-for="Customer.FirstName" class="text-danger"></span>
+        <span id="firstNameError" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="reservationDate">Email address</label>
-        <input type="email" asp-for="Customer.Email" class="form-control" id="reservationDate" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <label for="lastName">Last name <span class="text-danger">*</span></label>
+        <input type="text" asp-for="Customer.LastName" id="lastName" class="form-control" />
+        <span id="lastNameError" class="text-danger"></span>
+        <span asp-asp-validation-for="Customer.LastName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="occasionType">Type of Occasion </label>
-        <select asp-for="OccasionType" class="form-control" id="occasionType">
-            <option selected="">Select type of occasion</option>
-            <option value="birthday">Birthday</option>
-            <option value="anniversary">Anniversary</option>
-            <option value="casual">Casual</option>
-            <option value="business">Business</option>
-            <option value="celebration">Celebration</option>
-            <option class="other">Other</option>
-        </select>
+        <label for="email">Email address <span class="text-danger">*</span></label>
+        <input type="email" asp-for="Customer.Email" id="email" class="form-control" />
+        <span id="emailError" class="text-danger"></span>
+        <span asp-asp-validation-for="Customer.Email" class="text-danger"></span>
     </div>
 
-    
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
+        <input type="text" asp-for="Customer.PhoneNumber" id="phoneNumber" class="form-control" />
+        <span id="phoneNumberError" class="text-danger"></span>
+        <span asp-asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
     </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+    <div class="form-group">
+        <label for="specialRequest">Special Request</label>
+        <textarea asp-for="SpecialRequest" id="specialRequest" class="form-control" rows="3"></textarea>
+        <span asp-asp-validation-for="SpecialRequest" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <button type="submit" class="btn btn-primary">Proceed</button>
+
 </form>
 
 <script>
-    // Initialize flatpickr on the input field
-    flatpickr("#datepicker", {
-      dateFormat: "Y-m-d", // Customize the date format
-      enableTime: false,   // Disable time selection
-      minDate: "today",
-    });
 
-        // Initialize flatpickr with time picker only
-    flatpickr("#timepicker", {
-        enableTime: true,
-        noCalendar: true, // Hide the calendar part
-        dateFormat: "h:i K", // Use 12-hour format with AM/PM
-        time_24hr: false, // Use 12-hour format (AM/PM)
-    });
+        document.getElementById("reservationForm").addEventListener("submit", notice);
+
+    function notice(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Clear existing error messages
+        clearErrors();
+
+        // Get the input values
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phoneNumber = document.getElementById("phoneNumber").value.trim();
+
+        let isValid = true; // Flag to check if all fields are valid
+
+        // Validate each field and display errors if necessary
+        if (!firstName) {
+            showError("firstNameError", "First name is required.");
+            isValid = false;
+        }
+
+        if (!lastName) {
+            showError("lastNameError", "Last name is required.");
+            isValid = false;
+        }
+
+        if (!email) {
+            showError("emailError", "Email address is required.");
+            isValid = false;
+        }
+
+        if (!phoneNumber) {
+            showError("phoneNumberError", "Phone number is required.");
+            isValid = false;
+        }
+
+        // If validation fails, stop further execution
+        if (!isValid) return;
+
+        // Show the SweetAlert modal with the Terms and Conditions
+        Swal.fire({
+            title: 'Terms and Condition!',
+            html: '<b>Reservation Fee:</b> <br>  A non-refundable reservation fee of 30% of the total estimated bill is required to secure your reservation. This fee can be paid online through our website. <br><br><b>Cancellation Policy: </b><br>The full reservation fee will be refunded for cancellations made <b>more than 48 hours in advance.</b> The reservation fee will be forfeited for cancellations made <b>within 48 hours</b>.<br><br><b>No-shows:</b> The reservation fee will be forfeited.<br><br>To modify your reservation, please contact us at least 24 hours in advance. We will do our best to accommodate your request, but please note that modifications may not always be possible.',
+            icon: 'info',
+            confirmButtonText: 'I understand, continue',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user clicks "I understand, continue", submit the form
+                document.getElementById("reservationForm").submit();
+            }
+        });
+    }
+
+    // Function to display an error message
+    function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = message;
+    }
+
+    // Function to clear all error messages
+    function clearErrors() {
+        document.getElementById("firstNameError").textContent = "";
+        document.getElementById("lastNameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("phoneNumberError").textContent = "";
+    }
+
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <text>
+                Swal.fire({
+                    title: 'Error!',
+                    text: '@TempData["ErrorMessage"]',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+        </text>
+    }
 </script>

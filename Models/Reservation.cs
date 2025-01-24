@@ -6,7 +6,7 @@
 
         public DateOnly ReservationDate { get; set; }
         public TimeOnly ReservationTime { get; set; }
-        public string OccasionType { get; set; }  
+        //public string? OccasionType { get; set; }  
         public string? SpecialRequest { get; set; }
         public string Status { get; set; }
 
@@ -16,8 +16,8 @@
         public Table Table { get; set; }
 
         // Foreign key for menu
-        public int MenuId { get; set; }
-        public Menu Menu { get; set; }
+        //public int MenuId { get; set; }
+        //public Menu Menu { get; set; }
 
         // Foreign key for customer
         public int CustomerId { get; set; }

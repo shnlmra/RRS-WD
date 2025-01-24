@@ -5,16 +5,16 @@ using System.Linq;
 
 namespace RRS.Controllers
 {
-	public class CustomerLoginController : Controller
-	{
-		// Set the constant for cookie authentication scheme
-		private const string CookieAuthenticationDefaults = "Cookies";
+    public class CustomerLoginController : Controller
+    {
+        // Set the constant for cookie authentication scheme
+        private const string CookieAuthenticationDefaults = "Cookies";
 
 		// Maps to /CustomerLogin
-		public IActionResult CustomerLogin()
-		{
-			return View("~/Views/Account/CustomerLogin.cshtml");
-		}
+        public IActionResult CustomerLogin()
+        {
+            return View("~/Views/Account/CustomerLogin.cshtml");
+        }
 
 		// Maps to /Signup
 		[HttpGet("Signup")]

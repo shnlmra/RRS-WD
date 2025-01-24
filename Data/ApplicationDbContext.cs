@@ -16,6 +16,7 @@ namespace RRS.Data
         public DbSet<Reservation> Reservations { get; set; }
 		public DbSet<ActionLog> ActionLogs { get; set; }
 		public DbSet<Payment> Payments { get; set; }
+        public DbSet<ReserveMenuDetails> ReserveMenuDetails { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,5 +39,10 @@ namespace RRS.Data
 				.WithMany(r => r.ActionLogs)
 				.HasForeignKey(a => a.ReservationId);
 		}
+
+            modelBuilder.Entity<Reservation>()
+                .Property(m => m.Status)
+                .HasDefaultValue("pending");
+        }
     }
 }
