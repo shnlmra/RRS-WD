@@ -8,5 +8,7 @@
         public List<Table> Tables { get; set; }
         public List<Customer> Customers { get; set; }
 
+        public List<BuffetType> BuffetTypes { get; set; }
+
     }
 }

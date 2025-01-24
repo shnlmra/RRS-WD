@@ -14,6 +14,7 @@ namespace RRS.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<ReserveMenuDetails> ReserveMenuDetails { get; set; }
+        public DbSet<BuffetType> BuffetTypes { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,6 +36,10 @@ namespace RRS.Data
             modelBuilder.Entity<Reservation>()
                 .Property(m => m.Status)
                 .HasDefaultValue("pending");
+
+            modelBuilder.Entity<BuffetType>()
+                .Property(m => m.IsDeleted)
+                .HasDefaultValue(false);
         }
     }
 }

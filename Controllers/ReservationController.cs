@@ -29,8 +29,15 @@ namespace RRS.Controllers
             return View(reservations);
         }
 
+        // Action to get buffet types as JSON
+        public IActionResult GetBuffetTypes()
+        {
+            var buffetTypes = context.BuffetTypes.ToList();
+            return Json(buffetTypes);
+        }
+
         [HttpPost]
-        public IActionResult ShowReservationForm(int tableNumber, DateOnly date, TimeOnly time)
+        public IActionResult ShowReservationForm(int tableNumber, decimal price, DateOnly date, TimeOnly time)
         {
             try
             {
@@ -38,7 +45,8 @@ namespace RRS.Controllers
                 {
                     Table = new Table
                     {
-                        TableNumber = tableNumber
+                        TableNumber = tableNumber,
+                        Price = price
                     },
                     ReservationDate = date,
                     ReservationTime = time
@@ -49,6 +57,7 @@ namespace RRS.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error creating reservation");
+                Console.WriteLine(ex);
                 TempData["ErrorMessage"] = ex.Message;
                 return RedirectToAction("DisplayTablesInCustomer", "Table");
             }

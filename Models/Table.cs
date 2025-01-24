@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace RRS.Models
 {
@@ -12,7 +13,9 @@ namespace RRS.Models
         public int SeatingCapacity { get; set; }
         [Required, StringLength(100)]
         public string TableLocation { get; set; }
-        public string? ImagePath { get; set; }
+        [Precision(10, 2)]
+        public Decimal Price { get; set; }
+        public string? TableImagePath { get; set; }
         public string? Status { get; set; } 
         public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }

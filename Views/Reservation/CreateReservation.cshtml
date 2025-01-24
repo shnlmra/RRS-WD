@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Create Reservation";
-    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    Layout = "~/Views/Shared/_CustomerAccountLayout.cshtml";
 }
 
 <div class="text-left mb-2">
@@ -17,6 +17,13 @@
         <p>@Model.Table.TableNumber</p>
         <!-- Hidden field to submit Table Number -->
         <input type="hidden" asp-for="Table.TableNumber" value="@Model.Table.TableNumber" />
+    </div>
+    <div class="form-group">
+        <label for="tablePrice" class="form-label">Table Price</label>
+        <!-- Display Table Number -->
+        <p>@Model.Table.Price</p>
+        <!-- Hidden field to submit Table Number -->
+        <input type="hidden" asp-for="Table.Price" value="@Model.Table.Price" />
     </div>
 
     <div class="form-group">
@@ -59,19 +66,80 @@
         <span asp-asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
     </div>
 
+    <!-- Buffet Type -->
+    <div class="form-group">
+        <label for="buffet">Buffet Type</label>
+        <select asp-for="BuffetTypeId" id="buffetType" onchange="calculatePrice()">
+            <option value="">Select Buffet Type</option>
+            <!-- Options will be populated by JavaScript -->
+        </select>
+        <span asp-validation-for="BuffetTypeId" class="text-danger"></span>
+    </div>
+
     <div class="form-group">
         <label for="specialRequest">Special Request</label>
         <textarea asp-for="SpecialRequest" id="specialRequest" class="form-control" rows="3"></textarea>
         <span asp-asp-validation-for="SpecialRequest" class="text-danger"></span>
     </div>
 
+        <input type="hidden" asp-for="TotalPrice" id="totalPriceInput" name="TotalPrice" value="0" />
+
     <button type="submit" class="btn btn-primary">Proceed</button>
 
 </form>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Ensure jQuery is included -->
+
 <script>
 
-        document.getElementById("reservationForm").addEventListener("submit", notice);
+    // Function to populate the buffet types dropdown
+    function populateBuffetTypes() {
+        $.ajax({
+            url: '@Url.Action("GetBuffetTypes", "Reservation")', // URL to the API action
+            type: 'GET',
+            success: function(data) {
+                const buffetSelect = document.getElementById('buffetType');
+
+                // Remove all existing options
+                buffetSelect.innerHTML = '<option value="">Select Buffet Type</option>';
+
+                // Add options from the fetched buffet types
+                data.forEach(function(buffet) {
+                    const option = document.createElement('option');
+                    option.value = buffet.id;
+                    option.textContent = buffet.buffetName;
+                    option.setAttribute('data-price', buffet.buffetPrice);
+                    buffetSelect.appendChild(option);
+                });
+            },
+            error: function() {
+                alert('Failed to load buffet types');
+            }
+        });
+    }
+
+    // Call the function to populate the dropdown on page load
+    $(document).ready(function() {
+        populateBuffetTypes();
+    });
+
+    // Function to calculate the total price
+    function calculatePrice() {
+        // Get the selected buffet price
+        const buffetSelect = document.getElementById('buffetType');
+        const selectedBuffetOption = buffetSelect.options[buffetSelect.selectedIndex];
+        const buffetPrice = parseFloat(selectedBuffetOption.getAttribute('data-price') || 0);
+        const tablePrice = parseFloat('@Model.Table.Price');
+
+        // Calculate the total price
+        const totalPrice = buffetPrice + tablePrice;
+
+        // Display the total price
+        document.getElementById('totalPrice').textContent = '₱' + totalPrice.toFixed(2);
+        document.getElementById('totalPriceInput').value = totalPrice.toFixed(2);
+    }
+
+    document.getElementById("reservationForm").addEventListener("submit", notice);
 
     function notice(e) {
         e.preventDefault(); // Prevent default form submission
@@ -79,11 +147,21 @@
         // Clear existing error messages
         clearErrors();
 
-        // Get the input values
+        // Gather form data for the summary
+        const tableNumber = document.getElementById("tableNumber").value;
+        const seatingOccupancy = document.getElementById("seatingOccupancy").value;
         const firstName = document.getElementById("firstName").value.trim();
         const lastName = document.getElementById("lastName").value.trim();
         const email = document.getElementById("email").value.trim();
         const phoneNumber = document.getElementById("phoneNumber").value.trim();
+        const specialRequest = document.getElementById("specialRequest").value.trim();
+        const totalPrice = document.getElementById("totalPriceInput").value.trim();
+
+        // Get the selected buffet name
+        const buffetSelect = document.getElementById('buffetType');
+        const selectedBuffetOption = buffetSelect.options[buffetSelect.selectedIndex];
+        const buffetName = selectedBuffetOption.textContent || selectedBuffetOption.innerText;
+
 
         let isValid = true; // Flag to check if all fields are valid
 
@@ -111,19 +189,42 @@
         // If validation fails, stop further execution
         if (!isValid) return;
 
-        // Show the SweetAlert modal with the Terms and Conditions
+        // Show reservation summary and terms
         Swal.fire({
-            title: 'Terms and Condition!',
-            html: '<b>Reservation Fee:</b> <br>  A non-refundable reservation fee of 30% of the total estimated bill is required to secure your reservation. This fee can be paid online through our website. <br><br><b>Cancellation Policy: </b><br>The full reservation fee will be refunded for cancellations made <b>more than 48 hours in advance.</b> The reservation fee will be forfeited for cancellations made <b>within 48 hours</b>.<br><br><b>No-shows:</b> The reservation fee will be forfeited.<br><br>To modify your reservation, please contact us at least 24 hours in advance. We will do our best to accommodate your request, but please note that modifications may not always be possible.',
-            icon: 'info',
-            confirmButtonText: 'I understand, continue',
+            title: 'Reservation Summary',
+            html: `
+                <p><strong>Table Number:</strong> ${tableNumber}</p>
+                <p><strong>Seating Occupancy:</strong> ${seatingOccupancy}</p>
+                <p><strong>Buffet Type:</strong> ${buffetName}</p>
+                <p><strong>Date:</strong> ${@Model.ReservationDate.ToString("MM/dd/yyyy")}</p>
+                <p><strong>Time:</strong> ${@Model.ReservationTime.ToString("HH:mm")}</p>
+                <p><strong>Personal Details:</strong></p>
+                <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+                <p><strong>Special Request:</strong> ${specialRequest}</p>
+                <p><strong>Total Price:</strong> ₱${totalPrice}</p>
+            `,
             showCancelButton: true,
-            cancelButtonText: 'Cancel',
-            reverseButtons: true,
+            confirmButtonText: 'Confirm and Proceed',
+            cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                // If the user clicks "I understand, continue", submit the form
-                document.getElementById("reservationForm").submit();
+                // Show Terms and Conditions
+                Swal.fire({
+                    title: 'Terms and Conditions',
+                    html: '<b>Reservation Fee:</b> A non-refundable reservation fee of 30% of the total estimated bill is required to secure your reservation. <br><br><b>Cancellation Policy:</b> Full reservation fee refunded for cancellations made more than 48 hours in advance. <br><br><b>No-shows:</b> Reservation fee will be forfeited.',
+                    icon: 'info',
+                    confirmButtonText: 'I Understand, Continue',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancel',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // If the user confirms terms and conditions, submit the form
+                        document.getElementById("reservationForm").submit();
+                    }
+                });
             }
         });
     }
@@ -142,16 +243,15 @@
         document.getElementById("phoneNumberError").textContent = "";
     }
 
-
     @if (TempData["ErrorMessage"] != null)
     {
         <text>
-                Swal.fire({
-                    title: 'Error!',
-                    text: '@TempData["ErrorMessage"]',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
+                    Swal.fire({
+                        title: 'Error!',
+                        text: '@TempData["ErrorMessage"]',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
         </text>
     }
 </script>
