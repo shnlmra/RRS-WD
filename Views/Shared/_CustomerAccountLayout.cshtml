@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,20 +24,25 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-action="Index" asp-controller="Customer">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-action="CustomersReservation" asp-controller="Customer">Your Reservations</a>
-                        </li>
                     </ul>
                 </div>
                 <!-- User Avatar Section - Always visible -->
-                <div class="d-flex align-items-center ms-3">
-                    <img src="path/to/avatar.jpg" alt="User Avatar" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                <div class="dropdown ms-auto" style="margin-right:10%;">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:darkgoldenrod; border-radius:26px; border:none; outline:none;">
+                        <img src="~/assets/icons8-user-50.png" alt="User Avatar" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                    </button>
+
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="nav-link text-dark" asp-area="" asp-action="Profile" asp-controller="Profile">Profile</a></li>
+                        <li><a class="nav-link text-dark" asp-area="" asp-action="MyReservation" asp-controller="MyReservation">My Reservation</a></li>
+                        <li><a class="nav-link text-dark" asp-area="" asp-action="MyReservation" asp-controller="MyReservation">Sign Out</a></li>
+                    </ul>
                 </div>
+
             </div>
         </nav>
     </header>
-
-
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -45,7 +50,7 @@
         </main>
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Bundle (includes Popper) -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
