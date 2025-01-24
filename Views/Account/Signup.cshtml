@@ -23,7 +23,7 @@
         }
 
         .animate-div {
-            animation: easeInOutAnimation 1s ease-in-out; /* Adjust duration as needed */
+            animation: easeInOutAnimation 1s ease-in-out; 
         }
     </style>
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 animate-div">
@@ -34,11 +34,14 @@
             <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
                 <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
                 <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-
-                <div class="card bg-glass">
+                <h1 style="color:white; font-weight:bold; margin-bottom:10px; text-align:center;">Create your account</h1>
+                <p style="color: white !important; animate-div">
+                    Join the Golden Palate family and unlock a world of exclusive benefits! By creating your account, you’ll be the first to know about special offers,
+                    new menu items, and exciting events. Plus, enjoy a seamless dining experience every time you visit us.
+                </p>
+                <div style="width:600px; background-color:white; border-radius:26px;">
                     <div class="card-body px-4 py-5 px-md-5">
                         <form>
-
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div data-mdb-input-init class="form-outline">
@@ -119,23 +122,12 @@
                                 </button>
                             </div>
 
-                            <!-- Register buttons -->
-                            <div class="text-center">
-                                <p>or sign up with:</p>
-                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-facebook-f"></i>
-                                </button>
-
-                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-google"></i>
-                                </button>
-                            </div>
                         </form>
 
                         <div style="width: 100%; display: flex; justify-content: center; margin-top:20px;">
                             <p>
-                                Don't have an account yet?
-                                <a href="your-page-url.html" style="color: darkgoldenrod; text-decoration: underline;">Click here</a>
+                               Already have an account?
+                                <a style="color: darkgoldenrod; text-decoration: underline; " nav-link" asp-area="" asp-controller="CustomerLogin" asp-action="CustomerLogin">Click here</a>
                             </p>
                         </div>
 
@@ -150,6 +142,7 @@
                                     passwordField.type = 'password'; // Hide the password
                                 }
                             }
+
                         </script>
 
                     </div>

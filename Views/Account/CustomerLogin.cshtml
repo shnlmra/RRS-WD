@@ -5,21 +5,34 @@
 <section class="background-radial-gradient overflow-hidden">
     <img src="~/assets/Final-lg.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;" />
 
-    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-        <div class="row gx-lg-5 align-items-center mb-5" style="justify-content: center; margin-top:10%;">
-            <div style="z-index: 10; margin-top: 6%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-            </div>
+    <style>
+        .animate-div {
+            animation: easeInOutAnimation 1s ease-in-out;
+        }
+    </style>
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start animate-div">
+        <div class="container">
+            <div class="row gx-lg-5 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" style="margin-left:-10%;">
+                    <h1 class="my-5 display-3 fw-bold ls-tight" style="color:white; animate-div">
+                        No Lines, <br />
+                        <span style="color:darkgoldenrod !important; animate-div !important;" class="text-primary">No Worries.</span>
+                    </h1>
+                    <p style="color: white !important; animate-div">
+                        Why Wait? Book Your Table Now! 
+                        Skip the lines and guarantee your spot at one of the most 
+                        sought-after restaurants in town. It's quick and easy!
+                        Call now or reserve online and get ready to savor every bite!
+                    </p>
+                </div>
 
-            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-
-                <div class="card bg-glass">
-                    <div class="card-body px-4 py-5 px-md-5">
-                        <form method="post" asp-controller="CustomerLogin" asp-action="Login">
+                <div class="card bg-glass col-lg-6 mb-5 mb-lg-0" style="opacity:75%; margin-top:10%; margin-left:5%; animate-div">
+                    <div class="card-body px-4 py-5 px-md-5" style="animation:ease-in-out">
+                        <p style="text-align:center; font-weight:bold;d">Input your credentials below.</p>
+                        <form onsubmit="return validateForm()">
                             <!-- Email input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <label class="form-label" for="form3Example3">
+                                <label class="form-label" for="form3Example3" style="margin-top:10px;">
                                     Email address
                                     <span style="color: red;">*</span>
                                 </label>
@@ -42,22 +55,53 @@
                             </div>
 
                             <script>
-                                function togglePassword() {
-                                    var passwordField = document.getElementById('form3Example4');
-                                    var eyeIcon = document.getElementById('eyeIcon');
-                                    var showPasswordCheckbox = document.getElementById('showPassword');
+    function togglePassword() {
+        var passwordField = document.getElementById('form3Example4');
+        var eyeIcon = document.getElementById('eyeIcon');
+        var showPasswordCheckbox = document.getElementById('showPassword');
 
-                                    if (showPasswordCheckbox.checked) {
-                                        passwordField.type = 'text'; // Show the password
-                                        eyeIcon.classList.remove('fa-eye');
-                                        eyeIcon.classList.add('fa-eye-slash'); // Change to eye-slash icon
-                                    } else {
-                                        passwordField.type = 'password'; // Hide the password
-                                        eyeIcon.classList.remove('fa-eye-slash');
-                                        eyeIcon.classList.add('fa-eye'); // Change to eye icon
-                                    }
-                                }
-                            </script>
+        if (showPasswordCheckbox.checked) {
+            passwordField.type = 'text'; // Show the password
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash'); // Change to eye-slash icon
+        } else {
+            passwordField.type = 'password'; // Hide the password
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye'); // Change to eye icon
+        }
+    }
+
+    function validateForm() {
+        var email = document.getElementById('form3Example3');
+        var password = document.getElementById('form3Example4');
+        var isValid = true;
+
+        // Reset styles
+        email.style.borderColor = '';
+        password.style.borderColor = '';
+
+        // Email validation
+        if (!/^\S+\S+\.\S+$/.test(email.value.trim())) {
+            isValid = false;
+            email.style.borderColor = 'red';
+            alert('Please enter a valid email address.');
+        }
+
+        // Password validation
+        if (
+            password.value.trim().length < 8 ||
+            !/[A-Z]/.test(password.value) ||
+            !/[a-z]/.test(password.value) ||
+            !/[0-9]/.test(password.value)
+        ) {
+            isValid = false;
+            password.style.borderColor = 'red';
+            alert('Password must be at least 8 characters long and include uppercase, lowercase, and a number.');
+        }
+
+        return isValid; // Prevent form submission if validation fails
+    }
+</script>
 
                             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
@@ -67,8 +111,7 @@
                                     Submit
                                 </button>
                             </div>
-
-                            <!-- Register buttons -->
+                          <!---
                             <div class="text-center">
                                 <p>or sign up with:</p>
                                 <form method="post" asp-controller="CustomerLogin" asp-action="Login">
@@ -77,12 +120,14 @@
                                     </button>
                                 </form>
                             </div>
+                              -->
                         </form>
-
+                        
+                       
                         <div style="width: 100%; display: flex; justify-content: center; margin-top:20px;">
                             <p>
                                 Don't have an account yet?
-                                <a class="nav-link" asp-area="" asp-controller="Signup" asp-action="Signup">Click here</a>
+                                <a style="text-align:center;" class="nav-link" asp-area="" asp-controller="Signup" asp-action="Signup">Click here</a>
                             </p>
                         </div>
 

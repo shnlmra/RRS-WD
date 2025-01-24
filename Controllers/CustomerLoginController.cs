@@ -15,7 +15,10 @@ namespace RRS.Controllers
         {
             return View("~/Views/Account/CustomerLogin.cshtml");
         }
+    }
+}
 
+/*
         // Initiates Google authentication challenge
         public async Task Login()
         {
@@ -30,7 +33,7 @@ namespace RRS.Controllers
         public async Task<IActionResult> GoogleResponse()
         {
             // Authenticate using the cookie authentication scheme
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults);
+            var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
 
             // Check if authentication was successful
             if (result.Succeeded)
@@ -47,11 +50,20 @@ namespace RRS.Controllers
                         claim.Value
                     });
 
-                return Json(claims);
+                // return Json(claims);
             }
 
-            // If authentication fails, return unauthorized
-            return Unauthorized();
+            return RedirectToAction("HomeCustomer", "CustomerLogin", new { area = "" }); // Redirect to the customer home page after successful login
+           
+
+        
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return View("CustomerLogin");
         }
     }
 }
+*/
