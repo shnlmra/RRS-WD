@@ -33,7 +33,7 @@ namespace RRS.Controllers
         {
             Reservation reservation = new Reservation();
 
-            return View("CreateReservation");
+            return View("CreateReservation", reservation);
         }
 
         public IActionResult CreateTrigger()
