@@ -30,7 +30,7 @@ namespace RRS.Controllers
         {
             var tables = this.GetTables();
 
-            return View("Tables", tables);
+            return View("DisplayTablesInCustomer", tables);
         }
 
         public IActionResult Create()

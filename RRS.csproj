@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\assets\Downloads\**" />
+    <Content Remove="wwwroot\assets\Downloads\**" />
+    <EmbeddedResource Remove="wwwroot\assets\Downloads\**" />
+    <None Remove="wwwroot\assets\Downloads\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
@@ -14,46 +21,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\App\CFiles\Startup Scripts CS6\Adobe Photoshop\photoshop\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\App\Photoshop\Locales\en_US\Support Files\Panels\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Adobe Photoshop CS6 Settings\WorkSpaces\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Local\CameraRaw\Cache\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe PDF\Settings\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\AutoRecover\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Actions\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Black and White\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Brushes\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Channel Mixer\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Color Swatches\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Contours\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Curves\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Custom Shapes\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Duotones\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Exposure\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Gradients\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\HDR Toning\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Hue and Saturation\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Keyboard Shortcuts\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Levels\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Lighting Effects\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Lights\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Materials\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Menu Customization\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Patterns\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Render Settings\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Repousse\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Selective Color\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Styles\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Tools\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Adobe Photoshop CS6\Presets\Volumes\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\CameraRaw\LensProfiles\1.0\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Color\Proofing\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Color\Settings\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Flash Player\AssetCache\YLMJ32CE\" />
-    <Folder Include="wwwroot\assets\Downloads\Adobe Photoshop CS6\Data\Roaming\Flash Player\NativeCache\" />
   </ItemGroup>
 
 </Project>
