@@ -1,0 +1,76 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication;
+using System.Linq;
+
+namespace RRS.Controllers
+{
+	public class CustomerLoginController : Controller
+	{
+		// Set the constant for cookie authentication scheme
+		private const string CookieAuthenticationDefaults = "Cookies";
+
+		// Maps to /CustomerLogin
+		public IActionResult CustomerLogin()
+		{
+			return View("~/Views/Account/CustomerLogin.cshtml");
+		}
+
+		// Maps to /Signup
+		[HttpGet("Signup")]
+		public IActionResult Signup()
+		{
+			return View("~/Views/Account/Signup.cshtml");
+		}
+	}
+}
+
+/*
+        // Initiates Google authentication challenge
+        public async Task Login()
+        {
+            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
+                new AuthenticationProperties
+                {
+                    RedirectUri = Url.Action("GoogleResponse", "CustomerLogin")
+                });
+        }
+
+        // Handles the response after the user logs in via Google
+        public async Task<IActionResult> GoogleResponse()
+        {
+            // Authenticate using the cookie authentication scheme
+            var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
+
+            // Check if authentication was successful
+            if (result.Succeeded)
+            {
+                // Retrieve claims and return as JSON
+                var claims = result.Principal?.Identities
+                    .FirstOrDefault()?
+                    .Claims
+                    .Select(claim => new
+                    {
+                        claim.Issuer,
+                        claim.OriginalIssuer,
+                        claim.Type,
+                        claim.Value
+                    });
+
+                // return Json(claims);
+            }
+
+            return RedirectToAction("HomeCustomer", "CustomerLogin", new { area = "" }); // Redirect to the customer home page after successful login
+           
+
+        
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return View("CustomerLogin");
+        }
+    }
+}
+*/

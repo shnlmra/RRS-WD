@@ -1,15 +1,26 @@
 using Microsoft.EntityFrameworkCore;
 using RRS.Data;
+using RRS.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DarbenDbConnection2")));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("EriceConnection")));
 
+builder.Services.AddScoped<PayMongoService>();
+builder.Services.AddHttpClient<PayMongoService>();
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+builder.Services.AddSingleton<PayMongoService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+
+
+
+// Build the application
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -33,6 +44,6 @@ app.MapControllerRoute(
 // Uncomment this if you want a specific route for the AboutUs controller
 app.MapControllerRoute(
     name: "Home",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Reservation}/{action=Index}/{id?}");
 
 app.Run();

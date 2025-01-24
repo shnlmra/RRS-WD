@@ -13,9 +13,9 @@ namespace RRS.Data
         public DbSet<Table> Tables { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+		public DbSet<ActionLog> ActionLogs { get; set; }
 
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
@@ -30,6 +30,11 @@ namespace RRS.Data
             modelBuilder.Entity<Table>()
                 .Property(m => m.Status)
                 .HasDefaultValue("available");
-        }
+
+			modelBuilder.Entity<ActionLog>()
+				.HasOne(a => a.Reservation)
+				.WithMany(r => r.ActionLogs)
+				.HasForeignKey(a => a.ReservationId);
+		}
     }
 }

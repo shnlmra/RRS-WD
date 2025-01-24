@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Create Payment Intent";
+}
+
+<h2>Create Payment Intent</h2>
+
+<form method="post" action="/Payment/CreatePaymentIntent">
+    <label for="amount">Amount (PHP):</label>
+    <input type="number" name="amount" id="amount" placeholder="Enter amount" required />
+    <button type="submit">Create Payment Intent</button>
+</form>

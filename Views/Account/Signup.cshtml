@@ -1,0 +1,152 @@
+﻿﻿@{
+    Layout = "~/Views/Shared/CustomerLoginLayout.cshtml";
+}
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+
+    <<img src="~/assets/Final-lg.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;" />
+
+    <style>
+        @@keyframes easeInOutAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-div {
+            animation: easeInOutAnimation 1s ease-in-out;
+        }
+    </style>
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 animate-div">
+        <div class="row gx-lg-5 align-items-center mb-5" style="justify-content: center; margin-top:5%;">
+            <div style="z-index: 10; margin-top: 6%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+                <h1 style="color:white; font-weight:bold; margin-bottom:10px; text-align:center;">Create your account</h1>
+                <p style="color: white !important; animate-div">
+                    Join the Golden Palate family and unlock a world of exclusive benefits! By creating your account, you’ll be the first to know about special offers,
+                    new menu items, and exciting events. Plus, enjoy a seamless dining experience every time you visit us.
+                </p>
+                <div style="width:600px; background-color:white; border-radius:26px;">
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <label class="form-label" for="form3Example1">
+                                            First name
+                                            <span style="color:red;">*</span>
+                                        </label>
+                                        <input style="border-radius:20px;" type="text" id="form3Example1" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <label class="form-label" for="form3Example2">
+                                            Last name
+                                            <span style="color:red;">*</span>
+                                        </label>
+                                        <input style="border-radius:20px;" type="text" id="form3Example2" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Email input -->
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="form3Example3">
+                                    Email address
+                                    <span style="color: red;">*</span>
+                                </label>
+                                <input type="email" id="form3Example3" class="form-control" style="border-radius:20px;" />
+                            </div>
+
+                            <!-- Password input -->
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="form3Example4">
+                                    Password
+                                    <span style="color:red">*</span>
+                                </label>
+                                <div style="position: relative;">
+                                    <input type="password" id="form3Example4" class="form-control" style="border-radius:20px; padding-right: 40px;" />
+
+                                    <!-- Hidden Checkbox for Show Password -->
+                                    <input type="checkbox" id="showPassword" onclick="togglePassword()" style="display: none;" />
+
+                                    <!-- Eye Icon for Toggle Password -->
+                                    <label for="showPassword" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+                                        <i class="fas fa-eye" id="eyeIcon" style="font-size: 20px;"></i>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Eye Icon for Show Password -->
+
+
+                            <script>
+                                function togglePassword() {
+                                    var passwordField = document.getElementById('form3Example4');
+                                    var eyeIcon = document.getElementById('eyeIcon');
+                                    var showPasswordCheckbox = document.getElementById('showPassword');
+
+                                    if (showPasswordCheckbox.checked) {
+                                        passwordField.type = 'text'; // Show the password
+                                        eyeIcon.classList.remove('fa-eye');
+                                        eyeIcon.classList.add('fa-eye-slash'); // Change to eye-slash icon
+                                    } else {
+                                        passwordField.type = 'password'; // Hide the password
+                                        eyeIcon.classList.remove('fa-eye-slash');
+                                        eyeIcon.classList.add('fa-eye'); // Change to eye icon
+                                    }
+                                }
+                            </script>
+
+                            <!-- Add Font Awesome CDN for the icons (if not already included) -->
+                            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+                            <!-- Submit button -->
+                            <div style="width: 100%; display: flex; justify-content: center;">
+                                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
+                                        style="width:243px; border-radius:20px; height:48px; margin-top:20px;">
+                                    Submit
+                                </button>
+                            </div>
+
+                        </form>
+
+                        <div style="width: 100%; display: flex; justify-content: center; margin-top:20px;">
+                            <p>
+                                Already have an account?
+                                <a style="color: darkgoldenrod; text-decoration: underline; " nav-link" asp-area="" asp-controller="CustomerLogin" asp-action="CustomerLogin">Click here</a>
+                            </p>
+                        </div>
+
+                        <script>
+                            function togglePassword() {
+                                var passwordField = document.getElementById('form3Example4');
+                                var showPasswordCheckbox = document.getElementById('showPassword');
+
+                                if (showPasswordCheckbox.checked) {
+                                    passwordField.type = 'text'; // Show the password
+                                } else {
+                                    passwordField.type = 'password'; // Hide the password
+                                }
+                            }
+
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section: Design Block -->

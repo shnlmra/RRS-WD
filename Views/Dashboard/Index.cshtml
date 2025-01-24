@@ -1,5 +1,6 @@
 ﻿
 ﻿@using Newtonsoft.Json
+@model DashboardViewModel
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -33,7 +34,7 @@
                         <!-- Text and Number Column -->
                         <div class="col ">
                             <p class="mb-0 fw-bold text-secondary">Upcoming Reservations</p>
-                            <h5 class="mb-0">0</h5>
+                            <h5 class="mb-0">@Model.UpcomingReservations</h5>
                         </div>
                     </div>
                 </div>
@@ -77,7 +78,7 @@
                         <!-- Text and Number Column -->
                         <div class="col ">
                             <p class="mb-0 fw-bold text-secondary">Finished Reservations</p>
-                            <h5 class="mb-0">0</h5>
+                            <h5 class="mb-0">@Model.FinishedReservations</h5>
                         </div>
                     </div>
                 </div>
@@ -120,7 +121,7 @@
                         <!-- Text and Number Column -->
                         <div class="col ">
                             <p class="mb-0 fw-bold text-secondary">Total Tables</p>
-                            <h5 class="mb-0">0</h5>
+                            <h5 class="mb-0">@Model.TotalTables</h5>
                         </div>
                     </div>
                 </div>

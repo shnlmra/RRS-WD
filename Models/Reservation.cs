@@ -27,7 +27,10 @@
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-    }
+
+		// Add this navigation property - for email sending
+		public ICollection<ActionLog> ActionLogs { get; set; }
+	}
 
     // Enum for Occasion Type
     //public enum OccasionType

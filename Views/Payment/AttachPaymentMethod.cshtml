@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Attach Payment Method";
+}
+
+<h2>Attach Payment Method</h2>
+
+<form method="post" action="/Payment/AttachPaymentMethod">
+    <label for="paymentMethodId">Payment Method ID:</label>
+    <input type="text" name="paymentMethodId" id="paymentMethodId" placeholder="Enter PaymentMethod ID" required />
+    <button type="submit">Attach Payment Method</button>
+</form>
