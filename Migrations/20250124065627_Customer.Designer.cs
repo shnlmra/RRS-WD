@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RRS.Data;
 
@@ -11,9 +12,11 @@ using RRS.Data;
 namespace RRS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250124065627_Customer")]
+    partial class Customer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,6 +119,13 @@ namespace RRS.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OccasionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateOnly>("ReservationDate")
                         .HasColumnType("date");
 
@@ -127,9 +137,7 @@ namespace RRS.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("pending");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TableId")
                         .HasColumnType("int");
@@ -141,32 +149,11 @@ namespace RRS.Migrations
 
                     b.HasIndex("CustomerId");
 
+                    b.HasIndex("MenuId");
+
                     b.HasIndex("TableId");
 
                     b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("RRS.Models.ReserveMenuDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("MenuId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MenuId");
-
-                    b.HasIndex("ReservationId");
-
-                    b.ToTable("ReserveMenuDetails");
                 });
 
             modelBuilder.Entity("RRS.Models.Table", b =>
@@ -223,6 +210,12 @@ namespace RRS.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RRS.Models.Menu", "Menu")
+                        .WithMany()
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RRS.Models.Table", "Table")
                         .WithMany("Reservations")
                         .HasForeignKey("TableId")
@@ -231,26 +224,9 @@ namespace RRS.Migrations
 
                     b.Navigation("Customer");
 
-                    b.Navigation("Table");
-                });
-
-            modelBuilder.Entity("RRS.Models.ReserveMenuDetails", b =>
-                {
-                    b.HasOne("RRS.Models.Menu", "Menu")
-                        .WithMany()
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RRS.Models.Reservation", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Menu");
 
-                    b.Navigation("Reservation");
+                    b.Navigation("Table");
                 });
 
             modelBuilder.Entity("RRS.Models.Customer", b =>

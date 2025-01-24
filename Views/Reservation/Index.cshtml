@@ -65,8 +65,8 @@
                         <th>Time</th>
                         <th>Number of Guest</th>
                         <th>Table Number</th>
-                        <th>Menu Inclusion</th>
-                        <th>Ocassion Type</th>
+                        @* <th>Menu Inclusion</th> *@
+                        @* <th>Ocassion Type</th> *@
                         <th>Special Request</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -80,8 +80,7 @@
                             <td>@reservation.ReservationDate.ToString("MMMM dd, yyyy")</td>
                             <td>@reservation.ReservationTime.ToString("hh:mm tt")</td>
                             <td>@reservation.Table.TableNumber</td>
-                            <td>@reservation.Menu.Name</td>
-                            <td>@reservation.OccasionType</td>
+                            @* <td>@reservation.OccasionType</td> *@
                             <td>@reservation.SpecialRequest</td>
                             <td>
                                 @switch (reservation.Status)

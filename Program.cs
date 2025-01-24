@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ShanellaConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ShanellaConnectionPC")));
 
 var app = builder.Build();
 
@@ -28,7 +28,7 @@ app.UseAuthorization();
 // Configure routes properly
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Staff}/{action=StaffAccount}/{id?}");
+    pattern: "{controller=Customer}/{action=Index}/{id?}");
 
 // Uncomment this if you want a specific route for the AboutUs controller
 //app.MapControllerRoute(

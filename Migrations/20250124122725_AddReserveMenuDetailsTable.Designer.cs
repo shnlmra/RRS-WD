@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RRS.Data;
 
@@ -11,9 +12,11 @@ using RRS.Data;
 namespace RRS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250124122725_AddReserveMenuDetailsTable")]
+    partial class AddReserveMenuDetailsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,6 +119,13 @@ namespace RRS.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OccasionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateOnly>("ReservationDate")
                         .HasColumnType("date");
 
@@ -140,6 +150,8 @@ namespace RRS.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("MenuId");
 
                     b.HasIndex("TableId");
 
@@ -223,6 +235,12 @@ namespace RRS.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RRS.Models.Menu", "Menu")
+                        .WithMany()
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RRS.Models.Table", "Table")
                         .WithMany("Reservations")
                         .HasForeignKey("TableId")
@@ -230,6 +248,8 @@ namespace RRS.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Menu");
 
                     b.Navigation("Table");
                 });
