@@ -1,7 +1,25 @@
 using Microsoft.EntityFrameworkCore;
-using RRS.Data;
+using RRS.Data; // Ensure this namespace contains your RRSContext class
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+})
+
+    .AddCookie()
+    .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+    {
+        options.ClientId = builder.Configuration.GetSection("GoogleKeys:ClientID").Value;
+        options.ClientSecret = builder.Configuration.GetSection("GoogleKeys:ClientID").Value;
+
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

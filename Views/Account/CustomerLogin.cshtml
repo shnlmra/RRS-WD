@@ -3,9 +3,7 @@
 }
 <!-- Section: Design Block -->
 <section class="background-radial-gradient overflow-hidden">
-
-    <<img src="~/assets/Final-lg.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;" />
-
+    <img src="~/assets/Final-lg.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;" />
 
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
         <div class="row gx-lg-5 align-items-center mb-5" style="justify-content: center; margin-top:10%;">
@@ -18,7 +16,7 @@
 
                 <div class="card bg-glass">
                     <div class="card-body px-4 py-5 px-md-5">
-                        <form>
+                        <form method="post" asp-controller="CustomerLogin" asp-action="Login">
                             <!-- Email input -->
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label class="form-label" for="form3Example3">
@@ -36,19 +34,12 @@
                                 </label>
                                 <div style="position: relative;">
                                     <input type="password" id="form3Example4" class="form-control" style="border-radius:20px; padding-right: 40px;" />
-
-                                    <!-- Hidden Checkbox for Show Password -->
                                     <input type="checkbox" id="showPassword" onclick="togglePassword()" style="display: none;" />
-
-                                    <!-- Eye Icon for Toggle Password -->
                                     <label for="showPassword" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
                                         <i class="fas fa-eye" id="eyeIcon" style="font-size: 20px;"></i>
                                     </label>
                                 </div>
                             </div>
-
-                            <!-- Eye Icon for Show Password -->
-                            
 
                             <script>
                                 function togglePassword() {
@@ -68,10 +59,8 @@
                                 }
                             </script>
 
-                            <!-- Add Font Awesome CDN for the icons (if not already included) -->
                             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-                            <!-- Submit button -->
                             <div style="width: 100%; display: flex; justify-content: center;">
                                 <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
                                         style="width:243px; border-radius:20px; height:48px; margin-top:20px;">
@@ -82,13 +71,11 @@
                             <!-- Register buttons -->
                             <div class="text-center">
                                 <p>or sign up with:</p>
-                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-facebook-f"></i>
-                                </button>
-
-                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-google"></i>
-                                </button>
+                                <form method="post" asp-controller="CustomerLogin" asp-action="Login">
+                                    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-google"></i> Google
+                                    </button>
+                                </form>
                             </div>
                         </form>
 
@@ -98,19 +85,6 @@
                                 <a class="nav-link" asp-area="" asp-controller="Signup" asp-action="Signup">Click here</a>
                             </p>
                         </div>
-
-                        <script>
-                            function togglePassword() {
-                                var passwordField = document.getElementById('form3Example4');
-                                var showPasswordCheckbox = document.getElementById('showPassword');
-
-                                if (showPasswordCheckbox.checked) {
-                                    passwordField.type = 'text'; // Show the password
-                                } else {
-                                    passwordField.type = 'password'; // Hide the password
-                                }
-                            }
-                        </script>
 
                     </div>
                 </div>
