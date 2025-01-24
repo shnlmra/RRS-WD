@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
+using RRS.Controllers;
+using RRS.Models;
 
 namespace RRS.Services
 {
@@ -13,16 +15,18 @@ namespace RRS.Services
 	{
 		private readonly HttpClient _httpClient;
 		private readonly string _secretKey;
+		private readonly string _redirectUrl;
 		//private const string BaseUrl = "https://api.paymongo.com/v1/";
 
 		public PayMongoService(IConfiguration configuration)
 		{
 			_secretKey = configuration["PayMongo:ApiKey"];
+			_redirectUrl = configuration["PayMongo:redirectUrl"];
 			_httpClient = new HttpClient();
 			_httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}");
 		}
 
-		public async Task<string> CreatePaymentIntentAsync(decimal amount, string description = "Test Payment")
+		public async Task<string> CreatePaymentIntentAsync(PaymentModel payment)
 		{
 			try
 			{
@@ -32,18 +36,18 @@ namespace RRS.Services
 					Method = HttpMethod.Post,
 					RequestUri = new Uri("https://api.paymongo.com/v1/payment_intents"),
 					Headers =
-			{
-				{ "accept", "application/json" },
-				{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
-			},
+					{
+						{ "accept", "application/json" },
+						{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
+					},
 					Content = new StringContent(JsonConvert.SerializeObject(new
 					{
 						data = new
 						{
 							attributes = new
 							{
-								amount = (int)(amount * 100), // Convert to centavos
-								payment_method_allowed = new[] { "qrph", "card", "dob", "paymaya", "billease", "gcash", "grab_pay" },
+								amount = (int)(payment.Amount * 100), // Convert to centavos
+								payment_method_allowed = new[] { "card", "paymaya", "gcash"},
 								payment_method_options = new
 								{
 									card = new
@@ -53,15 +57,15 @@ namespace RRS.Services
 								},
 								currency = "PHP",
 								capture_type = "automatic",
-								description = "Payment for <> reservation"
+								description = payment.Description
 							}
 						}
 					}))
 					{
 						Headers =
-				{
-					ContentType = new MediaTypeHeaderValue("application/json")
-				}
+						{
+							ContentType = new MediaTypeHeaderValue("application/json")
+						}
 					}
 				};
 
@@ -72,9 +76,11 @@ namespace RRS.Services
 					var result = JObject.Parse(body);
 					var paymentIntentId = result["data"]["id"].ToString();
 
-					// Create the payment method and attach it to the payment intent, returning the last method's response
-					var paymentMethodCreationResult = await CreatePaymentMethodAsync(paymentIntentId);
-					return paymentMethodCreationResult; // Return the response from the AttachPaymentMethodToIntent method
+					return paymentIntentId; // Return the PaymentIntent ID
+
+					//// Create the payment method and attach it to the payment intent, returning the last method's response
+					//var paymentMethodCreationResult = await CreatePaymentMethodAsync(paymentIntentId);
+					//return paymentMethodCreationResult; // Return the response from the AttachPaymentMethodToIntent method
 				}
 			}
 			catch (Exception ex)
@@ -83,7 +89,7 @@ namespace RRS.Services
 			}
 		}
 
-		public async Task<string> CreatePaymentMethodAsync(string paymentIntentId)
+		public async Task<string> CreatePaymentMethodAsync(PaymentModel payment)
 		{
 			try
 			{
@@ -93,10 +99,10 @@ namespace RRS.Services
 					Method = HttpMethod.Post,
 					RequestUri = new Uri("https://api.paymongo.com/v1/payment_methods"),
 					Headers =
-			{
-				{ "accept", "application/json" },
-				{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
-			},
+					{
+						{ "accept", "application/json" },
+						{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
+					},
 					Content = new StringContent(JsonConvert.SerializeObject(new
 					{
 						data = new
@@ -105,34 +111,122 @@ namespace RRS.Services
 							{
 								details = new
 								{
-									card_number = "4343434343434345",
-									exp_month = 12,
-									exp_year = 30,
-									cvc = "111"
+									card_number = payment.Card_number,
+									exp_month = payment.Exp_month,
+									exp_year = payment.Exp_year,
+									cvc = payment.Cvc
 								},
 								billing = new
 								{
-									address = new
-									{
-										line1 = "123 Main St",
-										city = "Quezon City",
-										state = "Metro Manila",
-										postal_code = "1111",
-										country = "PH"
-									},
-									name = "eRICE",
-									email = "ericemarial@gmail.com",
-									phone = "09560429604"
+									name = payment.Name,
+									email = payment.Email,
+									phone = payment.Phone
 								},
-								type = "card"
+								type = payment.PaymentMethod
+							}
+						}
+					}))
+
+					{
+						Headers =
+						{
+							ContentType = new MediaTypeHeaderValue("application/json")
+						}
+					}
+				};
+
+				Console.WriteLine("Request Payload:");
+				Console.WriteLine(JsonConvert.SerializeObject(new
+				{
+					data = new
+					{
+						attributes = new
+						{
+							details = new
+							{
+								card_number = payment.Card_number,
+								exp_month = payment.Exp_month,
+								exp_year = payment.Exp_year,
+								cvc = payment.Cvc
+							},
+							billing = new
+							{
+								name = payment.Name,
+								email = payment.Email,
+								phone = payment.Phone
+							},
+							type = payment.PaymentMethod
+						}
+					}
+				}));
+
+
+				using (var response = await client.SendAsync(request))
+				{
+					response.EnsureSuccessStatusCode();
+					if (!response.IsSuccessStatusCode)
+					{
+						var errorBody = await response.Content.ReadAsStringAsync();
+						Console.WriteLine($"Error response body: {errorBody}");
+						return "Failed to create payment method.";
+					}
+					var body = await response.Content.ReadAsStringAsync();
+					var result = JObject.Parse(body);
+					var paymentMethodCreated = result["data"] != null && result["data"]["id"] != null;
+
+					if (paymentMethodCreated)
+					{
+						var paymentMethodId = result["data"]["id"].ToString();
+						//var attachResult = await AttachPaymentMethodToIntent(paymentIntentId, paymentMethodId);
+						return paymentMethodId; // Return the response from the AttachPaymentMethodToIntent method
+					}
+					else
+					{
+						return "Payment method creation failed";
+					}
+				}
+			}
+			catch (HttpRequestException ex)
+			{
+				Console.WriteLine($"Request failed: {ex.Message}");
+				if (ex.Data != null)
+				{
+					Console.WriteLine("Error Details: " + ex.Data);
+				}
+				return "Request failed with an exception.";
+			}
+		}
+
+		public async Task<string> AttachPaymentMethodToIntent(PaymentModel payment)
+		{
+			try
+			{
+				var client = new HttpClient();
+				var request = new HttpRequestMessage
+				{
+					Method = HttpMethod.Post,
+					RequestUri = new Uri($"https://api.paymongo.com/v1/payment_intents/{payment.PaymentIntentId}/attach"),
+					Headers =
+					{
+						{ "accept", "application/json" },
+						{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
+					},
+					Content = new StringContent(JsonConvert.SerializeObject(new
+					{
+						data = new
+						{
+							attributes = new
+							{
+								payment_method = payment.PaymentMethodId,
+								return_url = _redirectUrl
 							}
 						}
 					}))
 					{
 						Headers =
-				{
-					ContentType = new MediaTypeHeaderValue("application/json")
-				}
+						{
+							ContentType = new MediaTypeHeaderValue("application/json")
+						}
 					}
 				};
 
@@ -141,13 +235,13 @@ namespace RRS.Services
 					response.EnsureSuccessStatusCode();
 					var body = await response.Content.ReadAsStringAsync();
 					var result = JObject.Parse(body);
-					var paymentMethodCreated = result["data"] != null && result["data"]["id"] != null;
+					var paymentCreated = result["data"] != null && result["data"]["id"] != null;
 
-					if (paymentMethodCreated)
+					if (paymentCreated)
 					{
-						var paymentMethodId = result["data"]["id"].ToString();
-						var attachResult = await AttachPaymentMethodToIntent(paymentIntentId, paymentMethodId);
-						return attachResult; // Return the response from the AttachPaymentMethodToIntent method
+						var paymentId = result["data"]["attributes"]["payments"][0]["id"].ToString();
+						//var attachResult = await AttachPaymentMethodToIntent(paymentIntentId, paymentMethodId);
+						return paymentId; // Return the response from the AttachPaymentMethodToIntent method
 					}
 					else
 					{
@@ -157,12 +251,12 @@ namespace RRS.Services
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine($"Error creating payment method: {ex.Message}");
-				return "Error creating payment method";
+				Console.WriteLine($"Error attaching payment method to intent: {ex.Message}");
+				return "false";
 			}
 		}
 
-		public async Task<string> AttachPaymentMethodToIntent(string paymentIntentId, string paymentMethodId)
+		public async Task<string> CreatePaymentMethodEWAsync(PaymentModel payment)
 		{
 			try
 			{
@@ -170,28 +264,102 @@ namespace RRS.Services
 				var request = new HttpRequestMessage
 				{
 					Method = HttpMethod.Post,
-					RequestUri = new Uri($"https://api.paymongo.com/v1/payment_intents/{paymentIntentId}/attach"),
+					RequestUri = new Uri("https://api.paymongo.com/v1/payment_methods"),
 					Headers =
-			{
-				{ "accept", "application/json" },
-				{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
-			},
+					{
+						{ "accept", "application/json" },
+						{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
+					},
 					Content = new StringContent(JsonConvert.SerializeObject(new
 					{
 						data = new
 						{
 							attributes = new
 							{
-								payment_method = paymentMethodId,
-								return_url = "https://github.com/dnsxmrs/fiweb"
+								billing = new
+								{
+									name = payment.Name,
+									email = payment.Email,
+									phone = payment.Phone
+								},
+								type = payment.PaymentMethod
 							}
 						}
 					}))
 					{
 						Headers =
+						{
+							ContentType = new MediaTypeHeaderValue("application/json")
+						}
+					}
+				};
+
+				using (var response = await client.SendAsync(request))
 				{
-					ContentType = new MediaTypeHeaderValue("application/json")
+					response.EnsureSuccessStatusCode();
+					if (!response.IsSuccessStatusCode)
+					{
+						var errorBody = await response.Content.ReadAsStringAsync();
+						Console.WriteLine($"Error response body: {errorBody}");
+						return "Failed to create payment method.";
+					}
+					var body = await response.Content.ReadAsStringAsync();
+					var result = JObject.Parse(body);
+					var paymentMethodCreated = result["data"] != null && result["data"]["id"] != null;
+
+					if (paymentMethodCreated)
+					{
+						var paymentMethodId = result["data"]["id"].ToString();
+						//var attachResult = await AttachPaymentMethodToIntent(paymentIntentId, paymentMethodId);
+						return paymentMethodId; // Return the response from the AttachPaymentMethodToIntent method
+					}
+					else
+					{
+						return "Payment method creation failed";
+					}
 				}
+			}
+			catch (HttpRequestException ex)
+			{
+				Console.WriteLine($"Request failed: {ex.Message}");
+				if (ex.Data != null)
+				{
+					Console.WriteLine("Error Details: " + ex.Data);
+				}
+				return "Request failed with an exception.";
+			}
+		}
+
+		public async Task<string> AttachPaymentMethodToIntentEW(PaymentModel payment)
+		{
+			try
+			{
+				var client = new HttpClient();
+				var request = new HttpRequestMessage
+				{
+					Method = HttpMethod.Post,
+					RequestUri = new Uri($"https://api.paymongo.com/v1/payment_intents/{payment.PaymentIntentId}/attach"),
+					Headers =
+					{
+						{ "accept", "application/json" },
+						{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
+					},
+					Content = new StringContent(JsonConvert.SerializeObject(new
+					{
+						data = new
+						{
+							attributes = new
+							{
+								payment_method = payment.PaymentMethodId,
+								return_url = _redirectUrl
+							}
+						}
+					}))
+					{
+						Headers =
+						{
+							ContentType = new MediaTypeHeaderValue("application/json")
+						}
 					}
 				};
 
@@ -199,7 +367,27 @@ namespace RRS.Services
 				{
 					response.EnsureSuccessStatusCode();
 					var body = await response.Content.ReadAsStringAsync();
-					return body; // Return the response body as a string
+					var result = JObject.Parse(body);
+					var paymentCreated = result["data"] != null && result["data"]["id"] != null;
+
+					if (paymentCreated)
+					{
+						// get the payments id
+						//var paymentId = result["data"]?["attributes"]?["payments"]?[0]?["id"]?.ToString();
+
+						// get the redirect url
+						var redirectUrl = result["data"]["attributes"]["next_action"]?["redirect"]?["url"]?.ToString();
+
+						// return both paymentId
+						return redirectUrl;
+
+						// check the status of payments id
+
+					}
+					else
+					{
+						return "Payment method creation failed";
+					}
 				}
 			}
 			catch (Exception ex)
@@ -209,31 +397,63 @@ namespace RRS.Services
 			}
 		}
 
-		//private async Task<JObject> SendPostRequestAsync(string endpoint, object payload)
-		//{
-		//	try
-		//	{
-		//		var jsonPayload = JsonConvert.SerializeObject(payload);
-		//		var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+		public async Task<string> RetrievePaymentIntent(string paymentIntentId)
+		{
+			try
+			{
+				var client = new HttpClient();
+				var request = new HttpRequestMessage
+				{
+					Method = HttpMethod.Get,
+					RequestUri = new Uri($"https://api.paymongo.com/v1/payment_intents/{paymentIntentId}"),
+					Headers =
+					{
+						{ "accept", "application/json" },
+						{ "authorization", $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_secretKey}:"))}" },
+					}
+				};
 
-		//		var response = await _httpClient.PostAsync($"{BaseUrl}{endpoint}", content);
+				using (var response = await client.SendAsync(request))
+				{
+					response.EnsureSuccessStatusCode();
+					var body = await response.Content.ReadAsStringAsync();
+					var result = JObject.Parse(body);
 
-		//		// Read response content for detailed error information
-		//		var responseContent = await response.Content.ReadAsStringAsync();
+					var payments = result["data"]?["attributes"]?["payments"];
 
-		//		if (!response.IsSuccessStatusCode)
-		//		{
-		//			// Log or throw a more informative exception
-		//			throw new HttpRequestException($"PayMongo API Error: {response.StatusCode} - {responseContent}");
-		//		}
+					var status = result["data"]?["attributes"]?["payments"]?[0]?["attributes"]?["status"]?.ToString();
 
-		//		return JObject.Parse(responseContent);
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		// Log the full exception details
-		//		throw new Exception($"PayMongo API Call Failed: {ex.Message}", ex);
-		//	}
-		//}
+					// return payment
+
+					return status;
+
+					if (payments != null && payments.HasValues)
+					{
+						if (status == "failed")
+						{
+							Console.WriteLine("A payment has failed.");
+						}
+						else if (status == "paid")
+						{
+							Console.WriteLine("A payment has been paid.");
+						}
+						return status;
+					}
+					else
+					{
+						// No payments exist
+						Console.WriteLine("No payments found.");
+						return status;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error attaching payment method to intent: {ex.Message}");
+				return "false";
+			}
+
+		}
+
 	}
 }

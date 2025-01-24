@@ -77,10 +77,7 @@ namespace RRS.Controllers
 
             return View("CreateReservation", reservation);
         }
-
-        //public IActionResult ViewDetails(int id)
-        //{
-        //    Reservation reservation = context.Reservations.FirstOrDefault(r => r.Id == id);
+		
 		[HttpGet] // Called in Reservation/Index.cshtml for viewing details
 		public IActionResult GetReservationDetails(int id)
 		{
@@ -100,7 +97,7 @@ namespace RRS.Controllers
 				customerName = $"{reservation.Customer.FirstName} {reservation.Customer.LastName}",
 				reservationDate = reservation.ReservationDate.ToString("MMMM dd, yyyy"),
 				reservationTime = reservation.ReservationTime.ToString("hh:mm tt"),
-				numberOfGuests = reservation.NumberOfGuest,
+				numberOfGuests = reservation.Table.SeatingCapacity,
 				tableNumber = reservation.Table.TableNumber,
 				menuName = reservation.Menu.Name,
 				occasionType = reservation.OccasionType,
@@ -108,10 +105,6 @@ namespace RRS.Controllers
 				status = reservation.Status
 			};
 
-
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 			return Json(result);
 		}
 
@@ -222,7 +215,8 @@ namespace RRS.Controllers
 
 				reservation.ReservationDate = updatedReservation.ReservationDate;
 				reservation.ReservationTime = updatedReservation.ReservationTime;
-				reservation.NumberOfGuest = updatedReservation.NumberOfGuest;
+				reservation.Table.SeatingCapacity = updatedReservation.Table.SeatingCapacity;
+
 				reservation.Status = "Confirmed";
 
 				context.Reservations.Update(reservation);

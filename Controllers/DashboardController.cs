@@ -21,8 +21,8 @@ namespace RRS.Controllers
 			var upcomingReservations = await _context.Reservations
 				.CountAsync(r => r.ReservationDate >= today && r.Status == "Pending");
 
-			//var availableTables = await _context.Tables
-			//	.CountAsync(t => t.IsAvailable);
+			var availableTables = await _context.Tables
+				.CountAsync(t => t.Status == "available");
 
 			var finishedReservations = await _context.Reservations
 				.CountAsync(r => r.Status == "Completed");
@@ -37,7 +37,7 @@ namespace RRS.Controllers
 			var dashboardData = new DashboardViewModel
 			{
 				UpcomingReservations = upcomingReservations,
-				//AvailableTables = availableTables,
+				AvailableTables = availableTables,
 				FinishedReservations = finishedReservations,
 				//SeatedGuests = seatedGuests,
 				TotalTables = totalTables

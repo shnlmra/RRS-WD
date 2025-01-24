@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RRS.Controllers;
 using RRS.Models;
 
 namespace RRS.Data
@@ -14,6 +15,7 @@ namespace RRS.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 		public DbSet<ActionLog> ActionLogs { get; set; }
+		public DbSet<Payment> Payments { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
