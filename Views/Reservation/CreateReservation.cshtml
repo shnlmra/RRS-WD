@@ -1,4 +1,4 @@
-﻿@model Reservation
+﻿@model RRS.Models.ViewModels.ReservationViewModel
 
 @{
     ViewData["Title"] = "Create Reservation";
@@ -10,71 +10,133 @@
     <p class="text-secondary">Fill in the form below to create a reservation.</p>
 </div>
 
-<form asp-action="Create" asp-controller="Reservation" method="post" enctype="multipart/form-data"> 
+<form id="reservationForm" asp-action="Create" asp-controller="Reservation" onsubmit="notice()" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="datepicker" class="form-label">Select a date</label>
-        <input type="text" asp-for="ReservationDate" id="datepicker" class="form-control">
+        <label for="tableNumber" class="form-label">Table Number</label>
+        <p>@Model.Reservation.Table.TableNumber</p>
+        <input type="hidden" asp-for="Reservation.Table.TableNumber" name="tableNumber" value="@Model.Reservation.Table.TableNumber" />
+    </div>
+    <div class="form-group">
+        <label for="seatingCapacity" class="form-label">Seating Capacity</label>
+        <p>@Model.Reservation.Table.SeatingCapacity</p>
+        <input type="hidden" asp-for="Reservation.Table.SeatingCapacity" name="seatingCapacity" value="@Model.Reservation.Table.SeatingCapacity" />
+    </div>
+    <div class="form-group">
+        <label for="datepicker" class="form-label">Reservation Date</label>
+        <p>@Model.Reservation.ReservationDate</p>
+        <input type="hidden" asp-for="Reservation.ReservationDate" name="name" value="@Model.Reservation.ReservationDate" />
     </div>
 
     <div class="form-group">
-        <label for="timepicker" class="form-label">Select Time</label>
-        <input type="text" asp-for="ReservationTime" id="timepicker" class="form-control">
+        <label for="timepicker" class="form-label">Reservation Time </label>
+        <p>@Model.Reservation.ReservationTime</p>
+        <input type="hidden" asp-for="Reservation.ReservationTime" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="firstName">First name </label>
-        <input type="text" asp-for="Customer.FirstName" name="firstName" id="firstName" class="form-control"/>
+        <label for="firstName">First name <span class="text-danger">*</span></label>
+        <input type="text" asp-for="Reservation.Customer.FirstName" name="firstName" id="firstName" class="form-control"/>
+        <span asp-validation-for="Reservation.Customer.FirstName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="lastName">Last name </label>
-        <input type="text" asp-formaction="Customer.LastName" name="lastName" id="lastName" class="form-control" />
+        <label for="lastName">Last name <span class="text-danger">*</span></label>
+        <input type="text" asp-for="Reservation.Customer.LastName" name="lastName" id="lastName" class="form-control" />
+        <span asp-validation-for="Reservation.Customer.LastName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="reservationDate">Email address</label>
-        <input type="email" asp-for="Customer.Email" class="form-control" id="reservationDate" aria-describedby="emailHelp" placeholder="Enter email">
+        <label for="reservationDate">Email address <span class="text-danger">*</span></label>
+        <input type="email" asp-for="Reservation.Customer.Email" class="form-control" id="reservationDate" aria-describedby="emailHelp" placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <span asp-validation-for="Reservation.Customer.Email" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="occasionType">Type of Occasion </label>
-        <select asp-for="OccasionType" class="form-control" id="occasionType">
-            <option selected="">Select type of occasion</option>
-            <option value="birthday">Birthday</option>
-            <option value="anniversary">Anniversary</option>
-            <option value="casual">Casual</option>
-            <option value="business">Business</option>
-            <option value="celebration">Celebration</option>
-            <option class="other">Other</option>
-        </select>
+        <label for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
+        <input type="text" asp-for="Reservation.Customer.PhoneNumber" name="phoneNumber" id="phoneNumber" class="form-control" />
+        <span asp-validation-for="Reservation.Customer.PhoneNumber" class="text-danger"></span>
     </div>
 
-    
+    @* <div class="form-group"> *@
+    @*     <label for="occasionType">Type of Occasion </label> *@
+    @*     <select asp-for="Reservation.OccasionType" class="form-control" id="occasionType"> *@
+    @*         <option selected="">Select type of occasion</option> *@
+    @*         <option value="birthday">Birthday</option> *@
+    @*         <option value="anniversary">Anniversary</option> *@
+    @*         <option value="casual">Casual</option> *@
+    @*         <option value="business">Business</option> *@
+    @*         <option value="celebration">Celebration</option> *@
+    @*         <option class="other">Other</option> *@
+    @*     </select> *@
+    @*     <span asp-validation-for="Reservation.OccasionType" class="text-danger"></span> *@
+    @* </div> *@
+
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="specialRequest">Speacial Request </label>
+        <textarea asp-for="Reservation.SpecialRequest" name="specialRequest" id="specialRequest" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Reservation.SpecialRequest" class="text-danger"></span>
     </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <button type="submit" class="btn btn-primary">Proceed</button>
 </form>
 
 <script>
-    // Initialize flatpickr on the input field
-    flatpickr("#datepicker", {
-      dateFormat: "Y-m-d", // Customize the date format
-      enableTime: false,   // Disable time selection
-      minDate: "today",
-    });
 
-        // Initialize flatpickr with time picker only
-    flatpickr("#timepicker", {
-        enableTime: true,
-        noCalendar: true, // Hide the calendar part
-        dateFormat: "h:i K", // Use 12-hour format with AM/PM
-        time_24hr: false, // Use 12-hour format (AM/PM)
-    });
+    function notice(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Terms and Condition!',
+            html: '<b>Reservation Fee:</b> <br>  A non-refundable reservation fee of 30% of the total estimated bill is required to secure your reservation. This fee can be paid online through our website. <br><br><b>Cancellation Policy: </b><br>The full reservation fee will be refunded for cancellations made <b>more than 48 hours in advance.</b> The reservation fee will be forfeited for cancellations made <b>within 48 hours</b>.<br><br><b>No-shows:</b> The reservation fee will be forfeited.<br><br>To modify your reservation, please contact us at least 24 hours in advance. We will do our best to accommodate your request, but please note that modifications may not always be possible.',
+            icon: 'info',
+            confirmButtonText: 'I understand, continue',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the Confirm button is clicked, submit the form
+                document.getElementById("reservationForm").submit();
+            } else if (result.isDismissed) {
+                // Optionally, you can handle the Cancel button here
+                console.log("Reservation was canceled");
+            }
+        });
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <text>
+            Swal.fire({
+                title: 'Success!',
+                text: '@TempData["SuccessMessage"]',
+                icon: 'success',
+                confirmButtonText: 'OK'
+                });
+        </text>
+    }
+
+    @if (TempData["InformationMessage"] != null)
+    {
+        <text>
+            Swal.fire({
+                title: 'Information!',
+                text: '@TempData["InformationMessage"]',
+                icon: 'info',
+                confirmButtonText: 'OK'
+                });
+        </text>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <text>
+                Swal.fire({
+                    title: 'Error!',
+                    text: '@TempData["ErrorMessage"]',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+        </text>
+    }
 </script>
