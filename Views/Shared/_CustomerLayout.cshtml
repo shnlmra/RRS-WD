@@ -23,12 +23,12 @@
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.bootstrap5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/navbar.js" defer></script>
-  
-    
+
+
     <!-- Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Dancing+Script:wght@400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playwrite+TZ+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
 
     <style>
         body {
-            padding:0%;
+            padding: 0%;
             height: 100%;
         }
     </style>
@@ -71,7 +71,11 @@
                         <a class="nav-link" href="#contact">Contact Us</a>
                     </li>
                 </ul>
-                <button class="btn login px-4 rounded shadow-sm py-1">Login</button>
+                <a asp-area="" asp-action="CustomerLogin" asp-controller="CustomerLogin"
+                   class="btn login px-4 rounded shadow-sm py-1 text-decoration-none"
+                   style="border: 2px solid darkgoldenrod; color: darkgoldenrod; padding: 8px 20px; background-color: white;">
+                    Login
+                </a>
             </div>
         </div>
     </nav>
@@ -84,42 +88,41 @@
 
 
     <!-- Remove the container if you want to extend the Footer to full width. -->
-        <footer style="background-color: #deded5;">
-            <div class="container p-4">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 mb-4">
-                        <h5 class="mb-3" style="letter-spacing: 2px; color: #818963;">Golden Palate</h5>
-                        <p>
-                        Reserve your table at Golden Palate and enjoy a delightful dining experience. 
-                        Our team is dedicated to providing exceptional service and exquisite cuisine. 
+    <footer style="background-color: #deded5;">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h5 class="mb-3" style="letter-spacing: 2px; color: #818963;">Golden Palate</h5>
+                    <p>
+                        Reserve your table at Golden Palate and enjoy a delightful dining experience.
+                        Our team is dedicated to providing exceptional service and exquisite cuisine.
                         Book now and indulge in the finest flavors!
-                        </p>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <h5 class="mb-1" style="letter-spacing: 2px; color: #818963;">opening hours</h5>
-                        <table class="table" style="color: #4f4f4f; border-color: #666;">
-                            <tbody>
-                                <tr>
-                                    <td>Mon - Sun:</td>
-                                    <td>8am - 8pm</td>
-                                </tr>
-                             
-                            </tbody>
-                        </table>
-                    </div>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-1" style="letter-spacing: 2px; color: #818963;">opening hours</h5>
+                    <table class="table" style="color: #4f4f4f; border-color: #666;">
+                        <tbody>
+                            <tr>
+                                <td>Mon - Sun:</td>
+                                <td>8am - 8pm</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2025 Copyright:
-                <a class="text-dark" >Golden Palate</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 Copyright:
+            <a class="text-dark">Golden Palate</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
 
     </div>
     <!-- End of .container -->
-
     @await RenderSectionAsync("Scripts", required: false)
 
     <!-- Bootstrap JS and dependencies -->
