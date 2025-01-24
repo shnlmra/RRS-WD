@@ -1,5 +1,5 @@
-﻿@model RRS.Models.ViewModels.ReservationViewModel
-
+﻿<!--
+-->
 @{
     ViewData["Title"] = "Create Reservation";
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
@@ -14,48 +14,44 @@
     <div class="form-group">
         <label for="tableNumber" class="form-label">Table Number</label>
         <p>@Model.Reservation.Table.TableNumber</p>
-        <input type="hidden" asp-for="Reservation.Table.TableNumber" name="tableNumber" value="@Model.Reservation.Table.TableNumber" />
+        <input type="hidden" name="tableNumber" value="@Model.Reservation.Table.TableNumber" />
     </div>
     <div class="form-group">
         <label for="seatingCapacity" class="form-label">Seating Capacity</label>
         <p>@Model.Reservation.Table.SeatingCapacity</p>
-        <input type="hidden" asp-for="Reservation.Table.SeatingCapacity" name="seatingCapacity" value="@Model.Reservation.Table.SeatingCapacity" />
+        <input type="hidden" name="seatingCapacity" value="@Model.Reservation.Table.SeatingCapacity" />
     </div>
     <div class="form-group">
         <label for="datepicker" class="form-label">Reservation Date</label>
         <p>@Model.Reservation.ReservationDate</p>
-        <input type="hidden" asp-for="Reservation.ReservationDate" name="name" value="@Model.Reservation.ReservationDate" />
+        <input type="hidden"  name="name" value="@Model.Reservation.ReservationDate" />
     </div>
 
     <div class="form-group">
         <label for="timepicker" class="form-label">Reservation Time </label>
         <p>@Model.Reservation.ReservationTime</p>
-        <input type="hidden" asp-for="Reservation.ReservationTime" class="form-control">
+        <input type="hidden"  class="form-control">
     </div>
 
     <div class="form-group">
         <label for="firstName">First name <span class="text-danger">*</span></label>
-        <input type="text" asp-for="Reservation.Customer.FirstName" name="firstName" id="firstName" class="form-control"/>
-        <span asp-validation-for="Reservation.Customer.FirstName" class="text-danger"></span>
+        <input type="text"  name="firstName" id="firstName" class="form-control"/>
     </div>
 
     <div class="form-group">
         <label for="lastName">Last name <span class="text-danger">*</span></label>
-        <input type="text" asp-for="Reservation.Customer.LastName" name="lastName" id="lastName" class="form-control" />
-        <span asp-validation-for="Reservation.Customer.LastName" class="text-danger"></span>
+        <input type="text"  name="lastName" id="lastName" class="form-control" />
     </div>
 
     <div class="form-group">
         <label for="reservationDate">Email address <span class="text-danger">*</span></label>
-        <input type="email" asp-for="Reservation.Customer.Email" class="form-control" id="reservationDate" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="email" class="form-control" id="reservationDate" aria-describedby="emailHelp" placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <span asp-validation-for="Reservation.Customer.Email" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
-        <input type="text" asp-for="Reservation.Customer.PhoneNumber" name="phoneNumber" id="phoneNumber" class="form-control" />
-        <span asp-validation-for="Reservation.Customer.PhoneNumber" class="text-danger"></span>
+        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" />
     </div>
 
     @* <div class="form-group"> *@
@@ -71,12 +67,6 @@
     @*     </select> *@
     @*     <span asp-validation-for="Reservation.OccasionType" class="text-danger"></span> *@
     @* </div> *@
-
-    <div class="form-group">
-        <label for="specialRequest">Speacial Request </label>
-        <textarea asp-for="Reservation.SpecialRequest" name="specialRequest" id="specialRequest" class="form-control" rows="3"></textarea>
-        <span asp-validation-for="Reservation.SpecialRequest" class="text-danger"></span>
-    </div>
 
     <button type="submit" class="btn btn-primary">Proceed</button>
 </form>
