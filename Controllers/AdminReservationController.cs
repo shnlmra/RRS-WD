@@ -2,7 +2,7 @@
 
 namespace RRS.Controllers
 {
-    public class PaymentController : Controller
+    public class AdminReservationController : Controller
     {
         public IActionResult Index()
         {
