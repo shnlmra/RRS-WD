@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "HomeCustomer";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="half-screen-image" style="background-image: url('@Url.Content("")');"></div>
+    </div>
+</div>
+
+<div class="col-12 text-container" style="text-align: left; margin-top: 3%; margin-left:8%;">
+    <img src="~/assets/RRS-Name.png" alt="Golden Palate" style="line-height: 0; width: 30vw; height: 30vh;">
+    <p style="font-size: 8rem; margin: 0; line-height: 100px; font-family: 'Corbel';">NO LINES,</p>
+    <p style="font-size: 6rem; margin: 0; line-height: 0; margin-left:2%; margin-top:2%;">NO WORRIES.</p>
+    <p style="font-size: 0.8rem; margin: 0; line-height: 0; margin-top:3%;">
+        Skip the queues, enjoy seamless service with us, and experience a hassle-free journey from
+    </p>
+    <p style="font-size: 0.8rem; margin: 0; line-height: 0;">
+        start to finish—because your time is valuable, and we’re here to make things easier for you!
+    </p>
+</div>
+
+<img src="~/assets/MENU.png" alt="Right Image" style="position: absolute; top: 35%; right: 5%; transform: translateY(-50%); width: 40vw; height: auto;">
+<img src="~/assets/2-MENU.png" alt="Right Image" style="position: absolute; top: 70%; right: 5%; transform: translateY(-50%); width: 40vw; height: auto;">
+
+
+
+
+<button type="button" class="btn" onclick="window.location.href='@Url.Action("Reservation", "CReservation")'">
+    BOOK NOW
+</button>
+

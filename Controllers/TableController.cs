@@ -21,9 +21,16 @@ namespace RRS.Controllers
 
         public IActionResult Index()
         {
-            List<Table> tables = context.Tables.Where(t => !t.IsDeleted).ToList();
+            var tables = this.GetTables();
 
             return View(tables);
+        }
+
+        public IActionResult DisplayTablesInCustomer()
+        {
+            var tables = this.GetTables();
+
+            return View("DisplayTablesInCustomer", tables);
         }
 
         public IActionResult Create()

@@ -116,6 +116,9 @@ namespace RRS.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -155,9 +158,6 @@ namespace RRS.Migrations
                     b.Property<int>("MenuId")
                         .HasColumnType("int");
 
-                    b.Property<int>("NumberOfGuest")
-                        .HasColumnType("int");
-
                     b.Property<string>("OccasionType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -167,10 +167,6 @@ namespace RRS.Migrations
 
                     b.Property<TimeOnly>("ReservationTime")
                         .HasColumnType("time");
-
-                    b.Property<string>("RestaurantBranch")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpecialRequest")
                         .HasColumnType("nvarchar(max)");
@@ -208,6 +204,9 @@ namespace RRS.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -253,7 +252,7 @@ namespace RRS.Migrations
             modelBuilder.Entity("RRS.Models.Reservation", b =>
                 {
                     b.HasOne("RRS.Models.Customer", "Customer")
-                        .WithMany()
+                        .WithMany("Reservations")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -265,7 +264,7 @@ namespace RRS.Migrations
                         .IsRequired();
 
                     b.HasOne("RRS.Models.Table", "Table")
-                        .WithMany()
+                        .WithMany("Reservations")
                         .HasForeignKey("TableId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

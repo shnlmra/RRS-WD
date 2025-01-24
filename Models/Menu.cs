@@ -14,6 +14,7 @@ namespace RRS.Models
         public string Category { get; set; }
         [Required, Precision(10, 2)]
         public decimal Price { get; set; }
+        public string? ImagePath { get; set; }
         public bool IsDeleted { get; set; } = false;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

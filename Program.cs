@@ -42,8 +42,10 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Uncomment this if you want a specific route for the AboutUs controller
-app.MapControllerRoute(
-    name: "Home",
-    pattern: "{controller=Reservation}/{action=Index}/{id?}");
+//app.MapControllerRoute(
+//    name: "Home",
+//    // pattern: "{controller=Home}/{action=Index}/{id?}");
+//    pattern: "{controller=Customer}/{action=Layout}/{id?}");
+
 
 app.Run();

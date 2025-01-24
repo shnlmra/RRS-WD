@@ -7,8 +7,8 @@ using System;
 
 namespace RRS.Controllers
 {
-	public class PaymentController : Controller
-	{
+    public class PaymentController : Controller
+    {
 		private readonly PayMongoService _payMongoService;
 		private readonly IConfiguration _configuration;
 
@@ -66,11 +66,11 @@ namespace RRS.Controllers
 			catch (Exception ex)
 			{
 				return BadRequest(new
-				{
+        {
 					success = false,
 					message = ex.Message
 				});
 			}
-		}
-	}
+        }
+    }
 }

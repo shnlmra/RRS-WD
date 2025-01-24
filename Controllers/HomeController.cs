@@ -19,9 +19,14 @@ namespace RRS.Controllers
             return View();
         }
 
+        public IActionResult Menu()
+        {
+            return View("~/Views/Home/Menu.cshtml");
+        }
+
         public IActionResult Customers()
         {
-            return View("~/Views/Home/Customer.cshtml");
+            return View("~/Views/Home/Customers.cshtml");
         }
 
         public IActionResult AboutUs()

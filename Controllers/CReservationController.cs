@@ -7,6 +7,12 @@ namespace RRS.Controllers
         public IActionResult CReservation()
         {
             return View("~/Views/Reservation/CReservation.cshtml");
+
+        }
+        
+        public IActionResult Reservation()
+        {
+            return View("~/Views/Customer/Reservation.cshtml");
         }
     }
 }

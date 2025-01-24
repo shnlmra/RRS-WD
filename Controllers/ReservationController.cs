@@ -32,6 +32,55 @@ namespace RRS.Controllers
             return View(reservations);
         }
 
+        public IActionResult Create()
+        {
+            Reservation reservation = new Reservation();
+
+            return View("CreateReservation");
+        }
+
+        public IActionResult CreateTrigger()
+        {
+            return View("~/Views/Reservation/createButton.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult Create(Reservation reservation)
+        {
+            if (ModelState.IsValid)
+            {
+                Customer customer = new Customer();
+
+                customer.FirstName = reservation.Customer.FirstName;
+                customer.LastName = reservation.Customer.LastName;
+                customer.PhoneNumber = reservation.Customer.PhoneNumber;
+                customer.Email = reservation.Customer.Email;
+                customer.CreatedAt = DateTime.Now;
+                customer.UpdatedAt = DateTime.Now;
+
+                context.Customers.Add(customer);
+                var isCreated = context.SaveChanges();
+
+                if (isCreated != 0)
+                {
+                    reservation.CustomerId = customer.Id;
+                    reservation.CreatedAt = DateTime.Now;
+                    reservation.UpdatedAt = DateTime.Now;
+
+                    context.Reservations.Add(reservation);
+                    context.SaveChanges();
+
+                    TempData["SuccessMessage"] = "Reservation created successfully!";
+                    return RedirectToAction("Home", "Index");
+                }
+            }
+
+            return View("CreateReservation", reservation);
+        }
+
+        //public IActionResult ViewDetails(int id)
+        //{
+        //    Reservation reservation = context.Reservations.FirstOrDefault(r => r.Id == id);
 		[HttpGet] // Called in Reservation/Index.cshtml for viewing details
 		public IActionResult GetReservationDetails(int id)
 		{
@@ -59,6 +108,10 @@ namespace RRS.Controllers
 				status = reservation.Status
 			};
 
+
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 			return Json(result);
 		}
 

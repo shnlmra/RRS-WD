@@ -4,9 +4,14 @@ namespace RRS.Controllers
 {
     public class CustomerController : Controller
     {
-        public IActionResult Customer()
+        public IActionResult Customers()
         {
-            return View("~/Views/Home/Customer.cshtml");
+            return View("~/Views/Customer/HomeCustomer.cshtml");
+        }
+
+        public IActionResult Layout()
+        {
+            return View("~/Views/Shared/_CustomerLayout.cshtml");
         }
     }
 }
