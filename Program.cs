@@ -28,7 +28,7 @@ app.UseAuthorization();
 // Configure routes properly
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Table}/{action=DisplayTablesInCustomer}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Uncomment this if you want a specific route for the AboutUs controller
 //app.MapControllerRoute(
