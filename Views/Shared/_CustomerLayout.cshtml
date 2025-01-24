@@ -83,7 +83,42 @@
     </div>
 
 
-    <footer class="text-center">Golden Palate - 2025</footer>
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+        <footer style="background-color: #deded5;">
+            <div class="container p-4">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <h5 class="mb-3" style="letter-spacing: 2px; color: #818963;">Golden Palate</h5>
+                        <p>
+                        Reserve your table at Golden Palate and enjoy a delightful dining experience. 
+                        Our team is dedicated to providing exceptional service and exquisite cuisine. 
+                        Book now and indulge in the finest flavors!
+                        </p>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h5 class="mb-1" style="letter-spacing: 2px; color: #818963;">opening hours</h5>
+                        <table class="table" style="color: #4f4f4f; border-color: #666;">
+                            <tbody>
+                                <tr>
+                                    <td>Mon - Sun:</td>
+                                    <td>8am - 8pm</td>
+                                </tr>
+                             
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2025 Copyright:
+                <a class="text-dark" >Golden Palate</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+
+    </div>
+    <!-- End of .container -->
 
     @await RenderSectionAsync("Scripts", required: false)
 
