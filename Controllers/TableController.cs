@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RRS.Data;
 using RRS.Models;
+using RRS.Models.ViewModels;
 
 namespace RRS.Controllers
 {
@@ -28,9 +29,15 @@ namespace RRS.Controllers
 
         public IActionResult DisplayTablesInCustomer()
         {
+            TableViewModel tableViewModel = new TableViewModel();
+
+            tableViewModel.Tables = this.GetTables();
+            tableViewModel.Reservation = new Reservation();
+            tableViewModel.Table = new Table();
+
             var tables = this.GetTables();
 
-            return View("DisplayTablesInCustomer", tables);
+            return View("DisplayTablesInCustomer", tableViewModel);
         }
 
         public IActionResult Create()

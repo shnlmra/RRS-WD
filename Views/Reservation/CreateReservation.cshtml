@@ -1,4 +1,4 @@
-﻿@model RRS.Models.ViewModels.ReservationViewModel
+﻿@model RRS.Models.Reservation
 
 @{
     ViewData["Title"] = "Create Reservation";
@@ -10,81 +10,108 @@
     <p class="text-secondary">Fill in the form below to create a reservation.</p>
 </div>
 
-<form id="reservationForm" asp-action="Create" asp-controller="Reservation" onsubmit="notice()" method="post" enctype="multipart/form-data">
+<form id="reservationForm" asp-action="Create" asp-controller="Reservation" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="tableNumber" class="form-label">Table Number</label>
-        <p>@Model.Reservation.Table.TableNumber</p>
-        <input type="hidden" asp-for="Reservation.Table.TableNumber" name="tableNumber" value="@Model.Reservation.Table.TableNumber" />
+        <!-- Display Table Number -->
+        <p>@Model.Table.TableNumber</p>
+        <!-- Hidden field to submit Table Number -->
+        <input type="hidden" asp-for="Table.TableNumber" value="@Model.Table.TableNumber"/>
     </div>
-    <div class="form-group">
-        <label for="seatingCapacity" class="form-label">Seating Capacity</label>
-        <p>@Model.Reservation.Table.SeatingCapacity</p>
-        <input type="hidden" asp-for="Reservation.Table.SeatingCapacity" name="seatingCapacity" value="@Model.Reservation.Table.SeatingCapacity" />
-    </div>
+
     <div class="form-group">
         <label for="datepicker" class="form-label">Reservation Date</label>
-        <p>@Model.Reservation.ReservationDate</p>
-        <input type="hidden" asp-for="Reservation.ReservationDate" name="name" value="@Model.Reservation.ReservationDate" />
+        <p>@Model.ReservationDate</p>
+        <input type="hidden" asp-for="ReservationDate" value="@Model.ReservationDate" />
     </div>
 
     <div class="form-group">
         <label for="timepicker" class="form-label">Reservation Time </label>
-        <p>@Model.Reservation.ReservationTime</p>
-        <input type="hidden" asp-for="Reservation.ReservationTime" class="form-control">
+        <p>@Model.ReservationTime</p>
+        <input type="hidden" asp-for="ReservationTime" value="@Model.ReservationTime" />
     </div>
 
     <div class="form-group">
         <label for="firstName">First name <span class="text-danger">*</span></label>
-        <input type="text" asp-for="Reservation.Customer.FirstName" name="firstName" id="firstName" class="form-control"/>
-        <span asp-validation-for="Reservation.Customer.FirstName" class="text-danger"></span>
+        <input type="text" asp-for="Customer.FirstName" id="firstName" class="form-control" />
+        <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+        <span id="firstNameError" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label for="lastName">Last name <span class="text-danger">*</span></label>
-        <input type="text" asp-for="Reservation.Customer.LastName" name="lastName" id="lastName" class="form-control" />
-        <span asp-validation-for="Reservation.Customer.LastName" class="text-danger"></span>
+        <input type="text" asp-for="Customer.LastName" id="lastName" class="form-control" />
+        <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+        <span id="lastNameError" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="reservationDate">Email address <span class="text-danger">*</span></label>
-        <input type="email" asp-for="Reservation.Customer.Email" class="form-control" id="reservationDate" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <span asp-validation-for="Reservation.Customer.Email" class="text-danger"></span>
+        <label for="email">Email address <span class="text-danger">*</span></label>
+        <input type="email" asp-for="Customer.Email" id="email" class="form-control" />
+        <span asp-validation-for="Customer.Email" class="text-danger"></span>
+        <span id="emailError" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
-        <input type="text" asp-for="Reservation.Customer.PhoneNumber" name="phoneNumber" id="phoneNumber" class="form-control" />
-        <span asp-validation-for="Reservation.Customer.PhoneNumber" class="text-danger"></span>
+        <input type="text" asp-for="Customer.PhoneNumber" id="phoneNumber" class="form-control" />
+        <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
+        <span id="phoneNumberError" class="text-danger"></span>
     </div>
 
-    @* <div class="form-group"> *@
-    @*     <label for="occasionType">Type of Occasion </label> *@
-    @*     <select asp-for="Reservation.OccasionType" class="form-control" id="occasionType"> *@
-    @*         <option selected="">Select type of occasion</option> *@
-    @*         <option value="birthday">Birthday</option> *@
-    @*         <option value="anniversary">Anniversary</option> *@
-    @*         <option value="casual">Casual</option> *@
-    @*         <option value="business">Business</option> *@
-    @*         <option value="celebration">Celebration</option> *@
-    @*         <option class="other">Other</option> *@
-    @*     </select> *@
-    @*     <span asp-validation-for="Reservation.OccasionType" class="text-danger"></span> *@
-    @* </div> *@
-
     <div class="form-group">
-        <label for="specialRequest">Speacial Request </label>
-        <textarea asp-for="Reservation.SpecialRequest" name="specialRequest" id="specialRequest" class="form-control" rows="3"></textarea>
-        <span asp-validation-for="Reservation.SpecialRequest" class="text-danger"></span>
+        <label for="specialRequest">Special Request</label>
+        <textarea asp-for="SpecialRequest" id="specialRequest" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="SpecialRequest" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Proceed</button>
+
 </form>
 
 <script>
 
+        document.getElementById("reservationForm").addEventListener("submit", notice);
+
     function notice(e) {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission
+
+        // Clear existing error messages
+        clearErrors();
+
+        // Get the input values
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phoneNumber = document.getElementById("phoneNumber").value.trim();
+
+        let isValid = true; // Flag to check if all fields are valid
+
+        // Validate each field and display errors if necessary
+        if (!firstName) {
+            showError("firstNameError", "First name is required.");
+            isValid = false;
+        }
+
+        if (!lastName) {
+            showError("lastNameError", "Last name is required.");
+            isValid = false;
+        }
+
+        if (!email) {
+            showError("emailError", "Email address is required.");
+            isValid = false;
+        }
+
+        if (!phoneNumber) {
+            showError("phoneNumberError", "Phone number is required.");
+            isValid = false;
+        }
+
+        // If validation fails, stop further execution
+        if (!isValid) return;
+
+        // Show the SweetAlert modal with the Terms and Conditions
         Swal.fire({
             title: 'Terms and Condition!',
             html: '<b>Reservation Fee:</b> <br>  A non-refundable reservation fee of 30% of the total estimated bill is required to secure your reservation. This fee can be paid online through our website. <br><br><b>Cancellation Policy: </b><br>The full reservation fee will be refunded for cancellations made <b>more than 48 hours in advance.</b> The reservation fee will be forfeited for cancellations made <b>within 48 hours</b>.<br><br><b>No-shows:</b> The reservation fee will be forfeited.<br><br>To modify your reservation, please contact us at least 24 hours in advance. We will do our best to accommodate your request, but please note that modifications may not always be possible.',
@@ -95,38 +122,26 @@
             reverseButtons: true,
         }).then((result) => {
             if (result.isConfirmed) {
-                // If the Confirm button is clicked, submit the form
+                // If the user clicks "I understand, continue", submit the form
                 document.getElementById("reservationForm").submit();
-            } else if (result.isDismissed) {
-                // Optionally, you can handle the Cancel button here
-                console.log("Reservation was canceled");
             }
         });
     }
 
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <text>
-            Swal.fire({
-                title: 'Success!',
-                text: '@TempData["SuccessMessage"]',
-                icon: 'success',
-                confirmButtonText: 'OK'
-                });
-        </text>
+    // Function to display an error message
+    function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = message;
     }
 
-    @if (TempData["InformationMessage"] != null)
-    {
-        <text>
-            Swal.fire({
-                title: 'Information!',
-                text: '@TempData["InformationMessage"]',
-                icon: 'info',
-                confirmButtonText: 'OK'
-                });
-        </text>
+    // Function to clear all error messages
+    function clearErrors() {
+        document.getElementById("firstNameError").textContent = "";
+        document.getElementById("lastNameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("phoneNumberError").textContent = "";
     }
+
 
     @if (TempData["ErrorMessage"] != null)
     {

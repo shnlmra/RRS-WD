@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RRS.Data;
 using RRS.Models;
+using RRS.Models.ViewModels;
 using System.Diagnostics;
 
 namespace RRS.Controllers
@@ -21,7 +22,6 @@ namespace RRS.Controllers
         public IActionResult Index()
         {
             List<Reservation> reservations = context.Reservations
-                .Include(r => r.Menu)
                 .Include(r => r.Table)
                 .Include(r => r.Customer)
                 .ToList();
@@ -29,51 +29,121 @@ namespace RRS.Controllers
             return View(reservations);
         }
 
-        public IActionResult Create()
+        [HttpPost]
+        public IActionResult ShowReservationForm(int tableNumber, DateOnly date, TimeOnly time)
         {
-            Reservation reservation = new Reservation();
+            try
+            {
+                Reservation reservation = new Reservation
+                {
+                    Table = new Table
+                    {
+                        TableNumber = tableNumber
+                    },
+                    ReservationDate = date,
+                    ReservationTime = time
+                };
 
-            return View("CreateReservation");
+                return View("CreateReservation", reservation);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating reservation");
+                TempData["ErrorMessage"] = ex.Message;
+                return RedirectToAction("DisplayTablesInCustomer", "Table");
+            }
         }
 
-        public IActionResult CreateTrigger()
-        {
-            return View("~/Views/Reservation/createButton.cshtml");
-        }
+
 
         [HttpPost]
         public IActionResult Create(Reservation reservation)
         {
-            if (ModelState.IsValid)
+            try
             {
-                Customer customer = new Customer();
+                // Look for the table in the database
+                var table = context.Tables
+                    .FirstOrDefault(t => t.TableNumber == reservation.Table.TableNumber);
 
-                customer.FirstName = reservation.Customer.FirstName;
-                customer.LastName = reservation.Customer.LastName;
-                customer.PhoneNumber = reservation.Customer.PhoneNumber;
-                customer.Email = reservation.Customer.Email;
-                customer.CreatedAt = DateTime.Now;
-                customer.UpdatedAt = DateTime.Now;
-
-                context.Customers.Add(customer);
-                var isCreated = context.SaveChanges();
-
-                if (isCreated != 0)
+                if (table == null)
                 {
-                    reservation.CustomerId = customer.Id;
-                    reservation.CreatedAt = DateTime.Now;
-                    reservation.UpdatedAt = DateTime.Now;
-
-                    context.Reservations.Add(reservation);
-                    context.SaveChanges();
-
-                    TempData["SuccessMessage"] = "Reservation created successfully!";
-                    return RedirectToAction("Home", "Index");
+                    // Log error and show message if the table is not found
+                    _logger.LogWarning($"Table with number {reservation.Table.TableNumber} not found.");
+                    TempData["ErrorMessage"] = "Table not found!";
+                    return View("CreateReservation", reservation);
                 }
-            }
 
-            return View("CreateReservation", reservation);
+                // Set the TableId for the Reservation
+                reservation.TableId = table.Id;
+
+                // Create a new Customer
+                Customer customer = new Customer
+                {
+                    FirstName = reservation.Customer.FirstName,
+                    LastName = reservation.Customer.LastName,
+                    PhoneNumber = reservation.Customer.PhoneNumber,
+                    Email = reservation.Customer.Email,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
+                };
+
+                // Add the new Customer to the database
+                context.Customers.Add(customer);
+                var isCustomerCreated = context.SaveChanges();
+
+                if (isCustomerCreated > 0)
+                {
+                    // Create the Reservation
+                    Reservation reservationToAdd = new Reservation
+                    {
+                        ReservationDate = reservation.ReservationDate,
+                        ReservationTime = reservation.ReservationTime,
+                        SpecialRequest = reservation.SpecialRequest,
+                        TableId = reservation.TableId,
+                        CustomerId = customer.Id,
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now
+                    };
+
+                    // Add the new Reservation to the database
+                    context.Reservations.Add(reservationToAdd);
+
+                    var isReservationCreated = context.SaveChanges();
+
+                    if (isReservationCreated > 0)
+                    {
+
+                        // Reservation created successfully, redirect to the home page
+                        TempData["SuccessMessage"] = "Reservation created successfully!";
+                        return RedirectToAction("DisplayTablesInCustomer", "Table"); // Redirect to a success page or home
+                    }
+                    else
+                    {
+                        // Error saving reservation
+                        TempData["ErrorMessage"] = "Failed to create reservation.";
+                        return View("CreateReservation", reservation);
+                    }
+                }
+                else
+                {
+                    // Error saving customer
+                    TempData["ErrorMessage"] = "Failed to create customer.";
+                    return View("CreateReservation", reservation);
+                }
+
+                //// Validation failed, show form again with error messages
+                //TempData["ErrorMessage"] = "Form validation failed.";
+                //return View("CreateReservation", reservation);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and return an error message
+                _logger.LogError(ex, "Error creating reservation");
+                TempData["ErrorMessage"] = ex.Message;
+                return View("CreateReservation", reservation);
+            }
         }
+
 
         //public IActionResult ViewDetails(int id)
         //{

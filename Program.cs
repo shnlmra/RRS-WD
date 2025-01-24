@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ShanellaConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ShanellaConnectionPC")));
 
 var app = builder.Build();
 

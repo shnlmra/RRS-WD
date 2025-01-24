@@ -13,6 +13,7 @@ namespace RRS.Data
         public DbSet<Table> Tables { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<ReserveMenuDetails> ReserveMenuDetails { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,6 +31,10 @@ namespace RRS.Data
             modelBuilder.Entity<Table>()
                 .Property(m => m.Status)
                 .HasDefaultValue("available");
+
+            modelBuilder.Entity<Reservation>()
+                .Property(m => m.Status)
+                .HasDefaultValue("pending");
         }
     }
 }
