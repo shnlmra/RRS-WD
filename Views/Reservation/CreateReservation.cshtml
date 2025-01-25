@@ -211,7 +211,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // Show Terms and Conditions
-                Swal.fire({
+                    Swal.fire({
                     title: 'Terms and Conditions',
                     html: '<b>Reservation Fee:</b> A non-refundable reservation fee of 30% of the total estimated bill is required to secure your reservation. <br><br><b>Cancellation Policy:</b> Full reservation fee refunded for cancellations made more than 48 hours in advance. <br><br><b>No-shows:</b> Reservation fee will be forfeited.',
                     icon: 'info',
@@ -222,9 +222,10 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // If the user confirms terms and conditions, submit the form
-                        document.getElementById("reservationForm").submit();
+                        document.getElementById("reservationForm").submit(); // Submit the form programmatically
                     }
                 });
+
             }
         });
     }

@@ -45,10 +45,9 @@
 
 <form id="reservationForm" asp-action="ShowReservationForm" asp-controller="Reservation" method="post" style="display:none;">
     <input type="hidden" id="formTableNumber" name="tableNumber" />
-    <input type="hidden" asp-for="Table.Price"  id="formPrice" name="price" />
+    <input type="hidden" asp-for="Table.Price" id="formPrice" name="price" />
     <input type="hidden" id="formDate" name="date" />
     <input type="hidden" id="formTime" name="time" />
-
 </form>
 
 <script>
@@ -70,6 +69,7 @@
         defaultTime: "08:00",
     });
 
+    // Submit reservation logic
     function submitReservation(tableNumber, price) {
         const date = document.getElementById("datepicker").value;
         const time = document.getElementById("timepicker").value;
@@ -94,22 +94,29 @@
             return;
         }
 
+        // Set hidden fields before showing the form
         document.getElementById("formTableNumber").value = tableNumber;
         document.getElementById("formDate").value = date;
         document.getElementById("formTime").value = time;
         document.getElementById("formPrice").value = price;
 
+        // Show the form after setting the values
+        document.getElementById("reservationForm").style.display = "block";
+
+        // Optionally, submit the form after a user confirmation or directly if you're ready
         document.getElementById("reservationForm").submit();
     }
 
+    // Handle TempData messages
+    $(document).ready(function() {
     @if (TempData["SuccessMessage"] != null)
     {
         <text>
-                Swal.fire({
-                    title: 'Success!',
-                    text: '@TempData["SuccessMessage"]',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
+                    Swal.fire({
+                        title: 'Success!',
+                        text: '@TempData["SuccessMessage"]',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
                     });
         </text>
     }
@@ -117,11 +124,11 @@
     @if (TempData["InformationMessage"] != null)
     {
         <text>
-                Swal.fire({
-                    title: 'Information!',
-                    text: '@TempData["InformationMessage"]',
-                    icon: 'info',
-                    confirmButtonText: 'OK'
+                    Swal.fire({
+                        title: 'Information!',
+                        text: '@TempData["InformationMessage"]',
+                        icon: 'info',
+                        confirmButtonText: 'OK'
                     });
         </text>
     }
@@ -137,4 +144,5 @@
                     });
         </text>
     }
+    });
 </script>

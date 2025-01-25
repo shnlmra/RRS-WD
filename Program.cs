@@ -49,7 +49,7 @@ app.UseAuthorization();
 // Configure routes properly
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Customer}/{action=Index}/{id?}");
+    pattern: "{controller=Roles}/{action=UserRole}/{id?}");
 
 // Uncomment this if you want a specific route for the AboutUs controller
 //app.MapControllerRoute(

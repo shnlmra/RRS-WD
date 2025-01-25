@@ -1,0 +1,245 @@
+﻿@model IEnumerable<RRS.Models.UserRoleViewModel>
+@{
+    ViewData["Title"] = "UserRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-left mb-2">
+    <h1 class="fs-4">User Roles</h1>
+    <p class="text-secondary">Permissions for Staff Based on User Roles</p>
+</div>
+
+<div class="d-flex justify-content-between mb-3">
+    <input type="text" class="form-control w-25" placeholder="Search..." />
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+</div>
+
+<!-- Add User Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="addFirstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="addFirstName" placeholder="Enter first name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addLastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="addLastName" placeholder="Enter last name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="addEmail" placeholder="Enter email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addRole" class="form-label">Role</label>
+                        <select class="form-select" id="addRole">
+                            <option value="Admin">Admin</option>
+                            <option value="Restaurant Staff">Restaurant Staff</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordValidationModal">Add User</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Password Validation Modal for Add User -->
+<div class="modal fade" id="passwordValidationModal" tabindex="-1" aria-labelledby="passwordValidationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="passwordValidationModalLabel">Password Validation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="adminPassword" class="form-label">Enter Admin Password</label>
+                        <input type="password" class="form-control" id="adminPassword" placeholder="Enter password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm mb-5">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover text-center" id="userRolesTable">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var userRole in Model)
+                    {
+                        <tr>
+                            <td>@userRole.FirstName</td>
+                            <td>@userRole.LastName</td>
+                            <td>@userRole.Email</td>
+                            <td>@userRole.Role</td>
+                            <td>@userRole.Status</td>
+                            <td class="d-flex justify-content-center gap-2">
+                                <button type="button" class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1" data-bs-toggle="modal" data-bs-target="#editModal-@userRole.Email">
+                                    Edit
+                                </button>
+
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="editModal-@userRole.Email" tabindex="-1" aria-labelledby="editModalLabel-@userRole.Email" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editModalLabel-@userRole.Email">Edit User Role</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label for="editFirstName-@userRole.Email" class="form-label" style="text-align: left; display: block;">First Name</label>
+                                                        <input type="text" class="form-control" id="editFirstName-@userRole.Email" value="@userRole.FirstName" readonly>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editLastName-@userRole.Email" class="form-label" style="text-align: left; display: block;">Last Name</label>
+                                                        <input type="text" class="form-control" id="editLastName-@userRole.Email" value="@userRole.LastName" readonly>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="addRole" class="form-label" style="text-align: left; display: block;"   >Role</label>
+                                                        <select class="form-select" id="addRole">
+                                                            <option value="Admin">Admin</option>
+                                                            <option value="Restaurant Staff">Restaurant Staff</option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1" data-bs-toggle="modal" data-bs-target="#deleteModal-@userRole.Email">
+                                    Delete
+                                </button>
+
+                                <!-- Delete Modal with Password Validation -->
+                                <div class="modal fade" id="deleteModal-@userRole.Email" tabindex="-1" aria-labelledby="deleteModalLabel-@userRole.Email" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel-@userRole.Email">Delete User Role</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete the user role for @userRole.FirstName @userRole.LastName?
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label for="deletePassword-@userRole.Email" class="form-label">Enter Admin Password</label>
+                                                        <input type="password" class="form-control" id="deletePassword-@userRole.Email" placeholder="Enter password">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+         $(document).ready(function () {
+        let userData = {}; // Temporary storage for user data
+
+        // Step 1: Handle "Add User" button click in the Add User Modal
+        $('#addUserModal .btn-primary').click(function () {
+            const firstName = $('#addFirstName').val();
+            const lastName = $('#addLastName').val();
+            const email = $('#addEmail').val();
+            const role = $('#addRole').val();
+
+            if (firstName && lastName && email && role) {
+                // Store user data temporarily
+                userData = { firstName, lastName, email, role };
+
+                // Open Password Validation Modal
+                $('#addUserModal').modal('hide');
+                $('#passwordValidationModal').modal('show');
+            } else {
+                alert("Please fill out all fields.");
+            }
+        });
+
+        // Step 2: Handle "Confirm" button click in the Password Validation Modal
+        $('#passwordValidationModal .btn-primary').click(function () {
+            const enteredPassword = $('#adminPassword').val();
+            const adminPassword = "admin123"; // Replace with backend logic in production
+
+            if (enteredPassword === adminPassword) {
+                // Add the user to the table
+                const newRow = `
+                    <tr>
+                        <td>${userData.firstName}</td>
+                        <td>${userData.lastName}</td>
+                        <td>${userData.email}</td>
+                        <td>${userData.role}</td>
+                        <td>Active</td>
+                        <td class="d-flex justify-content-center gap-2">
+                            <button type="button" class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1">Edit</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1">Delete</button>
+                        </td>
+                    </tr>
+                `;
+
+                $('#userRolesTable tbody').append(newRow);
+
+                // Clear form fields and close modals
+                $('#addFirstName').val('');
+                $('#addLastName').val('');
+                $('#addEmail').val('');
+                $('#addRole').val('');
+                $('#adminPassword').val('');
+                $('#passwordValidationModal').modal('hide');
+            } else {
+                alert("Invalid admin password.");
+            }
+        });
+
+        // Optional: Reset password field when the Password Modal is closed
+        $('#passwordValidationModal').on('hidden.bs.modal', function () {
+            $('#adminPassword').val('');
+        });
+    });
+
+</script>
