@@ -123,6 +123,7 @@ namespace RRS.Controllers
                     existingTable.TableNumber = table.TableNumber;
                     existingTable.SeatingCapacity = table.SeatingCapacity;
                     existingTable.TableLocation = table.TableLocation;
+                    existingTable.Price = table.Price;
                     existingTable.Description = table.Description;
                     existingTable.UpdatedAt = DateTime.Now;
 

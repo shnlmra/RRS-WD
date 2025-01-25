@@ -42,7 +42,7 @@
                     <span class="nav_logo-name">Golden Palate</span>
                 </a>
                 <div class="nav_list">
-                    <a class="nav_link active" asp-area="" asp-action="AdminReservation" asp-controller="">
+                    <a class="nav_link active" asp-area="" asp-action="ListOfReservationsToCustomer" asp-controller="Reservation">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Reservations</span>
                     </a>
@@ -50,7 +50,7 @@
                         <i class='bx bx-calendar nav_icon'></i>
                         <span class="nav_name">Table Management</span>
                     </a>
-                    <a class="nav_link" asp-area="" asp-action="PaymentStaff" asp-controller="PaymentStaff">
+                    <a class="nav_link" asp-area="" asp-action="PaymentStaff" asp-controller="Payment">
                         <i class='bx bx-food-menu nav_icon'></i>
                         <span class="nav_name">Payments</span>
                     </a>
@@ -64,7 +64,7 @@
     </div>
 
     <!-- Container Main -->
-    <div class="container" style="margin-top: 70px">
+    <div class="container-fluid" style="margin-top: 70px">
         @RenderBody()
     </div>
 

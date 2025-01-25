@@ -50,8 +50,8 @@
                         <i class='bx bx-calendar nav_icon'></i>
                         <span class="nav_name">Reservations</span>
                     </a>
-                    <a class="nav_link" asp-area="" asp-action="Index" asp-controller="Reservation">
-                        <i class='bx bx-calendar nav_icon'></i>
+                    <a class="nav_link" asp-area="" asp-action="AdminPayments" asp-controller="Payment">
+                        <i class='fas fa-credit-card nav_icon'></i>
                         <span class="nav_name">Payments</span>
                     </a>
                     <a class="nav_link" asp-area="" asp-action="Index" asp-controller="Menu">
@@ -80,7 +80,7 @@
     </div>
 
     <!-- Container Main -->
-    <div class="container" style="margin-top: 70px">
+    <div class="container-fluid" style="margin-top: 70px">
         @RenderBody()
     </div>
 

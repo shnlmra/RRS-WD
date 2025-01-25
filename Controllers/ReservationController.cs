@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RRS.Data;
 using RRS.Models;
 using RRS.Models.ViewModels;
+using System.ComponentModel;
 using System.Diagnostics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -151,27 +152,74 @@ namespace RRS.Controllers
             }
         }
 
+        public IActionResult ViewDetails(int id)
+        {
+            Reservation reservation = context.Reservations.FirstOrDefault(r => r.Id == id);
 
-        //public IActionResult ViewDetails(int id)
-        //{
-        //    Reservation reservation = context.Reservations.FirstOrDefault(r => r.Id == id);
+            if (reservation == null)
+            {
+                TempData["ErrorMessage"] = "Reservation not found!";
+                return RedirectToAction("Index");
+            }
 
-        //    if (reservation == null)
-        //    {
-        //        TempData["ErrorMessage"] = "Reservation not found!";
-        //        return RedirectToAction("Index");
-        //    }
+            return PartialView("ReservationDetails", reservation.Id);
+        }
 
-        //    return PartialView("ReservationDetails", reservation);
-        //}
+        public IActionResult ListOfReservationsToStaff()
+        {
+            ReservationViewModel reservationViewModel = new ReservationViewModel();
+
+            // Get today's date as DateOnly
+            DateOnly today = DateOnly.FromDateTime(DateTime.Today);
+
+            reservationViewModel.reservationsToday = context.Reservations
+                .Where(r => r.ReservationDate == today) // Compare using DateOnly
+                .Include(r => r.Table) // Include related Table entity
+                .Include(r => r.Customer) // Include related Customer entity
+                .ToList();
+
+            reservationViewModel.UpcommingReservations = context.Reservations
+                .Where(r => r.ReservationDate > today) // Compare using DateOnly
+                .Include(r => r.Table) // Include related Table entity
+                .Include(r => r.Customer) // Include related Customer entity
+                .ToList();
+
+
+            return View("StaffReservation", reservationViewModel);
+        }
+
+        public IActionResult ListOfReservationsToCustomer()
+        {
+            List<Reservation> reservations = context.Reservations
+                .Include(r => r.Table)
+                .Include(r => r.Customer)
+                .ToList();
+
+            return View("StaffReservation", reservations);
+        }
+
+        [HttpPost]
+        public IActionResult StartReservation(int id)
+        {
+            Reservation reservation = context.Reservations.FirstOrDefault(r => r.Id == id);
+            if (reservation == null)
+            {
+                TempData["ErrorMessage"] = "Reservation not found!";
+                return RedirectToAction("ListOfReservationsToStaff");
+            }
+            reservation.Status = "started";
+            reservation.UpdatedAt = DateTime.Now;
+            context.SaveChanges();
+            TempData["SuccessMessage"] = "Reservation started!";
+            return RedirectToAction("ListOfReservationsToStaff");
+        }
 
 
 
-
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }

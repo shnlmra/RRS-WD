@@ -11,9 +11,14 @@
         <h1 class="fs-4">Table Management</h1>
         <p class="text-secondary">List of all tables in the restaurant.</p>
     </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTable">
-        <i class="fa-solid fa-plus"></i>  Add Table
-    </button>
+    <div class="gap-3">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTable">
+            <i class="fa-solid fa-plus"></i>  Add Table
+        </button>
+        @* <button type="button" class="btn btn-warning" data-bs-toggle="" data-bs-target=""> *@
+        @*     <i class="fa-solid fa-download"></i>  Export CSV *@
+        @* </button> *@
+    </div>
 </div>
 
 <script>
@@ -65,6 +70,7 @@
                         <th>Table Number</th>
                         <th>Description</th>
                         <th>Seating Capacity</th>
+                        <th>Price</th>
                         <th>Table Location</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -77,6 +83,7 @@
                             <td>@table.TableNumber</td>
                             <td>@table.Description</td>
                             <td>@table.SeatingCapacity</td>
+                            <td>₱@table.Price</td>
                             <td>@table.TableLocation</td>
                             <td>
                                 @if (table.Status.ToLower() == "available")

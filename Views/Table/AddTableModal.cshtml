@@ -13,13 +13,18 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group mb-2">
                         <label class="control-label mb-1">Table Number <span class="text-danger">*</span></label>
-                        <input type="number" value="" placeholder="Type table number" asp-for="TableNumber" class="form-control" required />
+                        <input type="number" value="" placeholder="15" asp-for="TableNumber" class="form-control" required />
                         <span asp-validation-for="TableNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-2">
                         <label class="control-label mb-1">Seating Capacity <span class="text-danger">*</span></label>
-                        <input type="number" placeholder="Type seating capacity" value="" asp-for="SeatingCapacity" class="form-control" required />
+                        <input type="number" placeholder="10" value="" asp-for="SeatingCapacity" class="form-control" required />
                         <span asp-validation-for="SeatingCapacity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="control-label mb-1">Price <span class="text-danger">*</span></label>
+                        <input type="number" placeholder="₱123" value="" asp-for="Price" class="form-control" required />
+                        <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-2">
                         <label class="control-label mb-1">Table Location <span class="text-danger">*</span></label>
