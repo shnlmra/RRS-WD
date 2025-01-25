@@ -59,7 +59,7 @@ namespace RRS.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateReservation(Reservation reservation)
+        public IActionResult Create(Reservation reservation)
         {
 
             try 
@@ -103,6 +103,7 @@ namespace RRS.Controllers
                             SpecialRequest = reservation.SpecialRequest,
                             TableId = reservation.TableId,
                             TotalPrice = reservation.TotalPrice,
+                            BuffetType = reservation.BuffetType,
                             CustomerId = customer.Id,
                             CreatedAt = DateTime.Now,
                             UpdatedAt = DateTime.Now
@@ -118,7 +119,7 @@ namespace RRS.Controllers
 
                             // Reservation created successfully, redirect to the home page
                             TempData["SuccessMessage"] = "Reservation created successfully!";
-                            return RedirectToAction("DisplayTablesInCustomer", "Table"); // Redirect to a success page or home
+                            return RedirectToAction("DisplayTables", "Table"); // Redirect to a success page or home
                         }
                         else
                         {
