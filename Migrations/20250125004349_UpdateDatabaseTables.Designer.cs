@@ -12,8 +12,8 @@ using RRS.Data;
 namespace RRS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250124172441_CreateBuffetTypesTable")]
-    partial class CreateBuffetTypesTable
+    [Migration("20250125004349_UpdateDatabaseTables")]
+    partial class UpdateDatabaseTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,44 +24,6 @@ namespace RRS.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("RRS.Models.BuffetType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("BuffetName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("BuffetPrice")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BuffetTypes");
-                });
 
             modelBuilder.Entity("RRS.Models.Customer", b =>
                 {
@@ -151,6 +113,9 @@ namespace RRS.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("BuffetType")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -191,29 +156,6 @@ namespace RRS.Migrations
                     b.ToTable("Reservations");
                 });
 
-            modelBuilder.Entity("RRS.Models.ReserveMenuDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("MenuId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MenuId");
-
-                    b.HasIndex("ReservationId");
-
-                    b.ToTable("ReserveMenuDetails");
-                });
-
             modelBuilder.Entity("RRS.Models.Table", b =>
                 {
                     b.Property<int>("Id")
@@ -226,9 +168,6 @@ namespace RRS.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -247,6 +186,9 @@ namespace RRS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(max)")
                         .HasDefaultValue("available");
+
+                    b.Property<string>("TableImagePath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TableLocation")
                         .IsRequired()
@@ -273,7 +215,7 @@ namespace RRS.Migrations
                         .IsRequired();
 
                     b.HasOne("RRS.Models.Table", "Table")
-                        .WithMany("Reservations")
+                        .WithMany()
                         .HasForeignKey("TableId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -283,31 +225,7 @@ namespace RRS.Migrations
                     b.Navigation("Table");
                 });
 
-            modelBuilder.Entity("RRS.Models.ReserveMenuDetails", b =>
-                {
-                    b.HasOne("RRS.Models.Menu", "Menu")
-                        .WithMany()
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RRS.Models.Reservation", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Menu");
-
-                    b.Navigation("Reservation");
-                });
-
             modelBuilder.Entity("RRS.Models.Customer", b =>
-                {
-                    b.Navigation("Reservations");
-                });
-
-            modelBuilder.Entity("RRS.Models.Table", b =>
                 {
                     b.Navigation("Reservations");
                 });

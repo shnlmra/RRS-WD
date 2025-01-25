@@ -11,12 +11,9 @@ namespace RRS.Models
         //public string? OccasionType { get; set; }  
         [Precision(10, 2)]
         public Decimal TotalPrice { get; set; }
+        public string? BuffetType { get; set; }
         public string? SpecialRequest { get; set; }
         public string Status { get; set; }
-
-        public int? BuffetTypeId { get; set; }
-        public BuffetType BuffetType { get; set; }
-
 
         // Foreign key for table
         public int TableId { get; set; }

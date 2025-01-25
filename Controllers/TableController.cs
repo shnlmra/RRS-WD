@@ -27,7 +27,8 @@ namespace RRS.Controllers
             return View(tables);
         }
 
-        public IActionResult DisplayTablesInCustomer()
+
+        public IActionResult DisplayTables()
         {
             TableViewModel tableViewModel = new TableViewModel();
 
@@ -35,9 +36,7 @@ namespace RRS.Controllers
             tableViewModel.Reservation = new Reservation();
             tableViewModel.Table = new Table();
 
-            var tables = this.GetTables();
-
-            return View("DisplayTablesInCustomer", tableViewModel);
+            return View("DisplayTables", tableViewModel);
         }
 
         public IActionResult Create()
@@ -124,6 +123,7 @@ namespace RRS.Controllers
                     existingTable.TableNumber = table.TableNumber;
                     existingTable.SeatingCapacity = table.SeatingCapacity;
                     existingTable.TableLocation = table.TableLocation;
+                    existingTable.Price = table.Price;
                     existingTable.Description = table.Description;
                     existingTable.UpdatedAt = DateTime.Now;
 

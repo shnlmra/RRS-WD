@@ -3,8 +3,6 @@
     public class TableViewModel
     {
         public List<Table> Tables { get; set; }
-        public List<BuffetType> BuffetTypes { get; set; }
-
         public Reservation Reservation { get; set; }
         public Table Table { get; set; }
     }
